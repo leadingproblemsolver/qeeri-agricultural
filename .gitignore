@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+*.tmp
+.env
+.env.*
+03_runs/exploratory_RESTRICTED/
+03_runs/raw_responses_RESTRICTED/
+inputs_original/
+01_context/HISTORICAL_*
+**/*HSE*
+**/*AGREEMENT*
