@@ -7,7 +7,7 @@
 From `research_mvp/`:
 
 ```bash
-python -m unittest -q test_qeeri test_public_case
+python -m unittest -q test_qeeri test_public_case_compact
 python qatar_public_case.py
 python smoke_protocol.py
 ```
@@ -47,4 +47,4 @@ A partial matched sample is sufficient; unavailable inputs keep the correspondin
 
 ## Test boundary
 
-72/72 automated tests on Python 3.13 (52 existing + 20 case-specific), MCP 5-request smoke protocol PASS. These establish deterministic local behavior—not farm-level agronomic accuracy, a scientific claim, or quality of any future data supplied by a mentor.
+62/62 repository-runnable automated tests on Python 3.13 (52 existing + 10 compact adversarial case tests), MCP 5-request smoke protocol PASS. The separately downloadable ZIP also contains 20 extended case tests (72/72 locally passed). These establish deterministic local behavior—not farm-level agronomic accuracy, a scientific claim, or quality of any future data supplied by a mentor.
