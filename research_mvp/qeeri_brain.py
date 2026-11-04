@@ -109,13 +109,15 @@ def search_evidence(question, top_k=5):
     if not isinstance(top_k,int) or top_k<1 or top_k>20: raise ValueError('top_k must be 1..20')
     qt=tokens(question); stop={'the','a','in','for','of','and','is','what','how','much','was','are','qatar','cucumber','cucumbers'}
     meaningful=qt-stop
+    # Crop/source subject must be named: generic terms (production, year) alone must not cite cucumber records.
+    if not qt & {'cucumber','cucumbers','gherkin','gherkins','070700','wits','cif'}: return []
     scored=[]
     for doc in corpus():
         dt=tokens(doc['text']+' '+doc['id']+' '+doc['kind'])
         overlap=len(meaningful & dt)
         # Exact year/scope matching prevents mismatched time/scope from dominating.
-        for year in re.findall(r'\b20\d{2}\b',question):
-            if doc['data']['year']!=year: overlap=-100
+        years=set(re.findall(r'\b20\d{2}\b',question))
+        if years and doc['data']['year'] not in years: overlap=-100
         if 'greenhouse' in qt and doc['data'].get('scope')!='GREENHOUSE': overlap=-100
         if ('open' in qt and 'field' in qt) and doc['data'].get('scope')!='OPEN_FIELD': overlap=-100
         if (('import' in qt or 'imports' in qt or 'cif' in qt) and doc['kind']!='TRADE'): overlap=-100
