@@ -1,0 +1,12 @@
+year,crop,source_scope,production_tonnes,area_hectares,yield_tonnes_per_hectare,evidence_state,source_file,notes
+2020,Cucumber,GREENHOUSE,28373.1,269.8,105.1635,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,cropped-area-and-production-of-crops-in-greenhouses.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2020,Cucumber,OPEN_FIELD,33.9,,,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,total-production-of-open-field-crops-by-crop.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2021,Cucumber,GREENHOUSE,21812.5,181.8,119.9807,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,cropped-area-and-production-of-crops-in-greenhouses.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2021,Cucumber,OPEN_FIELD,35.7,,,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,total-production-of-open-field-crops-by-crop.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2022,Cucumber,GREENHOUSE,23944.2,220.8,108.4429,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,cropped-area-and-production-of-crops-in-greenhouses.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2022,Cucumber,OPEN_FIELD,2.25,,,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,total-production-of-open-field-crops-by-crop.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2023,Cucumber,GREENHOUSE,15645.1,224.4,69.7197,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,cropped-area-and-production-of-crops-in-greenhouses.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2023,Cucumber,OPEN_FIELD,9.38,,,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,total-production-of-open-field-crops-by-crop.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2024,Cucumber,GREENHOUSE,17512.73,251.8,69.5502,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,cropped-area-and-production-of-crops-in-greenhouses.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2024,Cucumber,OPEN_FIELD,143.13,,,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,total-production-of-open-field-crops-by-crop.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels
+2025,Cucumber,GREENHOUSE,23229.77,358.07,64.8749,PUBLIC_AGGREGATE_DESCRIPTIVE_ONLY,cropped-area-and-production-of-crops-in-greenhouses.json,Original crop label Cucumber; not Snake Cucumber; no farm cost/EC labels

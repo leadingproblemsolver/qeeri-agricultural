@@ -1,0 +1,57 @@
+test_cost_block_untouched (test_qeeri.ScientificReviewTests.test_cost_block_untouched) ... ok
+test_exact_id_routes_to_review (test_qeeri.ScientificReviewTests.test_exact_id_routes_to_review) ... ok
+test_exact_inventory (test_qeeri.ScientificReviewTests.test_exact_inventory) ... ok
+test_existing_import_answer_untouched (test_qeeri.ScientificReviewTests.test_existing_import_answer_untouched) ... ok
+test_mcp_exposes_review_only (test_qeeri.ScientificReviewTests.test_mcp_exposes_review_only) ... ok
+test_missing_source_does_not_fabricate_url (test_qeeri.ScientificReviewTests.test_missing_source_does_not_fabricate_url) ... ok
+test_natural_question_routes_review (test_qeeri.ScientificReviewTests.test_natural_question_routes_review) ... ok
+test_no_scientific_answer_promotion (test_qeeri.ScientificReviewTests.test_no_scientific_answer_promotion) ... ok
+test_no_unrelated_citation (test_qeeri.ScientificReviewTests.test_no_unrelated_citation) ... ok
+test_review_receipt_restart (test_qeeri.ScientificReviewTests.test_review_receipt_restart) ... ok
+test_cost_comparison_blocks (test_qeeri.SourcePassageAndBrainTests.test_cost_comparison_blocks) ... ok
+test_descriptive_import_retained (test_qeeri.SourcePassageAndBrainTests.test_descriptive_import_retained) ... ok
+test_malformed_receipt_safe_failure (test_qeeri.SourcePassageAndBrainTests.test_malformed_receipt_safe_failure) ... ok
+test_mcp_exposes_source_passages (test_qeeri.SourcePassageAndBrainTests.test_mcp_exposes_source_passages) ... ok
+test_mcp_reentry (test_qeeri.SourcePassageAndBrainTests.test_mcp_reentry) ... ok
+test_modified_chain_fails_restart (test_qeeri.SourcePassageAndBrainTests.test_modified_chain_fails_restart) ... ok
+test_passages_indexed_with_verified_locators (test_qeeri.SourcePassageAndBrainTests.test_passages_indexed_with_verified_locators) ... ok
+test_restart_last_receipt (test_qeeri.SourcePassageAndBrainTests.test_restart_last_receipt) ... ok
+test_science_not_auto_approved (test_qeeri.SourcePassageAndBrainTests.test_science_not_auto_approved) ... ok
+test_source_hash_rejects_modified_excerpt (test_qeeri.SourcePassageAndBrainTests.test_source_hash_rejects_modified_excerpt) ... ok
+test_specific_question_retrieves_real_excerpt (test_qeeri.SourcePassageAndBrainTests.test_specific_question_retrieves_real_excerpt) ... ok
+test_tampered_chain_refuses_to_append (test_qeeri.SourcePassageAndBrainTests.test_tampered_chain_refuses_to_append) ... ok
+test_unrelated_no_citation (test_qeeri.SourcePassageAndBrainTests.test_unrelated_no_citation) ... ok
+test_unverified_question_no_fabricated_passage (test_qeeri.SourcePassageAndBrainTests.test_unverified_question_no_fabricated_passage) ... ok
+test_water_recommendation_blocks_missing (test_qeeri.SourcePassageAndBrainTests.test_water_recommendation_blocks_missing) ... ok
+test_2024_query (test_qeeri.Tests.test_2024_query) ... ok
+test_base_records (test_qeeri.Tests.test_base_records) ... ok
+test_derived_recompute (test_qeeri.Tests.test_derived_recompute) ... ok
+test_economic_block (test_qeeri.Tests.test_economic_block) ... ok
+test_mcp_call (test_qeeri.Tests.test_mcp_call) ... ok
+test_mcp_init (test_qeeri.Tests.test_mcp_init) ... ok
+test_mcp_list (test_qeeri.Tests.test_mcp_list) ... ok
+test_missing_cost (test_qeeri.Tests.test_missing_cost) ... ok
+test_missing_zero (test_qeeri.Tests.test_missing_zero) ... ok
+test_no_fake_source (test_qeeri.Tests.test_no_fake_source) ... ok
+test_p1_block_cheap_import (test_qeeri.Tests.test_p1_block_cheap_import) ... ok
+test_p1_block_compare_growing_importing (test_qeeri.Tests.test_p1_block_compare_growing_importing) ... ok
+test_p1_block_grow_cost (test_qeeri.Tests.test_p1_block_grow_cost) ... ok
+test_p1_block_h2o (test_qeeri.Tests.test_p1_block_h2o) ... ok
+test_p1_block_litres (test_qeeri.Tests.test_p1_block_litres) ... ok
+test_p1_block_plural_ecs (test_qeeri.Tests.test_p1_block_plural_ecs) ... ok
+test_p1_block_salty (test_qeeri.Tests.test_p1_block_salty) ... ok
+test_p1_block_saving_money (test_qeeri.Tests.test_p1_block_saving_money) ... ok
+test_p1_block_soil_ec (test_qeeri.Tests.test_p1_block_soil_ec) ... ok
+test_p1_block_subsidise (test_qeeri.Tests.test_p1_block_subsidise) ... ok
+test_p1_block_water_per_kg (test_qeeri.Tests.test_p1_block_water_per_kg) ... ok
+test_p1_block_worth_growing (test_qeeri.Tests.test_p1_block_worth_growing) ... ok
+test_p1_descriptive_greenhouse_comparison_not_cost (test_qeeri.Tests.test_p1_descriptive_greenhouse_comparison_not_cost) ... ok
+test_p1_public_cif_unit_value_remains_answerable (test_qeeri.Tests.test_p1_public_cif_unit_value_remains_answerable) ... ok
+test_p1_source_limitations_not_indexed (test_qeeri.Tests.test_p1_source_limitations_not_indexed) ... ok
+test_receipt_chain (test_qeeri.Tests.test_receipt_chain) ... ok
+test_scope (test_qeeri.Tests.test_scope) ... ok
+
+----------------------------------------------------------------------
+Ran 52 tests in 0.030s
+
+OK

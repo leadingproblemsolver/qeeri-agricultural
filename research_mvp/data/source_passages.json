@@ -1,0 +1,87 @@
+[
+  {
+    "passage_id": "UCIPM-POTATO-APHID",
+    "source_title": "Potato: Aphids — UC Integrated Pest Management",
+    "source_url": "https://ipm.ucanr.edu/agriculture/potato/aphids/",
+    "publisher": "University of California IPM",
+    "source_locator": "page heading Aphids, lines 41-47",
+    "excerpt": "Potato aphid: Macrosiphum euphorbiae",
+    "question_ids": [
+      "Q-K26"
+    ],
+    "topic_terms": [
+      "potato",
+      "aphid",
+      "scientific name"
+    ],
+    "status": "REVIEW",
+    "evidence_type": "VERIFIED_WEB_EXCERPT",
+    "limitation": "Source supports common-name taxonomy in potato context, but has not adjudicated the original answer key.",
+    "excerpt_sha256": "c88dc4293d5f790e00f662d2ba988f1c3c1db6b056432be8c240579746792df3",
+    "verified_on_utc_date": "2026-11-04"
+  },
+  {
+    "passage_id": "APS-TOMATO-FUSARIUM",
+    "source_title": "Diseases of Tomato — American Phytopathological Society",
+    "source_url": "https://www.apsnet.org/edcenter/resources/commonnames/Pages/Tomato.aspx",
+    "publisher": "American Phytopathological Society",
+    "source_locator": "Fungal and Oomycete Diseases; Fusarium wilt entry, lines 324-329",
+    "excerpt": "Fusarium oxysporum Schltdl.:Fr. f. sp. lycopersici",
+    "question_ids": [
+      "Q-K29"
+    ],
+    "topic_terms": [
+      "fusarium",
+      "wilt",
+      "tomato"
+    ],
+    "status": "REVIEW",
+    "evidence_type": "VERIFIED_WEB_EXCERPT",
+    "limitation": "The article is specific to tomato; original benchmark question lacks a crop qualifier.",
+    "excerpt_sha256": "a6f8a6676fe5048b4e9b90505aeacd71b5c17a026a53aedc85c271a97a476087",
+    "verified_on_utc_date": "2026-11-04"
+  },
+  {
+    "passage_id": "RUTGERS-BROADLEAF-24D",
+    "source_title": "Broadleaf Weed Control in Cool Season Lawns — Rutgers Cooperative Extension",
+    "source_url": "https://extension.rutgers.edu/fs385",
+    "publisher": "Rutgers Cooperative Extension",
+    "source_locator": "Broadleaf weed control article, lines 83-93",
+    "excerpt": "2,4-D is only somewhat toxic to clover but will control many other weeds, including dandelion and plantains.",
+    "question_ids": [
+      "Q-K06"
+    ],
+    "topic_terms": [
+      "2,4-D",
+      "broadleaf",
+      "weed",
+      "grassy"
+    ],
+    "status": "REVIEW",
+    "evidence_type": "VERIFIED_WEB_EXCERPT",
+    "limitation": "This describes cool-season lawns, not barley-specific isoproturon efficacy or local treatment authority.",
+    "excerpt_sha256": "2e67b12cf3b1d9606517b8f3f3f6e1709139bb8a4221ed171f61e5145bbb801b",
+    "verified_on_utc_date": "2026-11-04"
+  },
+  {
+    "passage_id": "USGS-AG-DROUGHT",
+    "source_title": "Drought FAQ — U.S. Geological Survey",
+    "source_url": "https://www.usgs.gov/centers/dakota-water-science-center/science/drought-faq",
+    "publisher": "USGS",
+    "source_locator": "Drought FAQ, lines 22-35",
+    "excerpt": "Agricultural drought--defined principally in terms of soil moisture and plant behavior.",
+    "question_ids": [
+      "Q-K15"
+    ],
+    "topic_terms": [
+      "agricultural",
+      "drought",
+      "soil moisture"
+    ],
+    "status": "REVIEW",
+    "evidence_type": "VERIFIED_WEB_EXCERPT",
+    "limitation": "Not a source for the benchmark's exact four- or six-week criterion.",
+    "excerpt_sha256": "474cb4f49603193aa7e1866471fc2f18aff695805e832f9a50754730e2b517c9",
+    "verified_on_utc_date": "2026-11-04"
+  }
+]

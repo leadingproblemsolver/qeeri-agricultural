@@ -1,0 +1,74 @@
+{
+  "release_date": "2026-11-04",
+  "files": {
+    "qeeri_brain.py": {
+      "sha256": "f35347b79b7920d2cc3fa6c0bf4018c81f5c9e11896f83a023bc94a08cb4a0b0",
+      "bytes": 14818
+    },
+    "mcp_server.py": {
+      "sha256": "d226bc3fda4231292dc84aef03693eb6a558adb0c670560916bfb75b45bdd19d",
+      "bytes": 4311
+    },
+    "cli.py": {
+      "sha256": "dacfc5b9aff828186dc363e725aac6aa78985736e76ef48b8bd68de6ea3ddefe",
+      "bytes": 683
+    },
+    "test_qeeri.py": {
+      "sha256": "b91495bd7fad7459c1451de3d823c3dc5ca7bd885fe5dcebf17513a5ac95c0c4",
+      "bytes": 9875
+    },
+    "smoke_protocol.py": {
+      "sha256": "98148752478a2b6f23043c32f59994680a5e9ae26d8653fbee5f552b9b812b76",
+      "bytes": 1764
+    },
+    "vendor/economic_gate.py": {
+      "sha256": "6df10c526e611c8aaf7d77fed53516f822d4347466717cc3c7efa7c430f17478",
+      "bytes": 2933
+    },
+    "data/wits_imports.csv": {
+      "sha256": "75b7c4059b8c905ce2c2e99581a6a4414c144ffc100764e458aa312e137db347",
+      "bytes": 864
+    },
+    "data/cucumber_scopes.csv": {
+      "sha256": "155727c947a170e0fcca6faff4b5edc78071ea15b335717a96252ff8acca1c7d",
+      "bytes": 2344
+    },
+    "data/economic_cases.csv": {
+      "sha256": "8d8232d3937fe1622768cdb13c90b193de1ea2281b6a50cbf8c203bd6179cccb",
+      "bytes": 447
+    },
+    "data/scientific_review_11.json": {
+      "sha256": "1f9bbf01884b2e225d795c3c24c938e36d0944ea10e3226a0dbf6e656d60f693",
+      "bytes": 6513
+    },
+    "data/source_passages.json": {
+      "sha256": "c177aca05ceab6f7440d29145cc5549f1edda5f86cfd7c8b13c97b99437b1c41",
+      "bytes": 3396
+    },
+    "README.md": {
+      "sha256": "56f8bffc55bec3dea63cf28cbba2a60de869750644e5ba0e87d26f17cb3f1b19",
+      "bytes": 3295
+    },
+    "RELEASE_NOTES.md": {
+      "sha256": "e569a8db80aa68c51a064413a9feb691e7cb6b5a7f8096304e65db155f3d9c06",
+      "bytes": 1644
+    },
+    "DATA_REQUEST_MINIMUM.md": {
+      "sha256": "677e5c86c7ce2f2a00e4e6579a509b46be3e61240c7f38e0c2a30682bfcc7a58",
+      "bytes": 2480
+    },
+    "RELEASE_TEST_RESULTS.txt": {
+      "sha256": "0f265c40bb482689a8f3107d90ee37927a3f802d2a72e36c029ee7e99da6d67f",
+      "bytes": 4898
+    },
+    "RELEASE_MCP_PROTOCOL.jsonl": {
+      "sha256": "b2e4fea0c052284a1ec115d64733f122994e413cc1ef018c01b2f1051f628364",
+      "bytes": 172
+    }
+  },
+  "test_count": 52,
+  "mcp_tools": 8,
+  "retained_scientific_review_flags": 11,
+  "verified_scientific_excerpts": 4,
+  "runtime_receipts_published": false
+}

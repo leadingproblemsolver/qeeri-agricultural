@@ -1,0 +1,3 @@
+case_id,crop,country,period,marketable_kg,local_variable_cost,local_fixed_allocated,water_cost,energy_cost,distribution_cost,subsidy_received,import_landed_cost_per_kg,import_loss_fraction,local_downside_kg,water_m3,evidence_type
+OBS-WITS-2023,"Cucumbers and gherkins, fresh or chilled",Qatar,2023,,,,,,,,,,,,PUBLIC_TRADE_AGGREGATE_ONLY
+OBS-WITS-2024,"Cucumbers and gherkins, fresh or chilled",Qatar,2024,,,,,,,,,,,,PUBLIC_TRADE_AGGREGATE_ONLY
