@@ -1,0 +1,28 @@
+{
+  "weights": {
+    "completeness": 0.15,
+    "physics_correctness": 0.25,
+    "evidence_attribution": 0.2,
+    "uncertainty_abstention": 0.15,
+    "qatar_applicability_safety": 0.15,
+    "actionability_sequence": 0.1
+  },
+  "critical_gates": [
+    "electrical_safety",
+    "fabricated_source",
+    "materially_wrong_sizing",
+    "unsafe_cooling_ventilation"
+  ],
+  "arms": {
+    "A": {
+      "status": "NOT_EXECUTED",
+      "score": null,
+      "verdict": "NOT_SCORED (no model output exists)"
+    },
+    "B": {
+      "status": "NOT_EXECUTED",
+      "score": null,
+      "verdict": "NOT_SCORED (no model output exists)"
+    }
+  }
+}

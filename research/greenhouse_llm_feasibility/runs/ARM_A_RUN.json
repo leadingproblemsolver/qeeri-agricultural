@@ -1,0 +1,17 @@
+{
+  "arm": "A",
+  "status": "NOT_EXECUTED",
+  "reason": "ANTHROPIC_API_KEY is not set, so no model could be called. No output exists for this arm and none was substituted.",
+  "settings": {
+    "model": "claude-sonnet-5-5",
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "tools": "none (no web search, no retrieval)",
+    "system_prompt": null,
+    "same_model_and_settings_both_arms": true
+  },
+  "input_sha256": "84f0dac1bb697a42390248778fe5204de07bc899f254f8081051c866f7870aa7",
+  "executed_utc": null,
+  "raw_response_file": null,
+  "output_file": null
+}

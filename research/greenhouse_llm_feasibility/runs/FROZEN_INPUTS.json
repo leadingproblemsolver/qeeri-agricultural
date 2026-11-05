@@ -1,0 +1,25 @@
+{
+  "frozen_utc": "2026-11-05T13:06:09+00:00",
+  "prompt_file": "prompt_A.txt",
+  "prompt_sha256": "84f0dac1bb697a42390248778fe5204de07bc899f254f8081051c866f7870aa7",
+  "packet_claim_ids": [
+    "L06",
+    "L07",
+    "L08",
+    "L09",
+    "L10"
+  ],
+  "packet_sha256": "6c4d0bd025e22a9ccea3517f6dc7cb96e65857626e29ef3c314ed0e42c57b213",
+  "arm_input_sha256": {
+    "A": "84f0dac1bb697a42390248778fe5204de07bc899f254f8081051c866f7870aa7",
+    "B": "5d03fa4cecc85c134763c446e91eb22fbfb2c83afa1dd9315ed79633a2c46f67"
+  },
+  "settings": {
+    "model": "claude-sonnet-5-5",
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "tools": "none (no web search, no retrieval)",
+    "system_prompt": null,
+    "same_model_and_settings_both_arms": true
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "case_id": "QAT-ALSHAHANIYA-TOMATO-SEMICLOSED-P0",
+  "basis": "evidence_ledger.json (10 claims). Subsystem list is the one named in Prompt A of PROTOCOL_V0.md. Coverage levels: NONE = no claim; PARTIAL = at least one claim bears on it but none is sufficient to specify it. No subsystem is rated FULL because no source read supplies a complete, Qatar-applicable specification for any subsystem.",
+  "subsystems": [
+    {"id": "user_site_intake", "coverage": "NONE", "claims": [], "gap": "No source supplies intake questions. All site inputs are missing (see case_P0.json)."},
+    {"id": "crop_cultivation_system", "coverage": "PARTIAL", "claims": ["L06", "L09"], "gap": "Riyadh hydroponic trial setup and Mediterranean water table only. No Qatar crop calendar, cultivar or substrate evidence."},
+    {"id": "structure_cover", "coverage": "PARTIAL", "claims": ["L04", "L07"], "gap": "Roof-form CFD hint and one Riyadh glass house geometry. No structural loads, glass specification or Qatar wind design. Cover in the anchor paper is UNVERIFIED."},
+    {"id": "thermal_cooling_design", "coverage": "PARTIAL", "claims": ["L02", "L03", "L04", "L06", "L07", "L08"], "gap": "Ranges and examples exist but no Qatar design weather, no required ventilation rate, no pad or fan sizing for this case."},
+    {"id": "water_irrigation_fertigation", "coverage": "PARTIAL", "claims": ["L02", "L06", "L09"], "gap": "Sources disagree by roughly 4.5-7x on tomato irrigation magnitude (Riyadh vs Mediterranean). No Qatar water quality or fertigation recipe."},
+    {"id": "electricity_power_safety", "coverage": "PARTIAL", "claims": ["L10"], "gap": "Administrative requirement only (design approval, licensed contractor). No loads, ratings, protection or earthing for a greenhouse. 2016 edition currency unverified. Any electrical specification requires a qualified engineer."},
+    {"id": "sensors_monitoring_control", "coverage": "PARTIAL", "claims": ["L01"], "gap": "Forecast accuracy for one model. No sensor list, placement or control logic."},
+    {"id": "bom_procurement", "coverage": "PARTIAL", "claims": ["L07", "L08"], "gap": "Equipment categories visible (pads, fans) but no quantities, prices or suppliers."},
+    {"id": "installation_dependencies", "coverage": "PARTIAL", "claims": ["L10"], "gap": "Approval and licensing precondition only. No sequence, land, utility or permit lead times."},
+    {"id": "commissioning", "coverage": "NONE", "claims": [], "gap": "No commissioning source read. KAHRAMAA inspection and testing sections (clause 11) were not in the portion read."},
+    {"id": "operating_checks", "coverage": "NONE", "claims": [], "gap": "No operating or maintenance source read beyond FAO text that was not extracted as a claim."},
+    {"id": "economic_screening", "coverage": "PARTIAL", "claims": ["L05"], "gap": "Single modelled levelized cost with unstated currency and assumptions. No CAPEX, price, yield or margin for the case."}
+  ]
+}

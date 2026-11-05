@@ -1,0 +1,41 @@
+{
+  "case_id": "QAT-ALSHAHANIYA-TOMATO-SEMICLOSED-P0",
+  "status": "PROVISIONAL",
+  "purpose": "Reference configuration for an LLM evaluation. It is not a design, not an as-built description, and not a client brief.",
+  "goal": {
+    "statement": "Preliminary feasibility and engineering requirements for a non-expert considering commercial tomato production in a greenhouse in Qatar (wording from PROTOCOL_V0.md Prompt A).",
+    "status": "UNCONFIRMED",
+    "unconfirmed_points": [
+      "whether the real goal is commercial production, a demonstration, or research",
+      "target scale and budget ceiling",
+      "who the end user is and what they already own (land, water, utility connection)"
+    ]
+  },
+  "anchor_attributes": [
+    {"attribute": "greenhouse is 'semi-closed'", "protocol_assertion": true, "status": "CONFIRMED_IN_RECORD", "evidence": "Title and abstract of S1_MAHMOOD_2022 (abstract-only access)"},
+    {"attribute": "study concerns cooling load and water demand forecasting", "protocol_assertion": true, "status": "CONFIRMED_IN_RECORD", "evidence": "Title and abstract of S1_MAHMOOD_2022"},
+    {"attribute": "site is Al-Shahaniya, Qatar", "protocol_assertion": true, "status": "UNVERIFIED", "evidence": "The accessible record does not state a location. No other fetched document corroborates it."},
+    {"attribute": "greenhouse is Venlo-type", "protocol_assertion": true, "status": "UNVERIFIED", "evidence": "Not stated on the accessible record."},
+    {"attribute": "crop is tomato", "protocol_assertion": true, "status": "UNVERIFIED", "evidence": "Not stated on the accessible record for S1. Tomato appears in S4 (levelized cost) and S7 (Riyadh trial), which are different sites and studies."},
+    {"attribute": "cover is 4-mm tempered glass", "protocol_assertion": true, "status": "UNVERIFIED", "evidence": "Not stated on the accessible record."}
+  ],
+  "anchor_resolution_action": "Read the full text of S1_MAHMOOD_2022 (Taylor & Francis page, DOI 10.1080/01430750.2022.2088617) and record the section for each UNVERIFIED attribute. Until then do not describe the case as the Al-Shahaniya Venlo tomato greenhouse.",
+  "missing_engineering_inputs": [
+    {"input": "exact site location and coordinates", "unit": "decimal degrees", "value": null, "needed_by": "thermal_cooling_design, electricity_power_safety"},
+    {"input": "greenhouse ground area and growing area", "unit": "m2", "value": null, "needed_by": "all sizing"},
+    {"input": "structure type, bay width, gutter and ridge height", "unit": "m", "value": null, "needed_by": "structure_cover, thermal_cooling_design"},
+    {"input": "cover material, thickness and light transmission", "unit": "mm, %", "value": null, "needed_by": "structure_cover, thermal_cooling_design"},
+    {"input": "crop calendar and planting density", "unit": "dates, plants/m2", "value": null, "needed_by": "crop_cultivation_system, water_irrigation_fertigation"},
+    {"input": "target yield", "unit": "kg/m2", "value": null, "needed_by": "economic_screening"},
+    {"input": "local design weather (dry-bulb, wet-bulb, solar radiation, wind)", "unit": "degC, W/m2, m/s", "value": null, "needed_by": "thermal_cooling_design"},
+    {"input": "water source, availability and quality (EC, ions, pH)", "unit": "m3/day, dS/m, mg/L", "value": null, "needed_by": "water_irrigation_fertigation"},
+    {"input": "utility connection capacity, voltage and phase", "unit": "kVA, V", "value": null, "needed_by": "electricity_power_safety"},
+    {"input": "connected electrical loads", "unit": "kW", "value": null, "needed_by": "electricity_power_safety"},
+    {"input": "ventilation and duct requirements", "unit": "m3/h, m2", "value": null, "needed_by": "thermal_cooling_design"},
+    {"input": "sensor types and placement", "unit": "n/a", "value": null, "needed_by": "sensors_monitoring_control"},
+    {"input": "capital and operating budget, local prices", "unit": "currency", "value": null, "needed_by": "bom_procurement, economic_screening"},
+    {"input": "permitting authority and approval path", "unit": "n/a", "value": null, "needed_by": "installation_dependencies, electricity_power_safety"},
+    {"input": "installation contractor and commissioning authority", "unit": "n/a", "value": null, "needed_by": "commissioning, operating_checks"}
+  ],
+  "rule": "Every value above is null on purpose. No engineering value may be substituted for a missing input."
+}
