@@ -147,7 +147,20 @@ This study does **not** produce an approved greenhouse design, construction draw
 
 The output is a **research assessment of preliminary AI planning advice**. Qualified engineers and relevant authorities remain responsible for real-world design, installation and approval.
 
-## 10. Next action
+## 10. P−2: basic calculations before the AI comparison
+
+These are **arithmetic examples only**, not measured results from Al-Shahaniya or evidence that a greenhouse cooling system is correctly sized. A CSV or program is **not required**; a hand-worked note is enough. Do not mark P−2 complete merely because AI supplied the answers.
+
+| Check | Example calculation or conclusion | Evidence status and limit |
+|---|---|---|
+| Heat carried by moving air | `Q = air density × airflow × air heat capacity × temperature difference = 1.15 kg/m³ × 2.0 m³/s × 1005 J/(kg·K) × 5 K = 11,557.5 W ≈ 11.6 kW` | All four inputs **assumed**. Sensible heat transfer only, not total greenhouse cooling demand. |
+| Heat through the greenhouse covering | `Q = U × area × temperature difference = 6 W/(m²·K) × 500 m² × (44 − 26) K = 54,000 W = 54 kW` | All inputs **assumed**. Covering heat transfer only; solar and other loads excluded. |
+| Evaporative-cooling limit | If outdoor wet-bulb temperature is **28°C**, ordinary direct evaporative cooling alone cannot supply **26°C** air. | **Conditional**, not measured at this site. The actual wet-bulb conditions are unknown. |
+| Paper measurement | Identify one actual indoor temperature or humidity measurement in the [Al-Shahaniya paper](https://www.tandfonline.com/doi/full/10.1080/01430750.2022.2088617). | **Not independently verified yet**. Claims about a Hoogendoorn sensor, 2020 sampling dates, five-minute intervals or a 0.352°C forecasting error must be checked against the paper before use. A forecasting error is **not** an indoor-temperature measurement. |
+
+**Pass condition:** The researcher can explain each input, convert the units, reproduce both calculations independently and locate one measured value in the actual paper. A spreadsheet showing `#VALUE!`, blank inputs or unjustified zeros fails. Do not spend time rebuilding a broken CSV just to satisfy this step; use a clean note and proceed to the real AI comparison once the evidence is checked.
+
+## 11. Next action
 
 **Before running Test B**, verify one greenhouse temperature or cooling finding in the Al-Shahaniya paper: the exact figure/table, variable, units, measured-versus-predicted status and study conditions.
 
