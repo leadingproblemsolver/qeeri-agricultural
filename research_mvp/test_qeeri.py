@@ -29,6 +29,16 @@ class Tests(unittest.TestCase):
     def test_scope(self):
         r=b.search_evidence('greenhouse cucumber production 2025')
         self.assertTrue(r);self.assertTrue(all(x['data'].get('scope')=='GREENHOUSE' for x in r))
+    def test_wrong_crop_query_fails_closed_no_cucumber_citation(self):
+        for q in ('Qatar tomato production 2024','wheat yield in Qatar 2024'):
+            r=b.ask(q,save=False)
+            self.assertEqual(r['decision'],'BLOCK',q);self.assertEqual(r['evidence_refs'],[],q)
+        self.assertEqual(b.ask('Qatar cucumber imports 2024',save=False)['evidence_refs'],['WITS-QAT-070700-2024'])
+    def test_multi_year_same_scope_comparison_warns(self):
+        r=b.ask('Compare greenhouse cucumber production 2023 and 2024',save=False)
+        self.assertEqual(r['decision'],'WARN')
+        self.assertEqual(set(r['evidence_refs']),{'QATAR-CUCUMBER-GREENHOUSE-2023','QATAR-CUCUMBER-GREENHOUSE-2024'})
+        self.assertEqual(b.ask('Qatar cucumber imports 2031',save=False)['decision'],'BLOCK')
     def test_p1_public_cif_unit_value_remains_answerable(self):
         r=b.ask('What is the unit price of Qatar cucumber imports 2024?')
         self.assertEqual(r['decision'],'WARN')

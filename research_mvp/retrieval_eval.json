@@ -1,0 +1,371 @@
+{
+  "abstention_correct": "5/5",
+  "cases": 23,
+  "citation_gold_substantiation_rate": 1.0,
+  "citation_resolution_rate": 1.0,
+  "decision_accuracy": 0.913,
+  "irrelevant_citation_rate": 0.0,
+  "k": 5,
+  "label": "SMALL HAND-LABELED GOLD SET (author-labeled from committed data/ records; NOT independent, NOT generalizable). Expected refs are the only records considered relevant.",
+  "positive_cases": 18,
+  "precision_at_k": 1.0,
+  "recall_at_k": 0.9167,
+  "results": [
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "WITS-QAT-070700-2023"
+      ],
+      "id": "G01",
+      "irrelevant_refs": [],
+      "query": "Qatar cucumber imports 2023",
+      "refs": [
+        "WITS-QAT-070700-2023"
+      ],
+      "type": "trade",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "WITS-QAT-070700-2024"
+      ],
+      "id": "G02",
+      "irrelevant_refs": [],
+      "query": "Qatar cucumber imports 2024",
+      "refs": [
+        "WITS-QAT-070700-2024"
+      ],
+      "type": "trade",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "WITS-QAT-070700-2024"
+      ],
+      "id": "G03",
+      "irrelevant_refs": [],
+      "query": "HS 070700 CIF import unit value 2024",
+      "refs": [
+        "WITS-QAT-070700-2024"
+      ],
+      "type": "trade",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "WITS-QAT-070700-2024"
+      ],
+      "id": "G04",
+      "irrelevant_refs": [],
+      "query": "How much cucumber did Qatar import in 2024?",
+      "refs": [
+        "WITS-QAT-070700-2024"
+      ],
+      "type": "paraphrase",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "QATAR-CUCUMBER-GREENHOUSE-2024"
+      ],
+      "id": "G05",
+      "irrelevant_refs": [],
+      "query": "cucumber production greenhouse 2024",
+      "refs": [
+        "QATAR-CUCUMBER-GREENHOUSE-2024"
+      ],
+      "type": "production",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "QATAR-CUCUMBER-OPEN_FIELD-2023"
+      ],
+      "id": "G06",
+      "irrelevant_refs": [],
+      "query": "open field cucumber production 2023",
+      "refs": [
+        "QATAR-CUCUMBER-OPEN_FIELD-2023"
+      ],
+      "type": "production",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "QATAR-CUCUMBER-GREENHOUSE-2022"
+      ],
+      "id": "G07",
+      "irrelevant_refs": [],
+      "query": "greenhouse cucumber production 2022",
+      "refs": [
+        "QATAR-CUCUMBER-GREENHOUSE-2022"
+      ],
+      "type": "production",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "QATAR-CUCUMBER-OPEN_FIELD-2020"
+      ],
+      "id": "G08",
+      "irrelevant_refs": [],
+      "query": "open field cucumber 2020",
+      "refs": [
+        "QATAR-CUCUMBER-OPEN_FIELD-2020"
+      ],
+      "type": "production",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "WARN",
+      "decision_ok": true,
+      "expect_decision": "WARN",
+      "expect_refs": [
+        "QATAR-CUCUMBER-GREENHOUSE-2025"
+      ],
+      "id": "G09",
+      "irrelevant_refs": [],
+      "query": "greenhouse cucumber area hectares 2025",
+      "refs": [
+        "QATAR-CUCUMBER-GREENHOUSE-2025"
+      ],
+      "type": "production",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "REVIEW",
+      "decision_ok": true,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "Q-K26",
+        "UCIPM-POTATO-APHID"
+      ],
+      "id": "G10",
+      "irrelevant_refs": [],
+      "query": "Q-K26 potato aphid",
+      "refs": [
+        "Q-K26",
+        "UCIPM-POTATO-APHID"
+      ],
+      "type": "science",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "REVIEW",
+      "decision_ok": true,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "Q-K26",
+        "UCIPM-POTATO-APHID"
+      ],
+      "id": "G11",
+      "irrelevant_refs": [],
+      "query": "What is the scientific name of potato aphid?",
+      "refs": [
+        "Q-K26",
+        "UCIPM-POTATO-APHID"
+      ],
+      "type": "science_paraphrase",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "REVIEW",
+      "decision_ok": true,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "APS-TOMATO-FUSARIUM",
+        "Q-K29"
+      ],
+      "id": "G12",
+      "irrelevant_refs": [],
+      "query": "Fusarium wilt of tomato",
+      "refs": [
+        "Q-K29",
+        "APS-TOMATO-FUSARIUM"
+      ],
+      "type": "science",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "REVIEW",
+      "decision_ok": true,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "APS-TOMATO-FUSARIUM",
+        "Q-K29"
+      ],
+      "id": "G13",
+      "irrelevant_refs": [],
+      "query": "Which pathogen causes tomato fusarium wilt?",
+      "refs": [
+        "Q-K29",
+        "APS-TOMATO-FUSARIUM"
+      ],
+      "type": "science_paraphrase",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "REVIEW",
+      "decision_ok": true,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "Q-K06",
+        "RUTGERS-BROADLEAF-24D"
+      ],
+      "id": "G14",
+      "irrelevant_refs": [],
+      "query": "Q-K06 weed control in barley",
+      "refs": [
+        "Q-K06",
+        "RUTGERS-BROADLEAF-24D"
+      ],
+      "type": "science",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "BLOCK",
+      "decision_ok": false,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "RUTGERS-BROADLEAF-24D"
+      ],
+      "id": "G15",
+      "irrelevant_refs": [],
+      "query": "2,4-D control of broadleaf weeds",
+      "refs": [],
+      "type": "science_paraphrase",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "REVIEW",
+      "decision_ok": true,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "Q-K15",
+        "USGS-AG-DROUGHT"
+      ],
+      "id": "G16",
+      "irrelevant_refs": [],
+      "query": "Q-K15 agricultural drought",
+      "refs": [
+        "Q-K15",
+        "USGS-AG-DROUGHT"
+      ],
+      "type": "science",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "BLOCK",
+      "decision_ok": false,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "USGS-AG-DROUGHT"
+      ],
+      "id": "G17",
+      "irrelevant_refs": [],
+      "query": "agricultural drought soil moisture",
+      "refs": [],
+      "type": "science_paraphrase",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "BLOCK",
+      "decision_ok": true,
+      "expect_decision": "BLOCK",
+      "expect_refs": [],
+      "id": "A01",
+      "irrelevant_refs": [],
+      "query": "how to fix my car engine",
+      "refs": [],
+      "type": "abstain_unrelated",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "BLOCK",
+      "decision_ok": true,
+      "expect_decision": "BLOCK",
+      "expect_refs": [],
+      "id": "A02",
+      "irrelevant_refs": [],
+      "query": "Qatar tomato production 2024",
+      "refs": [],
+      "type": "abstain_no_data",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "BLOCK",
+      "decision_ok": true,
+      "expect_decision": "BLOCK",
+      "expect_refs": [],
+      "id": "A03",
+      "irrelevant_refs": [],
+      "query": "Qatar cucumber imports 2019",
+      "refs": [],
+      "type": "abstain_wrong_year",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "BLOCK",
+      "decision_ok": true,
+      "expect_decision": "BLOCK",
+      "expect_refs": [],
+      "id": "A04",
+      "irrelevant_refs": [],
+      "query": "wheat yield in Qatar 2024",
+      "refs": [],
+      "type": "abstain_no_data",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "REVIEW",
+      "decision_ok": true,
+      "expect_decision": "REVIEW",
+      "expect_refs": [
+        "Q-C3"
+      ],
+      "id": "A05",
+      "irrelevant_refs": [],
+      "query": "What is the legal limit for nitrate in agricultural runoff in Qatar?",
+      "refs": [
+        "Q-C3"
+      ],
+      "type": "science_unresolved_no_threshold",
+      "unresolved_refs": []
+    },
+    {
+      "decision": "BLOCK",
+      "decision_ok": true,
+      "expect_decision": "BLOCK",
+      "expect_refs": [],
+      "id": "A06",
+      "irrelevant_refs": [],
+      "query": "tell me about cattle feed",
+      "refs": [],
+      "type": "abstain_unrelated",
+      "unresolved_refs": []
+    }
+  ]
+}
