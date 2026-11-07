@@ -5,7 +5,7 @@ Model reported: OpenAI GPT-6 (exact build not exposed)
 Date: 2026-11-07, Qatar UTC+03
 Reported metadata-recording time: 11:11:50 AST; this is **not** a verified generation-start timestamp.
 Conditions: user-provided fixed Section 5 prompt; no research passages provided; no web search or external engineering calculator used to generate the response; generation temperature/seed not exposed.
-Status: Initial answer produced in ChatGPT conversation. **Full original answer not archived in this file**; retrieve original conversation response before claiming raw-output preservation. No Test B output.
+Status: Initial answer produced in ChatGPT conversation. Full baseline answer now archived as [TEST_A_001_BASELINE_RESPONSE.md](TEST_A_001_BASELINE_RESPONSE.md), transcribed from the original conversation with provenance noted. This is not a byte-identical API export. No Test B output.
 
 ## Three independently checked claims
 
@@ -25,7 +25,7 @@ A first three-claim review does not establish full correctness, comparative impr
 
 ## Next experiment
 
-1. Archive the **actual unedited** Test A response from the conversation (do not reconstruct it from this summary).
+1. **Completed:** Archive the original conversation's Test A report in [TEST_A_001_BASELINE_RESPONSE.md](TEST_A_001_BASELINE_RESPONSE.md); preserve the conversation as the primary record.
 2. Select permitted passages from UF/IFAS with section names and exact text, and independently verify a Qatar-specific source passage if available.
 3. Run Test B with the same frozen prompt and model/settings, supply the passages separately, and save raw output.
 4. Blind-score the same claims in A and B, with explicit error severity; do not claim general model validation from n=1.
