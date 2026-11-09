@@ -172,9 +172,28 @@ def _log(con, source_id, outcome, detail):
                 (now_utc(), source_id, outcome, json.dumps(detail, ensure_ascii=False)))
 
 
-def ingest(con, allowlist_path):
+REPO_ROOT = Path(__file__).resolve().parents[3]
+
+
+def _default_source_root(allow_path):
+    """Sources must live under the repo when the allowlist is in the repo, else under the allowlist's own directory."""
+    try:
+        allow_path.relative_to(REPO_ROOT)
+        return REPO_ROOT
+    except ValueError:
+        return allow_path.parent
+
+
+def _review_record_ok(entry):
+    rr = entry.get("review_record")
+    return isinstance(rr, dict) and all(rr.get(k) for k in ("reviewer", "reviewed_at", "record_path")) \
+        and rr.get("reviewer") != entry.get("curator")
+
+
+def ingest(con, allowlist_path, source_root=None):
     """Ingest every allowlisted source. Returns a receipt dict. Idempotent for unchanged files."""
     allow_path = Path(allowlist_path).resolve()
+    root = Path(source_root).resolve() if source_root else _default_source_root(allow_path)
     try:
         allow = json.loads(allow_path.read_text(encoding="utf-8"))
         entries = allow["sources"]
@@ -191,6 +210,9 @@ def ingest(con, allowlist_path):
         errs = validate_entry(entry) if isinstance(entry, dict) else ["entry is not an object"]
         if errs:
             rec.update(outcome="REJECTED", reason="MALFORMED_ENTRY", detail=errs)
+        elif entry["verification_status"] == "HUMAN_VERIFIED" and not _review_record_ok(entry):
+            rec.update(outcome="REJECTED", reason="HUMAN_VERIFIED_WITHOUT_INDEPENDENT_REVIEW_RECORD",
+                       detail="needs review_record{reviewer,reviewed_at,record_path}, reviewer != curator")
         elif entry["verification_status"] not in elig_v:
             rec.update(outcome="REJECTED", reason="VERIFICATION_STATUS_NOT_ELIGIBLE",
                        detail=entry["verification_status"])
@@ -199,7 +221,7 @@ def ingest(con, allowlist_path):
                        detail=entry["reuse_status"])
         else:
             try:
-                rec.update(_ingest_one(con, entry, allow_path.parent))
+                rec.update(_ingest_one(con, entry, allow_path.parent, root))
             except (FileNotFoundError, ValueError, KeyError, json.JSONDecodeError, UnicodeDecodeError) as e:
                 rec.update(outcome="REJECTED", reason="MALFORMED_OR_MISSING_SOURCE",
                            detail=f"{type(e).__name__}: {e}")
@@ -222,8 +244,13 @@ def _deactivate_source(con, sid, reason):
     con.execute("UPDATE sources SET state='REJECTED', state_reason=? WHERE source_id=?", (reason, sid))
 
 
-def _ingest_one(con, entry, base_dir):
+def _ingest_one(con, entry, base_dir, root):
     sid = entry["source_id"]
+    resolved = (Path(base_dir) / entry["path"]).resolve()
+    try:
+        resolved.relative_to(root)
+    except ValueError:
+        raise ValueError(f"source path escapes the permitted root {root}: {resolved}")
     path, content_hash, raw_chunks, ledger_meta = load_source(entry, base_dir)
     prev = con.execute("SELECT content_hash, state FROM sources WHERE source_id=?", (sid,)).fetchone()
     if prev and prev["content_hash"] == content_hash and prev["state"] == "ACTIVE":

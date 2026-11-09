@@ -98,11 +98,12 @@ def run_question(con, question, inputs=None, filters=None, provider=None, config
         result["refusal"] = refusal
         result["inputs"]["missing"] = refusal["missing_inputs"]
         # reference context only: retrieved for transparency, never used to build claims
-        meta["tool_calls"] += 1
-        ref = retrieve(con, question, filters, cfg.top_k, "strict")
-        result["reference_context_not_a_sizing_basis"] = [
-            {"chunk_id": p["chunk_id"], "source_id": p["source_id"], "locator": p["locator"],
-             "jurisdiction": p["jurisdiction"]} for p in ref["passages"] + ref["transfer_context"]]
+        if meta["tool_calls"] < cfg.max_tool_calls:
+            meta["tool_calls"] += 1
+            ref = retrieve(con, question, filters, cfg.top_k, "strict")
+            result["reference_context_not_a_sizing_basis"] = [
+                {"chunk_id": p["chunk_id"], "source_id": p["source_id"], "locator": p["locator"],
+                 "jurisdiction": p["jurisdiction"]} for p in ref["passages"] + ref["transfer_context"]]
         return _finish(con, result, t0, cfg, "INSUFFICIENT_EVIDENCE", refusal["reason"])
     step("2_validate", outcome="OK")
 

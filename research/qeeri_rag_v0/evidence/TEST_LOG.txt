@@ -52,6 +52,19 @@ test_attempts_are_finite_and_default_single_strict (test_hostile.T15_LoopBoundsR
 test_extractive_answer_carries_ids_locators_hashes_and_scope (test_hostile.T15_LoopBoundsReceiptsAndReview.test_extractive_answer_carries_ids_locators_hashes_and_scope) ... ok
 test_receipts_chain_review_queue_and_tamper_detection (test_hostile.T15_LoopBoundsReceiptsAndReview.test_receipts_chain_review_queue_and_tamper_detection) ... ok
 test_tool_call_budget_is_enforced (test_hostile.T15_LoopBoundsReceiptsAndReview.test_tool_call_budget_is_enforced) ... ok
+test_api_key_never_reaches_receipts_or_eval_artifacts (test_probe_battery.CodeLevelInvariants.test_api_key_never_reaches_receipts_or_eval_artifacts) ... ok
+test_hostile_query_strings_do_not_raise_or_touch_the_store (test_probe_battery.CodeLevelInvariants.test_hostile_query_strings_do_not_raise_or_touch_the_store) ... ok
+test_human_verified_needs_independent_review_record (test_probe_battery.CodeLevelInvariants.test_human_verified_needs_independent_review_record) ... ok
+test_nothing_in_the_real_corpus_is_human_verified (test_probe_battery.CodeLevelInvariants.test_nothing_in_the_real_corpus_is_human_verified) ... ok
+test_retrieval_is_deterministic_and_read_only (test_probe_battery.CodeLevelInvariants.test_retrieval_is_deterministic_and_read_only) ... ok
+test_source_paths_cannot_escape_the_permitted_root (test_probe_battery.CodeLevelInvariants.test_source_paths_cannot_escape_the_permitted_root) ... ok
+test_spelled_out_numbers_not_in_the_passage_are_unsupported (test_probe_battery.CodeLevelInvariants.test_spelled_out_numbers_not_in_the_passage_are_unsupported) ... ok
+test_zero_tool_budget_means_zero_tool_calls_even_when_refusing (test_probe_battery.CodeLevelInvariants.test_zero_tool_budget_means_zero_tool_calls_even_when_refusing) ... ok
+test_a_real_citation_does_not_prove_entailment (test_probe_battery.KnownLimitationPinned.test_a_real_citation_does_not_prove_entailment)
+DOCUMENTED LIMIT, not a fix: a claim that CONTRADICTS its cited chunk but contains no numbers passes the ... ok
+test_general_principle_never_supports_a_question_naming_a_site (test_probe_battery.NegativesNeverSupported.test_general_principle_never_supports_a_question_naming_a_site) ... ok
+test_none_is_supported_candidate (test_probe_battery.NegativesNeverSupported.test_none_is_supported_candidate) ... ok
+test_no_over_refusal_on_legitimate_source_questions (test_probe_battery.PositivesStillAnswered.test_no_over_refusal_on_legitimate_source_questions) ... ok
 test_conflict_names_the_missing_resolution_not_a_generic_gap (test_regressions.Regressions.test_conflict_names_the_missing_resolution_not_a_generic_gap) ... ok
 test_extractive_claim_carries_whole_chunk_including_the_equation (test_regressions.Regressions.test_extractive_claim_carries_whole_chunk_including_the_equation) ... ok
 test_health_lists_sources_rejected_before_insertion (test_regressions.Regressions.test_health_lists_sources_rejected_before_insertion) ... ok
@@ -59,6 +72,6 @@ test_relaxed_strategy_is_less_precise_which_is_why_it_is_not_the_default (test_r
 test_site_value_question_names_the_missing_measurement (test_regressions.Regressions.test_site_value_question_names_the_missing_measurement) ... ok
 
 ----------------------------------------------------------------------
-Ran 59 tests in 2.213s
+Ran 71 tests in 3.628s
 
 OK

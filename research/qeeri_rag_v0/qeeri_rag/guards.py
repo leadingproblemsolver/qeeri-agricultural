@@ -15,7 +15,7 @@ from .store import resolve_citation, scan_injection
 # Input names are a minimal checklist for the refusal message, not an exhaustive design basis.
 SIZING_CATEGORIES = {
     "fan_ventilation_sizing": (
-        r"\b(fan|fans|ventilation|exhaust|air\s*changes?|ach)\b",
+        r"\b(fan|fans|ventilation|ventilate|exhaust|extraction|airflow|air\s*flow|air\s*changes?|ach|cfm)\b",
         ["greenhouse_floor_area_m2", "greenhouse_volume_m3", "design_dry_bulb_c", "design_wet_bulb_c",
          "pad_saturation_effectiveness_fraction", "target_indoor_temperature_c", "design_solar_radiation_w_m2",
          "cover_transmittance_and_geometry"], "qualified greenhouse climate / HVAC engineer"),
@@ -37,11 +37,12 @@ SIZING_CATEGORIES = {
         ["crop_area_m2", "plant_density_per_m2", "substrate_type", "emitter_flow_l_h", "water_ec_ds_m",
          "leaching_fraction"], "qualified irrigation / fertigation specialist"),
     "water_volume": (
-        r"\b(water\s+(volume|requirement|requirements|demand|budget|consumption)|litres?|liters?|m3\s+of\s+water)\b",
+        r"\b(water\s+(volume|requirement|requirements|demand|budget|consumption|use)|(cooling|irrigation)\s+water|litres?|liters?|m3\s+of\s+water)\b",
         ["growing_area_m2", "cultivation_period_dates", "measured_site_et_or_drain_data", "water_ec_ds_m",
          "pad_cooling_operating_hours"], "qualified irrigation / water-resources specialist"),
 }
-_SIZING_WORDS = re.compile(r"\b(size|sizing|sized|specify|specification|spec|rating|rated|how\s+many|how\s+much|"
+_SIZING_WORDS = re.compile(r"\b(size|sizing|sized|specify|specification|spec|rating|rated|how\s+many|how\s+much|how\s+big|"
+                           r"design|estimate|recommend|appropriate|suitable|right|should\s+i|"
                            r"what\s+size|capacity|required|requirement|need\s+for|design\s+(my|our|the)|"
                            r"calculate|select|choose|install)\b", re.IGNORECASE)
 _SITE_WORDS = re.compile(r"\b(my|our)\s+(greenhouse|farm|site|project|plant)|\bfor\s+(a|an|the)\s+\d+\s*(m2|m²|ha|hectare)",
@@ -49,7 +50,7 @@ _SITE_WORDS = re.compile(r"\b(my|our)\s+(greenhouse|farm|site|project|plant)|\bf
 # A question that only asks what a named source says is a reporting question, not a sizing request.
 _REPORT_WORDS = re.compile(r"\b(does|do|did)\s+\w+\s+(suggest|say|state|report|recommend|require|give|list)\b|"
                            r"\bwhat\s+(does|did)\s+\w+\s+(suggest|say|state|report|recommend|require|give|list)\b|"
-                           r"\baccording\s+to\b", re.IGNORECASE)
+                           r"\baccording\s+to\b|\b(did|was|were|had)\b", re.IGNORECASE)  # past tense = reporting a measured/stated fact
 
 
 def check_sizing_request(question, inputs=None):
@@ -63,7 +64,7 @@ def check_sizing_request(question, inputs=None):
         return None
     wants_spec = bool(_SIZING_WORDS.search(question) or _SITE_WORDS.search(question))
     if not wants_spec or (_REPORT_WORDS.search(question) and not _SITE_WORDS.search(question)
-                          and not re.search(r"\b(size|sizing|specify|how\s+many)\b", question, re.IGNORECASE)):
+                          and not re.search(r"\b(size|sizing|specify)\b", question, re.IGNORECASE)):
         return None
     out = []
     for cat, required, role in hits:
@@ -79,6 +80,9 @@ def check_sizing_request(question, inputs=None):
             "missing_inputs": sorted({m for c in out for m in c["missing_inputs"]})}
 
 
+_NUMBER_WORDS = re.compile(r"\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|"
+                           r"sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|"
+                           r"hundred|thousand|half|double|triple|twice)\b", re.IGNORECASE)
 _NUM = re.compile(r"(?<![\w.])(?<![A-Za-z]-)\d+(?:[.,]\d+)?")
 _SIZING_OUTPUT = re.compile(
     r"\b(?P<n1>\d+(?:[.,]\d+)?)\s*(?P<u1>kw|kva|a\b|amps?|mm2|mm\u00b2|hp|m3\s*/\s*h|l\s*/\s*h|l/min|bar|rpm|v\b)|"
@@ -122,7 +126,11 @@ def validate_claims(con, claims, retrieved_passages, inputs=None):
         extra = sorted(n for n in _numbers(text) if n not in chunk_nums and n not in supplied_nums)
         if extra:
             reasons.append("NUMBERS_NOT_IN_CITED_PASSAGES_OR_INPUTS:" + ",".join(extra))
-        chunk_text = " ".join(p["text"] for p in cited).lower().replace(" ", "")
+        chunk_words = " ".join(p["text"] for p in cited).lower()
+        spelled = sorted({w.lower() for w in _NUMBER_WORDS.findall(text)} - set(re.findall(r"[a-z]+", chunk_words)))
+        if spelled:
+            reasons.append("SPELLED_OUT_NUMBER_NOT_IN_CITED_PASSAGES:" + ",".join(spelled))
+        chunk_text = chunk_words.replace(" ", "")
         for m in _SIZING_OUTPUT.finditer(text):
             num = _norm_num(m.group("n1") or m.group("n2"))
             unit = (m.group("u1") or m.group("u2")).lower().replace(" ", "")

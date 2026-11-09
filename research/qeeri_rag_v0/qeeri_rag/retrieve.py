@@ -21,18 +21,27 @@ about into than then there their them they not no any all each per give tell sho
 state states list find need needs use used using between over under if when where why very also so such more most
 many much some other another suggested recommend recommended recommends provide provides please whether""".split())
 
-JURISDICTION_NAMES = {"qatar": "QA", "al-shahaniya": "QA", "shahaniya": "QA", "doha": "QA", "qatari": "QA",
-                      "saudi": "SA", "riyadh": "SA", "florida": "US-FL", "mediterranean": "MED"}
+# Gazetteer (not exhaustive): a place named here becomes the question's target jurisdiction, so evidence from any other
+# jurisdiction can only be transfer context. A place NOT listed is undetected -- see README "Known limitations".
+JURISDICTION_NAMES = {
+    "qatar": "QA", "qatari": "QA", "al-shahaniya": "QA", "shahaniya": "QA", "doha": "QA",
+    "saudi": "SA", "riyadh": "SA", "jeddah": "SA", "ksa": "SA",
+    "florida": "US-FL", "mediterranean": "MED",
+    "uae": "AE", "emirates": "AE", "dubai": "AE", "abu-dhabi": "AE", "oman": "OM", "muscat": "OM",
+    "kuwait": "KW", "bahrain": "BH", "jordan": "JO", "egypt": "EG", "israel": "IL", "spain": "ES", "almeria": "ES",
+    "netherlands": "NL", "holland": "NL", "morocco": "MA", "tunisia": "TN", "turkey": "TR", "india": "IN",
+    "china": "CN", "usa": "US", "texas": "US-TX", "california": "US-CA", "arizona": "US-AZ",
+}
 
 STRATEGIES = {"strict": 0.6, "relaxed": 0.5}  # min term coverage; eligibility filters never relax
 
 # Questions that ask for a number/measurement. For these, a passage with no quantitative content cannot
 # be the support, and (when a jurisdiction is named) a general principle cannot stand in for a site value.
 _QUANTITY_SEEKING = re.compile(
-    r"\b(measured|measurement|measurements|how\s+much|how\s+many|how\s+(large|big|high|long)|"
+    r"\b(measured|measurement|measurements|estimate|estimated|calculate|consumption|how\s+much|how\s+many|how\s+(large|big|high|long)|"
     r"what\s+(is|are|was|were)\s+the\s+(typical\s+|average\s+|required\s+|design\s+)?"
     r"(rate|amount|volume|demand|cost|price|value|kw|size|capacity|yield|use|consumption)|"
-    r"per\s+(m2|m\u00b2|m3|hectare|ha|kg|day|hour|season|plant))\b", re.IGNORECASE)
+    r"per\s+(m2|m\u00b2|m3|square|hectare|ha|kg|day|hour|season|plant))\b", re.IGNORECASE)
 
 
 def is_quantity_seeking(question):
@@ -216,8 +225,6 @@ def retrieve(con, question, filters=None, top_k=5, strategy="strict"):
             relation = "NO_TARGET"
         elif row["jurisdiction"] in target:
             relation = "MATCH"
-        elif row["applicability_class"] == "GENERAL_PRINCIPLE" and not seeks_number:
-            relation = "GENERAL_PRINCIPLE"
         else:
             relation = "TRANSFER_ONLY"
         p = _row_passage(row, src, cov, matched, s, relation)

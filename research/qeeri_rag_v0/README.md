@@ -12,7 +12,7 @@ Python ≥ 3.10 standard library only (SQLite with FTS5; verified on Python 3.13
 
 ```bash
 cd research/qeeri_rag_v0
-python -W ignore -m unittest discover -s tests -v      # 59 tests incl. the 14 hostile scenarios
+python -W ignore -m unittest discover -s tests -v      # 71 tests incl. the 14 hostile scenarios + probe battery
 python evidence/demo.py                                # ingest + positive/negative questions + receipts
 python -m qeeri_rag ingest                             # build runs/index.db from corpus/allowlist.json
 python -m qeeri_rag retrieve "What pad area per greenhouse floor area does FAO suggest?"
@@ -68,11 +68,13 @@ No source text was downloaded; no quotation, page or value was added. **There ar
 | Immutable chunk ids / hashes | `chunk_id = source#label@sha256[:12]` of canonical {source, label, locator, text}; content change ⇒ new id, old id `SUPERSEDED_BY_REINGEST` and no longer resolves |
 | Modified document | source file hash re-checked at retrieval and citation time (fail closed); `verify` recomputes every chunk hash |
 | Relevance ≠ eligibility | term-coverage gate (≥0.6 of content terms, ≥2 matched) on top of BM25; quantity-seeking questions need a passage with quantitative content |
-| Other country ≠ Qatar evidence | if the question names a jurisdiction, other-jurisdiction passages go to `transfer_context` only, never into claims; general-principle passages cannot stand in for a requested site value |
+| Other country ≠ Qatar evidence | if the question names a jurisdiction, other-jurisdiction passages go to `transfer_context` only, never into claims; a general-principle passage (e.g. IFAS, US-FL) **never** supports a question that names a site — it is shown as context only |
 | Contradictory sources | same `quantity_key` + disjoint values across sources + no priority rule ⇒ `CONFLICT_UNRESOLVED`; the loop abstains entirely |
 | Prompt injection | pattern scan quarantines chunks at ingestion; in the adapter passages sit in an `<untrusted_passages nonce=…>` block with a per-call random delimiter; output claims echoing injection text are `UNSUPPORTED` |
 | No fabricated citations | every cited chunk id must be in the retrieved set **and** resolve (id, source, hash, optional quote); every number in a claim must appear in a cited chunk or supplied inputs |
 | No sizing | `guards.check_sizing_request` refuses fan/cooling-kW/electrical/pump/emitter/water-volume specification, lists exact missing inputs, and **still refuses when all inputs are supplied** (no vetted calculator exists here); generated sizing figures not in a cited chunk ⇒ `UNSUPPORTED` |
+| Nothing is "human-verified" without a record | `HUMAN_VERIFIED` is accepted at ingestion only with `review_record{reviewer, reviewed_at, record_path}` and `reviewer != curator`; otherwise the source is rejected. No source in the corpus has one |
+| Ingestion is confined | a source path must resolve under the repo (allowlist inside the repo) or under the allowlist's own directory; `../` and absolute escapes are rejected |
 | Model cannot self-approve | statuses are assigned by `guards.validate_claims`, not the model; every claim is queued `PENDING_REVIEW`; `human_verified` is false everywhere |
 | Missing key ≠ success | `ClaudeProvider` without a key returns `NOT_EXECUTED` and no text; HTTP/parse failures are `PROVIDER_ERROR` |
 | Bounded loop | `max_retrieval_attempts` (default 1), `max_tool_calls` (default 3), no browsing, no tool use in requests |
@@ -93,10 +95,13 @@ Runtime receipts (`runs/receipts.jsonl`, `runs/review_queue.jsonl`) are SHA-256 
 
 ## Known limitations (observed)
 
+* **A real citation does not prove entailment.** Deterministic checks verify that cited chunks exist, hash-resolve, were retrieved, and that every number appears in them. They cannot tell whether the claim *agrees* with the passage: a claim that contradicts its cited chunk but contains no digits (e.g. "a single sensor is sufficient to verify uniformity" against a passage saying the opposite) is `SUPPORTED_CANDIDATE`. This is pinned by `KnownLimitationPinned` in `tests/test_probe_battery.py`. Only the `PENDING_REVIEW` human gate closes it. In extractive mode the claim *is* the passage text, so this does not arise there.
+* **Intent and place detection are keyword/regex heuristics** (sizing categories, quantity-seeking phrases, a jurisdiction gazetteer in `retrieve.py`). They fail closed on every case tried (30 paraphrases across two probe batteries) but: places not in the gazetteer are undetected (a question about a country not listed is answered from whatever the corpus holds, labelled with its real jurisdiction and "NOT Qatar-site evidence"); non-English questions are unsupported; spelled-out numbers are only checked against a fixed word list. The first probe batteries found 4 misses (fixed); the second (14 negatives, 8 positives) found 0 false supports and 1 over-refusal (fixed). Both batteries are now regression fixtures, so they are no longer held-out evidence.
+* **Over-refusal is the price of fail-closed.** A question that names a Qatar site and asks anything the corpus only answers with US-FL/SA/Mediterranean text returns `INSUFFICIENT_EVIDENCE` plus `transfer_context`, even for a conceptual question the IFAS principle would answer.
 * The lexical gate is a term-coverage heuristic, not semantic matching. The shared-words negative (nitrogen fertilizer for greenhouse tomato) is rejected with best coverage 0.33 (2 of 6 terms; it is also rejected by the 0.5 "relaxed" strategy), but loosening the threshold is not safe in general: the relaxed strategy returned 5 passages and a spurious conflict for the pad-equation question, so it is opt-in (`--max-retrieval-attempts 2`) and locked in a test. No embeddings were added: no defined retrieval test failed in a way embeddings would fix, and the corpus is 8 chunks.
 * Conflict detection only covers chunks carrying curator-assigned `quantity_key`/range (L07, L08). L07 (Riyadh as-built, per ground area) vs L08 (FAO rule of thumb, per greenhouse area) are different kinds of statement; the system flags them unresolved rather than deciding.
 * Curator-assigned fields (`reuse_status`, `applicability_class`, `topics`, quantity ranges, aliases) were set by the implementer in `corpus/allowlist.json`. `LOCAL_ONLY` is a conservative label, **not** a legal permission determination.
-* Sizing/quantity/injection detection is regex-based and English-only. It fails closed on the cases tested, not on adversarial paraphrase.
+* Receipts are tamper-evident against ordinary edits only; deleting or replacing the whole log is undetectable. Single writer, no locking.
 * Generation via the real Claude API has never been run in this environment; `tests/` exercise the request/response plumbing against a local fake server whose canned text is not a model result.
 
 ## Layout
@@ -105,7 +110,7 @@ Runtime receipts (`runs/receipts.jsonl`, `runs/review_queue.jsonl`) are SHA-256 
 qeeri_rag/   store.py (ingest/verify/resolve/export)  retrieve.py  guards.py  answer.py (extractive + Claude)  loop.py  evaluate.py  cli.py
 corpus/      allowlist.json  evidence_ledger.json (copy, see above)
 instructions/FROZEN_INSTRUCTIONS.txt     eval/questions.json
-tests/       test_hostile.py (14 scenarios)  test_regressions.py
+tests/       test_hostile.py (14 scenarios)  test_regressions.py  test_probe_battery.py (independent-verification findings)
 evidence/    DEMO_TRANSCRIPT.txt  TEST_LOG.txt  eval_results.json  eval_summary.json  demo.py
 DEPENDENCY_MAP.md  HUMAN_VERIFICATION_CHECKLIST.md
 ```
