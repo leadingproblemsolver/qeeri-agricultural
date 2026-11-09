@@ -147,6 +147,16 @@ class CodeLevelInvariants(unittest.TestCase):
         self.assertEqual(con.execute("select count(*) from chunks where state='ACTIVE'").fetchone()[0], 8)
 
 
+class ProvenanceFields(unittest.TestCase):
+    def test_every_source_url_is_a_clean_url_and_limitations_are_not_lost(self):
+        import re
+        con = real_index()
+        for r in con.execute("select source_id, url, limitations from sources where state='ACTIVE'"):
+            self.assertRegex(r["url"], r"^https?://\S+$", r["source_id"])  # no free text, no raw spaces
+        fao = con.execute("select limitations from sources where source_id='S5_FAO_2013'").fetchone()[0]
+        self.assertIn("equivalence of the two copies is unconfirmed", fao)
+
+
 class KnownLimitationPinned(unittest.TestCase):
     def test_a_real_citation_does_not_prove_entailment(self):
         """DOCUMENTED LIMIT, not a fix: a claim that CONTRADICTS its cited chunk but contains no numbers passes the

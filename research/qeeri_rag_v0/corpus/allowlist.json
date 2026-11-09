@@ -1,8 +1,15 @@
 {
   "allowlist_id": "QEERI-RAG-V0-ALLOWLIST",
   "note": "Curator-declared gate. Only sources listed here can be ingested. Fields marked CURATOR_ASSIGNED were set by the engineer who wrote this file from the ledger/packet text; they are NOT human-verified scientific judgements and reuse_status values are NOT legal permission determinations. reuse_status LOCAL_ONLY means: indexed for local use only, never exported. UNKNOWN or PROHIBITED sources are rejected from the authoritative index. Verification status vocabulary: HUMAN_VERIFIED (requires an independent review record; none exist), SOURCE_TEXT_READ (full text retrieved by a tool and claim located, per ledger), PACKET_ASSERTED (curated packet states the source is official; no independent check recorded), UNVERIFIED_ABSTRACT_ONLY, UNVERIFIED_NOT_LOCATED.",
-  "eligible_verification_statuses": ["HUMAN_VERIFIED", "SOURCE_TEXT_READ", "PACKET_ASSERTED"],
-  "eligible_reuse_statuses": ["PERMITTED_EXPORT", "LOCAL_ONLY"],
+  "eligible_verification_statuses": [
+    "HUMAN_VERIFIED",
+    "SOURCE_TEXT_READ",
+    "PACKET_ASSERTED"
+  ],
+  "eligible_reuse_statuses": [
+    "PERMITTED_EXPORT",
+    "LOCAL_ONLY"
+  ],
   "sources": [
     {
       "source_id": "IFAS_AE069",
@@ -16,15 +23,37 @@
       "jurisdiction": "US-FL",
       "verification_status": "PACKET_ASSERTED",
       "reuse_status": "LOCAL_ONLY",
-      "aliases": ["IFAS", "UF/IFAS", "University of Florida", "AE069"],
+      "aliases": [
+        "IFAS",
+        "UF/IFAS",
+        "University of Florida",
+        "AE069"
+      ],
       "default_applicability": "GENERAL_PRINCIPLE",
       "applicability_note": "General fan-and-pad principle; the packet states Florida examples, layouts and fan capacities are not Qatar design specifications and no Al-Shahaniya values are supplied.",
       "limitations": "Packet reproduces one 12-word excerpt and paraphrases the rest. Page numbers not recorded; section locators only. Section text paraphrased by the packet author.",
-      "default_topics": ["cooling", "sensors"],
+      "default_topics": [
+        "cooling",
+        "sensors"
+      ],
       "chunk_overrides": {
-        "S01": {"topics": ["cooling"]},
-        "S02": {"topics": ["cooling", "sensors"]},
-        "S03": {"topics": ["sensors", "controls"]}
+        "S01": {
+          "topics": [
+            "cooling"
+          ]
+        },
+        "S02": {
+          "topics": [
+            "cooling",
+            "sensors"
+          ]
+        },
+        "S03": {
+          "topics": [
+            "sensors",
+            "controls"
+          ]
+        }
       }
     },
     {
@@ -37,13 +66,35 @@
       "version": "FAO Plant Production and Protection Paper 217",
       "verification_status": "SOURCE_TEXT_READ",
       "reuse_status": "LOCAL_ONLY",
-      "aliases": ["FAO", "Good Agricultural Practices"],
+      "aliases": [
+        "FAO",
+        "Good Agricultural Practices"
+      ],
       "default_applicability": "JURISDICTION_SPECIFIC",
-      "default_topics": ["cooling", "water", "irrigation"],
+      "default_topics": [
+        "cooling",
+        "water",
+        "irrigation"
+      ],
       "chunk_overrides": {
-        "L08": {"topics": ["cooling"], "quantity_key": "fan_pad_airflow_per_floor_area", "qmin": 120, "qmax": 150, "qunit": "m3/(m2 h)"},
-        "L09": {"topics": ["water", "irrigation"]}
-      }
+        "L08": {
+          "topics": [
+            "cooling"
+          ],
+          "quantity_key": "fan_pad_airflow_per_floor_area",
+          "qmin": 120,
+          "qmax": 150,
+          "qunit": "m3/(m2 h)"
+        },
+        "L09": {
+          "topics": [
+            "water",
+            "irrigation"
+          ]
+        }
+      },
+      "url": "https://core.ac.uk/download/76467892.pdf",
+      "limitations": "Ledger: text read from a CORE copy returned by search; the protocol URL https://www.fao.org/4/i3284e/i3284e.pdf was requested but not permitted, so equivalence of the two copies is unconfirmed. Only characters 0-300,000 of 500,836 were read."
     },
     {
       "source_id": "S6_KAHRAMAA_LVWC",
@@ -55,10 +106,18 @@
       "version": "Issue 0; currency of this edition NOT verified",
       "verification_status": "SOURCE_TEXT_READ",
       "reuse_status": "LOCAL_ONLY",
-      "aliases": ["KAHRAMAA", "Low Voltage Electricity Wiring Code"],
+      "aliases": [
+        "KAHRAMAA",
+        "Low Voltage Electricity Wiring Code"
+      ],
       "default_applicability": "JURISDICTION_SPECIFIC",
-      "default_topics": ["electrical", "regulation"],
-      "chunk_overrides": {}
+      "default_topics": [
+        "electrical",
+        "regulation"
+      ],
+      "chunk_overrides": {},
+      "url": "https://km.qa/CustomerService/ServiceRegulations/ELECTRICTY%20WIRING%20CODE%202018.pdf",
+      "limitations": "Ledger: file name says 2018 but the document identifies as 2016 Issue 0; currency of this edition not verified. Only characters 0-100,000 of 212,430 were read."
     },
     {
       "source_id": "S7_TSAFARAS_2021",
@@ -70,12 +129,31 @@
       "version": "Agricultural Water Management 250, 106807",
       "verification_status": "SOURCE_TEXT_READ",
       "reuse_status": "LOCAL_ONLY",
-      "aliases": ["Tsafaras"],
+      "aliases": [
+        "Tsafaras"
+      ],
       "default_applicability": "JURISDICTION_SPECIFIC",
-      "default_topics": ["cooling", "water"],
+      "default_topics": [
+        "cooling",
+        "water"
+      ],
       "chunk_overrides": {
-        "L06": {"topics": ["cooling", "water"]},
-        "L07": {"topics": ["cooling", "equipment"], "quantity_key": "fan_pad_airflow_per_floor_area", "qmin": 187.5, "qmax": 187.5, "qunit": "m3/(m2 h)"}
+        "L06": {
+          "topics": [
+            "cooling",
+            "water"
+          ]
+        },
+        "L07": {
+          "topics": [
+            "cooling",
+            "equipment"
+          ],
+          "quantity_key": "fan_pad_airflow_per_floor_area",
+          "qmin": 187.5,
+          "qmax": 187.5,
+          "qunit": "m3/(m2 h)"
+        }
       }
     },
     {
@@ -88,9 +166,14 @@
       "version": "International Journal of Ambient Energy 43(1)",
       "verification_status": "UNVERIFIED_ABSTRACT_ONLY",
       "reuse_status": "LOCAL_ONLY",
-      "aliases": ["Mahmood"],
+      "aliases": [
+        "Mahmood"
+      ],
       "default_applicability": "JURISDICTION_SPECIFIC",
-      "default_topics": ["cooling", "water"],
+      "default_topics": [
+        "cooling",
+        "water"
+      ],
       "chunk_overrides": {}
     },
     {
@@ -103,9 +186,13 @@
       "version": "DOI not confirmed in ledger",
       "verification_status": "UNVERIFIED_ABSTRACT_ONLY",
       "reuse_status": "LOCAL_ONLY",
-      "aliases": ["Ghani"],
+      "aliases": [
+        "Ghani"
+      ],
       "default_applicability": "JURISDICTION_SPECIFIC",
-      "default_topics": ["cooling"],
+      "default_topics": [
+        "cooling"
+      ],
       "chunk_overrides": {}
     },
     {
@@ -118,9 +205,13 @@
       "version": "Cleaner and Circular Bioeconomy 12, 100151",
       "verification_status": "UNVERIFIED_ABSTRACT_ONLY",
       "reuse_status": "LOCAL_ONLY",
-      "aliases": ["Lahlou"],
+      "aliases": [
+        "Lahlou"
+      ],
       "default_applicability": "JURISDICTION_SPECIFIC",
-      "default_topics": ["economics"],
+      "default_topics": [
+        "economics"
+      ],
       "chunk_overrides": {}
     }
   ]
