@@ -1,0 +1,60 @@
+== 1. INGEST (allowlist: corpus/allowlist.json)
+  IFAS_AE069         INGESTED   3 chunks, content_hash=89b26cffb456
+  S5_FAO_2013        INGESTED   2 chunks, content_hash=a552a22ba5d3
+  S6_KAHRAMAA_LVWC   INGESTED   1 chunks, content_hash=a552a22ba5d3
+  S7_TSAFARAS_2021   INGESTED   2 chunks, content_hash=a552a22ba5d3
+  S1_MAHMOOD_2022    REJECTED   VERIFICATION_STATUS_NOT_ELIGIBLE
+  S2_GHANI_2020      REJECTED   VERIFICATION_STATUS_NOT_ELIGIBLE
+  S4_LAHLOU_2025     REJECTED   VERIFICATION_STATUS_NOT_ELIGIBLE
+  health: OK  active_chunks=8  snapshot=b3dd154156ae59de
+
+== 2. ASK (extractive provider, no model)
+
+[ANSWERABLE] What is the pad outlet temperature equation for fan and pad cooling?
+  -> SUPPORTED_CANDIDATE
+     ANS-435d9cec1d-C01 SUPPORTED_CANDIDATE: Verbatim source excerpt (12 words): **"Wet bulb temperature is the lowest temperature that can be reached"** [...
+        cite IFAS_AE069#S01@f506726e5fd4  hash=f506726e5fd4  section='Evaporative Cooling / Systems Efficiency' page=None
+        source https://ask.ifas.ufl.edu/publication/AE069  scope: source jurisdiction(s): US-FL; NOT Qatar-site evidence
+
+[ANSWERABLE] How much cooling water did the Riyadh Venlo tomato greenhouse use per m2?
+  -> SUPPORTED_CANDIDATE
+     ANS-a8109f49a9-C01 SUPPORTED_CANDIDATE: In a measured tomato trial in a pad-and-fan cooled glass Venlo greenhouse in Riyadh (cultivation 24 Feb to 23 ...
+        cite S7_TSAFARAS_2021#L06@44e145120b1f  hash=44e145120b1f  section='3.3 Water use' page=6
+        source https://edepot.wur.nl/543860  scope: source jurisdiction(s): SA; NOT Qatar-site evidence
+     ANS-a8109f49a9-C02 SUPPORTED_CANDIDATE: The Riyadh glass Venlo greenhouse was 40 m x 12 m (432 m2 growing area) with a pad wall 12 m x 3 m x 15 cm and...
+        cite S7_TSAFARAS_2021#L07@b539a3c77664  hash=b539a3c77664  section='2.1.1 Greenhouses and climate control equipment' page=2
+        source https://edepot.wur.nl/543860  scope: source jurisdiction(s): SA; NOT Qatar-site evidence
+
+[ANSWERABLE] Does KAHRAMAA require approval of electrical installation design?
+  -> SUPPORTED_CANDIDATE
+     ANS-1d66bdf11e-C01 SUPPORTED_CANDIDATE: In the KAHRAMAA Low Voltage Electricity Wiring Code (2016 Issue 0), the design of an electrical installation m...
+        cite S6_KAHRAMAA_LVWC#L10@8b2d6c051ec2  hash=8b2d6c051ec2  section='Clause 1.5 Approval of electrical installations; Clause 1.7 Licensed contractors; Clause 3.1' page=6, 7, 15 of 91
+        source https://km.qa/CustomerService/ServiceRegulations/ELECTRICTY WIRING CODE 2018.pdf  scope: source jurisdiction(s): QA
+
+[MISSING INFO] What is the measured wet-bulb temperature at the Al-Shahaniya greenhouse in July?
+  -> INSUFFICIENT_EVIDENCE  (ONLY_OTHER_JURISDICTION_EVIDENCE_FOR_TARGET:QA)
+     missing: a measured or source-reported value applicable to jurisdiction QA (only other-jurisdiction or general-principle text was found)
+     transfer-only context (NOT support): IFAS_AE069#S01, IFAS_AE069#S03, IFAS_AE069#S02
+
+[WRONG COUNTRY] What cooling water does a Qatar greenhouse use per m2?
+  -> INSUFFICIENT_EVIDENCE  (ONLY_OTHER_JURISDICTION_EVIDENCE_FOR_TARGET:QA)
+     missing: a measured or source-reported value applicable to jurisdiction QA (only other-jurisdiction or general-principle text was found)
+     transfer-only context (NOT support): S7_TSAFARAS_2021#L06, S5_FAO_2013#L08, IFAS_AE069#S01, S7_TSAFARAS_2021#L07
+
+[CONTRADICTORY] What fan airflow per floor area do fan and pad greenhouses use?
+  -> INSUFFICIENT_EVIDENCE  (UNRESOLVED_SOURCE_CONFLICT)
+     missing: a declared priority rule or independent resolution between conflicting sources for: fan_pad_airflow_per_floor_area
+     conflict[DISJOINT_VALUES] fan_pad_airflow_per_floor_area: {"S5_FAO_2013#L08@75d98ad38f2c": {"min": 120.0, "max": 150.0, "unit": "m3/(m2 h)"}, "S7_TSAFARAS_2021#L07@b539a3c77664": {"min": 187.5, "max": 187.5, "unit": "m3/(m2 h)"}}
+
+[SIZING] How many exhaust fans and what kW do I need for my 1000 m2 greenhouse in Qatar?
+  -> INSUFFICIENT_EVIDENCE  (SIZING_OR_SPECIFICATION_REQUEST_NOT_PERFORMED)
+     missing: cover_transmittance_and_geometry; design_dry_bulb_c; design_solar_radiation_w_m2; design_wet_bulb_c; greenhouse_floor_area_m2; greenhouse_volume_m3; pad_saturation_effectiveness_fraction; target_indoor_temperature_c
+
+== 3. OPTIONAL CLAUDE PROVIDER WITHOUT CREDENTIALS
+  status=NOT_EXECUTED provider_status=NOT_EXECUTED claims=0
+  reason: ANTHROPIC_API_KEY is not set; no model was called and no text was substituted.
+
+== 4. INTEGRITY
+  index: {'valid': True, 'sources_checked': 4, 'chunks_checked': 8}
+  receipts chain: {'valid': True, 'records': 8}
+  review queue entries (all PENDING_REVIEW): 4
