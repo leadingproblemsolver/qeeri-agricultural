@@ -1,5 +1,7 @@
 # QEERI RAG v0 — provenance-preserving local evidence retrieval (engineering slice)
 
+> **Read this before treating any output as scientific evidence.** This is experimental software, not a Qatar agricultural advisor. The November 10 CI run passed **75 RAG tests plus 5 synthetic cooling-case tests** ([run 42802024430](https://github.com/leadingproblemsolver/qeeri-agricultural/actions/runs/42802024430)). No validated greenhouse design, accepted controlled model A/B/C runs or independently verified crop-zone outputs follow from those tests. The newly uploaded Mahmood source YAML claims full-text verification, but the earlier evidence ledger records abstract-only: this must be checked against the original. The FAO-exclusion request is documented but **the current allowlist still indexes two FAO chunks**; do not pretend the corpus has been corrected. The pasted 20%→100% model comparison has no verifiable raw-run basis in this repository. See [source/data status](../greenhouse_llm_feasibility/SOURCE_AND_DATA_REALITY.md) and [bounded cooling demonstration](../greenhouse_llm_feasibility/scientific_case_v0/README.md). **Do not add new RAG features until a valid fixed-packet A/B experiment demonstrates a benefit.**
+
 **Status: ENGINEERING PROTOTYPE. Not a scientific finding, not an agricultural advisor, not validated by any human reviewer.**
 A passing demo shows that specified software behaviour works. It does **not** show that RAG improves agricultural decision-making;
 the pilot's own pre-RAG gate (`research/internship_five_week_review_2026-11-08/05_LLM_BENCHMARK_AND_PRE_RAG_GATE.md`, pilot branch) said NO-GO until a
@@ -12,7 +14,7 @@ Python ≥ 3.10 standard library only (SQLite with FTS5; verified on Python 3.13
 
 ```bash
 cd research/qeeri_rag_v0
-python -W ignore -m unittest discover -s tests -v      # 71 tests incl. the 14 hostile scenarios + probe battery
+python -W ignore -m unittest discover -s tests -v      # 75 RAG tests as of Nov 10; check CI for the current exact count
 python evidence/demo.py                                # ingest + positive/negative questions + receipts
 python -m qeeri_rag ingest                             # build runs/index.db from corpus/allowlist.json
 python -m qeeri_rag retrieve "What pad area per greenhouse floor area does FAO suggest?"
