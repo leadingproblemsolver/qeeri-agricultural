@@ -22,7 +22,7 @@
 | **Soil salinity and moisture** from UAV and Sentinel-2 | No verified paired Qatari lab ground-truth samples in this repository; real training/validation is blocked | Obtain authorized samples with dates/depths/location and matched imagery; spatial holdout before model comparison |
 | **Agricultural LLM reliability** — 50 questions, 4 models | Existing materials describe 200 planned runs, but accepted comparable controlled results have not been established | Freeze actual question bank/reference answers, run isolated sessions, retain raw outputs and independent scoring |
 | **Qatar greenhouse feasibility** | One Al-Shahaniya reference case and a small **synthetic** pad-exit calculator; no site measurements or approved design | Verify original papers, Qatar weather, physical assumptions, crop-zone variables, and an independent answer key |
-| **Evidence-grounded assistance/RAG** | Local SQLite/FTS5 prototype and 74 passing software tests from Nov 10; model A/B/C generation arms unexecuted | Show that the verified fixed-source packet actually improves an answer, then compare retrieval only if necessary |
+| **Evidence-grounded assistance/RAG** | Local SQLite/FTS5 prototype and 75 passing RAG software tests from Nov 10; model A/B/C generation arms unexecuted | Show that the verified fixed-source packet actually improves an answer, then compare retrieval only if necessary |
 
 ### Exactly what the cooling example proves
 
@@ -41,7 +41,7 @@ python evaluate.py
 python -m unittest discover -s . -p 'test_*.py' -v
 ```
 
-The supplied example passed **5/5 local unit tests** on November 10, 2026. The existing RAG software passed **74/74 unit tests** in [GitHub Actions](https://github.com/leadingproblemsolver/qeeri-agricultural/actions/runs/42787690162). Neither test count is scientific validation.
+The supplied example passed **5/5 local unit tests** on November 10, 2026. The existing RAG software passed **75/75 RAG unit tests** in [GitHub Actions](https://github.com/leadingproblemsolver/qeeri-agricultural/actions/runs/42787690162). In combined CI, **75 RAG tests plus 5 cooling tests passed** ([run 42802024430](https://github.com/leadingproblemsolver/qeeri-agricultural/actions/runs/42802024430)). Neither test count is scientific validation.
 
 ### Research integrity: claims currently **NOT proven**
 
