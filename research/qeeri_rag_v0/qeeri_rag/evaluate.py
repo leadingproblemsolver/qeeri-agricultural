@@ -32,11 +32,11 @@ def all_passages(con):
 
 
 def _arm_c_metrics(con, q, res):
-    cited = [cid for c in res["claims"] if c["status"] == "SUPPORTED_CANDIDATE" for cid in c["chunk_ids"]]
+    cited = [cid for c in res["claims"] if c["status"] == "CITATION_CHECK_PASSED_REVIEW_PENDING" for cid in c["chunk_ids"]]
     prefixes = lambda ids: {i.split("@")[0] for i in ids}
     gold = set(q["gold_chunks"])
     retrieved = prefixes([p["chunk_id"] for p in (res["retrieval"] or {}).get("passages", [])]) if res["retrieval"] else set()
-    answered = res["status"] == "SUPPORTED_CANDIDATE"
+    answered = res["status"] == "CITATION_CHECK_PASSED_REVIEW_PENDING"
     resolved = [resolve_citation(con, {"chunk_id": cid})["resolved"] for cid in cited]
     m = {"id": q["id"], "type": q["type"], "expected": q["expected"], "status": res["status"], "reason": res["reason"],
          "answered": answered, "retrieved": sorted(retrieved), "cited": sorted(prefixes(cited)),
@@ -152,7 +152,7 @@ def run_eval(con, questions_path, out_path=None, model=DEFAULT_MODEL, api_key=No
                 checked = validate_claims(con, gen["claims"], passages, q.get("inputs"))
                 entry.update(status="EXECUTED", abstained=bool(gen.get("abstain")), claims=checked,
                              unsupported_claims=sum(c["status"] == "UNSUPPORTED" for c in checked),
-                             supported_candidate_claims=sum(c["status"] == "SUPPORTED_CANDIDATE" for c in checked),
+                             citation_checked_claims=sum(c["status"] == "CITATION_CHECK_PASSED_REVIEW_PENDING" for c in checked),
                              human_correctness="PENDING_REVIEW")
             arms[arm].append(entry)
     out["model_arms"] = {k: {"status": ("EXECUTED" if have_key else "NOT_EXECUTED"), "per_question": v}
