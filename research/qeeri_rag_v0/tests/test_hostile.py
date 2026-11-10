@@ -211,7 +211,7 @@ class T07_FabricatedCitation(unittest.TestCase):
         cid = ret["passages"][0]["chunk_id"]
         out = validate_claims(con, [{"text": "FAO says pad area is 1 m2 per 45 m2.", "chunk_ids": [cid]},
                                     {"text": "FAO says pad area is about 1 m2 per 20-30 m2 of greenhouse area.", "chunk_ids": [cid]}], ret["passages"])
-        self.assertEqual([c["status"] for c in out], ["UNSUPPORTED", "SUPPORTED_CANDIDATE"])
+        self.assertEqual([c["status"] for c in out], ["UNSUPPORTED", "CITATION_CHECK_PASSED_REVIEW_PENDING"])
         self.assertIn("45", out[0]["failure_reasons"][0])
 
     def test_end_to_end_via_provider_fabricated_citation_fails_whole_answer(self):
@@ -403,7 +403,7 @@ class T12_NoApiKeyOrProviderFailure(unittest.TestCase):
             res = run_question(con, "What pad area per greenhouse floor area does FAO suggest?",
                                provider=ClaudeProvider(api_key="k", api_url=fake.url), config=cfg(t))
             body = fake.requests[0]["body"]
-        self.assertEqual(res["status"], "SUPPORTED_CANDIDATE"); self.assertEqual(res["claims"][0]["citations"][0]["chunk_id"], cid)
+        self.assertEqual(res["status"], "CITATION_CHECK_PASSED_REVIEW_PENDING"); self.assertEqual(res["claims"][0]["citations"][0]["chunk_id"], cid)
         self.assertNotIn("tools", body); self.assertIn("<untrusted_passages", body["messages"][0]["content"])
         self.assertEqual({k.lower(): v for k, v in fake.requests[0]["headers"].items()}.get("x-api-key"), "k")
         self.assertFalse(res["human_review"]["human_verified"])
@@ -499,7 +499,7 @@ class T14_SizingWithoutInputs(unittest.TestCase):
         ret = retrieve(con, "How much cooling water did the Riyadh Venlo tomato greenhouse use per m2?")
         l07 = [p for p in ret["passages"] if p["chunk_id"].startswith("S7_TSAFARAS_2021#L07")][0]
         out = validate_claims(con, [{"text": "The Riyadh greenhouse had 6 fans of 15,000 m3/h each.", "chunk_ids": [l07["chunk_id"]]}], ret["passages"])
-        self.assertEqual(out[0]["status"], "SUPPORTED_CANDIDATE", out[0]["failure_reasons"])
+        self.assertEqual(out[0]["status"], "CITATION_CHECK_PASSED_REVIEW_PENDING", out[0]["failure_reasons"])
 
 
 class T15_LoopBoundsReceiptsAndReview(unittest.TestCase):
@@ -526,13 +526,13 @@ class T15_LoopBoundsReceiptsAndReview(unittest.TestCase):
             q = [json.loads(l) for l in (t / "runs" / "review_queue.jsonl").read_text().splitlines()]
             self.assertEqual(len(q), len(res["claims"])); self.assertTrue(all(r["review_state"] == "PENDING_REVIEW" and r["independent_review_record"] is None for r in q))
             self.assertTrue(all(c["human_review"] == "PENDING_REVIEW" for c in res["claims"]))
-            rp.write_text(rp.read_text().replace("INSUFFICIENT_EVIDENCE", "SUPPORTED_CANDIDATE", 1))
+            rp.write_text(rp.read_text().replace("INSUFFICIENT_EVIDENCE", "CITATION_CHECK_PASSED_REVIEW_PENDING", 1))
             self.assertFalse(verify_receipts(rp)["valid"])
 
     def test_extractive_answer_carries_ids_locators_hashes_and_scope(self):
         with tmpdir_ctx() as t:
             res = run_question(real_index(), "How much cooling water did the Riyadh Venlo tomato greenhouse use per m2?", config=cfg(t))
-        self.assertEqual(res["status"], "SUPPORTED_CANDIDATE")
+        self.assertEqual(res["status"], "CITATION_CHECK_PASSED_REVIEW_PENDING")
         c = res["claims"][0]; cit = c["citations"][0]
         self.assertEqual(cit["chunk_id"].split("@")[0], "S7_TSAFARAS_2021#L06")
         self.assertEqual(cit["locator"]["section"], "3.3 Water use"); self.assertEqual(len(cit["chunk_hash"]), 64)
