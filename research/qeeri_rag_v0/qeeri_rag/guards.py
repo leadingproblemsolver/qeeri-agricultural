@@ -113,10 +113,11 @@ def _explicit_single_sensor_contradiction(claim, cited_passages):
     if _NEGATED_CLAIM.search(claim):
         return False  # an explicitly negative claim is not the unsafe affirmative assertion
     for passage in cited_passages:
-        source = passage["text"]
-        if ("uniformity" in source.lower() and _SINGLE_READING.search(source)
-                and _SOURCE_DENIES_SINGLE_READING.search(source)):
-            return True
+        source = re.sub(r"\\*\\*|__", "", passage["text"])  # remove Markdown emphasis, not source words
+        for sentence in re.split(r"[.!?]\\s+", source):
+            if ("uniformity" in sentence.lower() and _SINGLE_READING.search(sentence)
+                    and _SOURCE_DENIES_SINGLE_READING.search(sentence)):
+                return True
     return False
 
 
