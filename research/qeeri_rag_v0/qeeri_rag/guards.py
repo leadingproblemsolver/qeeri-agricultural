@@ -3,7 +3,7 @@
 1. check_sizing_request: refuses equipment sizing / electrical / pump / emitter / water-volume requests and lists the
    inputs that would be needed. The system never performs sizing, even with every input supplied: there is no
    vetted calculator here and sign-off belongs to a qualified engineer.
-2. validate_claims: a generated claim is SUPPORTED_CANDIDATE only if it cites retrieved chunk ids that resolve,
+2. validate_claims: a generated claim is CITATION_CHECK_PASSED_REVIEW_PENDING only if it cites retrieved chunk ids that resolve,
    every number it states appears in a cited chunk or in supplied inputs, it contains no sizing specification that
    is not in a cited chunk, and it carries no instruction-injection residue. A model cannot set its own status.
 """
@@ -140,6 +140,7 @@ def validate_claims(con, claims, retrieved_passages, inputs=None):
         inj = scan_injection(text)
         if inj:
             reasons.append(f"INSTRUCTION_INJECTION_RESIDUE:{inj}")
-        out.append({"text": text, "chunk_ids": ids, "status": "UNSUPPORTED" if reasons else "SUPPORTED_CANDIDATE",
-                    "failure_reasons": reasons})
+        out.append({"text": text, "chunk_ids": ids, "status": "UNSUPPORTED" if reasons else "CITATION_CHECK_PASSED_REVIEW_PENDING",
+                    "failure_reasons": reasons, "semantic_entailment": "NOT_EVALUATED",
+                    "scientific_validation": "NOT_EVALUATED"})
     return out
