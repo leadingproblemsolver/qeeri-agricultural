@@ -1,0 +1,282 @@
+{
+  "ledger_id": "QEERI-GH-EVIDENCE-LEDGER-V0",
+  "created_utc_date": "2026-11-05",
+  "case_id": "QAT-ALSHAHANIYA-TOMATO-SEMICLOSED-P0",
+  "method_note": "Text was retrieved with the WebFetch tool, which returns a model-mediated extract rather than raw bytes. Locators and short excerpts below are as relayed by that tool. Page numbers are inferred from page markers and may be off by one. No excerpt has been compared against the PDF by a person, so human_verified is false for every claim. Excerpts are capped at 15 words.",
+  "status_definitions": {
+    "SOURCE_TEXT_READ": "Full text (or a stated character range of it) was retrieved and the claim was located in it with a section/table/figure reference. Not human verified.",
+    "UNVERIFIED_ABSTRACT_ONLY": "Only an abstract or bibliographic record was accessible. The claim restates the abstract. Full-text location of the claim is unknown. Per protocol this is UNVERIFIED.",
+    "UNVERIFIED_NOT_LOCATED": "No retrievable record or text was found. No claim was extracted."
+  },
+  "sources": [
+    {
+      "source_id": "S1_MAHMOOD_2022",
+      "citation": "Mahmood F., Govindan R., Yang D., Bermak A., Al-Ansari T. (2022). Forecasting cooling load and water demand of a semi-closed greenhouse using a hybrid modelling approach. International Journal of Ambient Energy 43(1): 8046-8066.",
+      "doi": "10.1080/01430750.2022.2088617",
+      "protocol_role": "Installed Qatar reference",
+      "url_used": "https://elmi.hbku.edu.qa/en/publications/forecasting-cooling-load-and-water-demand-of-a-semi-closed-greenh/",
+      "access_result": "Abstract and metadata only. The Taylor & Francis full-text page was requested but the request was not permitted in this session. The record does not state crop, location, cover or open-access status.",
+      "status": "UNVERIFIED_ABSTRACT_ONLY"
+    },
+    {
+      "source_id": "S2_GHANI_2020",
+      "citation": "Ghani S., El-Bialy E.M.A.E., Bakochristou F., Rashwan M.M., Abdelhalim A.M., Ismail S.M., Ben P. Experimental and numerical investigation of the thermal performance of evaporative cooled greenhouses in hot and arid climates.",
+      "doi": "NOT CONFIRMED. Protocol gives 10.1080/23744731.2019.1634421. The QSpace record states no DOI, no journal, and year 2020.",
+      "protocol_role": "Qatar thermal study",
+      "url_used": "https://qspace.qu.edu.qa/handle/10576/61239",
+      "access_result": "Abstract and metadata only. No full-text link on the record.",
+      "status": "UNVERIFIED_ABSTRACT_ONLY"
+    },
+    {
+      "source_id": "S3_NEXUS_2026_CPI",
+      "citation": "Shannak, Kafi et al. (2026), 'Qatari Crop Performance Index', as named in PROTOCOL_V0.md.",
+      "doi": "10.1016/j.nexus.2026.100787 (from protocol, unresolved)",
+      "protocol_role": "Qatar system selection",
+      "url_used": "none",
+      "access_result": "Not found by a standard search or an extended search on the title. The DOI fetch was requested but not permitted in this session. Existence of this paper is unconfirmed. No claim was extracted.",
+      "status": "UNVERIFIED_NOT_LOCATED"
+    },
+    {
+      "source_id": "S4_LAHLOU_2025",
+      "citation": "Lahlou F.Z., Mahmood F., Al-Ansari T. (2025). Economic assessment of greenhouse and vertical farm production systems in arid regions: a case study of Qatar. Cleaner and Circular Bioeconomy 12, 100151.",
+      "doi": "10.1016/j.clcb.2025.100151",
+      "protocol_role": "Qatar farm financial comparator",
+      "url_used": "https://elmi.hbku.edu.qa/en/publications/economic-assessment-of-greenhouse-and-vertical-farm-production-sy/",
+      "access_result": "Abstract and metadata only. Open-access status not stated.",
+      "status": "UNVERIFIED_ABSTRACT_ONLY"
+    },
+    {
+      "source_id": "S5_FAO_2013",
+      "citation": "FAO (2013). Good Agricultural Practices for greenhouse vegetable crops: Principles for Mediterranean climate areas. FAO Plant Production and Protection Paper 217. Rome. ISBN 978-92-5-107649-1.",
+      "doi": "n/a",
+      "protocol_role": "General agronomic engineering",
+      "url_used": "https://core.ac.uk/download/76467892.pdf (a CORE copy returned by search; the protocol URL https://www.fao.org/4/i3284e/i3284e.pdf was requested but not permitted, so equivalence of the two copies is unconfirmed)",
+      "access_result": "Full text retrieved. Character ranges 0-300,000 of 500,836 were read (chapters 2-4 and part of chapter 6). Characters 300,000-500,836 were not read.",
+      "status": "SOURCE_TEXT_READ"
+    },
+    {
+      "source_id": "S6_KAHRAMAA_LVWC",
+      "citation": "KAHRAMAA. Low Voltage Electricity Wiring Code, document ref. CS-CSI-P1/C1, Issue 0, dated 16-10-2016, 91 pages (cover also reads 'Low Voltage Electricity & Water Installations Regulations').",
+      "doi": "n/a",
+      "protocol_role": "Qatar electrical governance",
+      "url_used": "https://km.qa/CustomerService/ServiceRegulations/ELECTRICTY WIRING CODE 2018.pdf",
+      "access_result": "Full text retrieved. Characters 0-100,000 of 212,430 were read. The file name says 2018 but the document identifies itself as the 2016 Issue 0. Whether it is the currently applicable edition is NOT verified. The regulations index page named in the protocol was requested but not permitted.",
+      "status": "SOURCE_TEXT_READ"
+    },
+    {
+      "source_id": "S7_TSAFARAS_2021",
+      "citation": "Tsafaras I., Campen J.B., Stanghellini C., de Zwart H.F., Voogt W., Scheffers K., Al Harbi A., Al Assaf K. (2021). Intelligent greenhouse design decreases water use for evaporative cooling in arid regions. Agricultural Water Management 250, 106807.",
+      "doi": "n/a (journal article number 106807)",
+      "protocol_role": "GCC transfer check (Riyadh trial, NOT Qatar)",
+      "url_used": "https://edepot.wur.nl/543860",
+      "access_result": "Full text retrieved from the WUR repository copy.",
+      "status": "SOURCE_TEXT_READ"
+    }
+  ],
+  "context_sources_checked_not_used_for_claims": [
+    "QSpace record 'Smart greenhouses as the path towards precision agriculture in the food-energy and water nexus: case study of Qatar' (abstract only; no site details).",
+    "Preprint 'Sustainable Crop Production in Qatar: A Systemic Review of Tomato Production' (Jana et al. 2025, preprints.org; national aggregates only; no Al-Shahaniya, Venlo or glass-thickness statement). Not in the protocol.",
+    "AIDIC ESCAPE-34 Mahmood .docx (binary content, unreadable by the fetch tool)."
+  ],
+  "claims": [
+    {
+      "claim_id": "L01",
+      "source_id": "S1_MAHMOOD_2022",
+      "claim": "In the study's comparison of ML models for forecasting greenhouse air temperature and relative humidity, LSTM outperformed SVMR and MLP. For LSTM the abstract reports temperature RMSE 0.352 degC with R2 0.982, and relative humidity RMSE 1.23 % with R2 0.954.",
+      "values": [
+        {"quantity": "temperature forecast RMSE", "value": 0.352, "unit": "degC"},
+        {"quantity": "temperature forecast R2", "value": 0.982, "unit": "dimensionless"},
+        {"quantity": "relative humidity forecast RMSE", "value": 1.23, "unit": "% (as written in abstract)"},
+        {"quantity": "relative humidity forecast R2", "value": 0.954, "unit": "dimensionless"}
+      ],
+      "locator": {"section": "Abstract", "table_figure": null, "page": null, "page_confidence": "n/a"},
+      "excerpt_relayed": null,
+      "status": "UNVERIFIED_ABSTRACT_ONLY",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "MODELED (machine-learning forecast)",
+      "scope": {"location": "not stated on the record", "crop_or_system": "semi-closed greenhouse (as stated); crop not stated", "time": "not stated"},
+      "applicability": "Shows that a forecasting method has been reported for a semi-closed greenhouse. Does not specify sensors, placement, sampling interval or training data, so it cannot define a sensing or control specification for the case.",
+      "limitations": "Abstract only. Training data period, sensor set, validation split and site are not stated. Accuracy is for that greenhouse and dataset and may not transfer.",
+      "human_verified": false,
+      "subsystems": ["sensors_monitoring_control"]
+    },
+    {
+      "claim_id": "L02",
+      "source_id": "S1_MAHMOOD_2022",
+      "claim": "The abstract reports cooling demand of 6.03 MWh for a two-day winter period and 15.33 MWh for a two-day summer period, and water demand of 5.85 m3 (winter) and 12.48 m3 (summer), from an analytical model driven by the LSTM forecasts.",
+      "values": [
+        {"quantity": "cooling demand, two-day winter", "value": 6.03, "unit": "MWh"},
+        {"quantity": "cooling demand, two-day summer", "value": 15.33, "unit": "MWh"},
+        {"quantity": "water demand, two-day winter", "value": 5.85, "unit": "m3"},
+        {"quantity": "water demand, two-day summer", "value": 12.48, "unit": "m3"}
+      ],
+      "locator": {"section": "Abstract", "table_figure": null, "page": null, "page_confidence": "n/a"},
+      "excerpt_relayed": null,
+      "status": "UNVERIFIED_ABSTRACT_ONLY",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "MODELED (hybrid ML plus analytical model)",
+      "scope": {"location": "not stated on the record", "crop_or_system": "semi-closed greenhouse; floor area not stated", "time": "two-day winter and two-day summer periods; dates not stated"},
+      "applicability": "Order-of-magnitude illustration of modelled cooling and water demand for one greenhouse. Not usable to size cooling plant, electrical supply or water supply for the case.",
+      "limitations": "Floor area is not stated, so values cannot be normalised per m2 or compared with S7. Whether MWh is thermal or electrical is not stated. Do not convert to AC kW.",
+      "human_verified": false,
+      "subsystems": ["thermal_cooling_design", "water_irrigation_fertigation"]
+    },
+    {
+      "claim_id": "L03",
+      "source_id": "S2_GHANI_2020",
+      "claim": "A CFD model of an evaporative cooled greenhouse in Qatar, compared with measured inner air temperature, relative humidity and global solar radiation, showed that raising ventilation from 20 to 40 air changes per hour lowered average inner air temperature and reduced the temperature rise under high solar radiation.",
+      "values": [
+        {"quantity": "ventilation rate tested", "value": "20 and 40", "unit": "air changes per hour (ACH)"}
+      ],
+      "locator": {"section": "Abstract", "table_figure": null, "page": null, "page_confidence": "n/a"},
+      "excerpt_relayed": null,
+      "status": "UNVERIFIED_ABSTRACT_ONLY",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "MODELED (CFD) with reported agreement to measurements",
+      "scope": {"location": "Qatar (greenhouse site not stated on the record)", "crop_or_system": "ASHRAE-compliant evaporative cooled greenhouse; crop not stated", "time": "not stated"},
+      "applicability": "Qualitative direction of effect for a Qatar evaporative cooled greenhouse. Not a required ventilation rate for the case.",
+      "limitations": "Abstract gives no temperature values, error metrics, geometry or radiation values. The abstract says 'good agreement' without numbers.",
+      "human_verified": false,
+      "subsystems": ["thermal_cooling_design"]
+    },
+    {
+      "claim_id": "L04",
+      "source_id": "S2_GHANI_2020",
+      "claim": "In the same CFD study, an uneven-span roof gave the lowest average inner temperature, aspect ratio had negligible effect for equal floor area and volume, and induction fans at or below crop height lowered average temperature.",
+      "values": [
+        {"quantity": "geometry factors tested", "value": "fan elevation, roof shape, aspect ratio", "unit": "n/a (no dimensions given)"}
+      ],
+      "locator": {"section": "Abstract", "table_figure": null, "page": null, "page_confidence": "n/a"},
+      "excerpt_relayed": null,
+      "status": "UNVERIFIED_ABSTRACT_ONLY",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "MODELED (CFD)",
+      "scope": {"location": "Qatar (site not stated on the record)", "crop_or_system": "ASHRAE-compliant evaporative cooled greenhouse", "time": "not stated"},
+      "applicability": "Design-direction hint for roof form and fan placement. Not a structural or cover specification.",
+      "limitations": "No dimensions, spans, temperatures or error metrics in the abstract. Roof-shape result may not hold for a Venlo glass house. Which spans were compared is not stated.",
+      "human_verified": false,
+      "subsystems": ["structure_cover", "thermal_cooling_design"]
+    },
+    {
+      "claim_id": "L05",
+      "source_id": "S4_LAHLOU_2025",
+      "claim": "The abstract reports a levelized cost of production for greenhouse tomatoes of $3.19 per kg versus $3.77 per kg for vertical farms in a Qatar case study, from a model that includes capital, operating and transport costs.",
+      "values": [
+        {"quantity": "greenhouse tomato levelized cost of production", "value": 3.19, "unit": "$/kg (currency not specified as USD)"},
+        {"quantity": "vertical farm levelized cost of production", "value": 3.77, "unit": "$/kg (currency not specified as USD)"}
+      ],
+      "locator": {"section": "Abstract", "table_figure": null, "page": null, "page_confidence": "n/a"},
+      "excerpt_relayed": "$3.19 per kg for tomatoes",
+      "status": "UNVERIFIED_ABSTRACT_ONLY",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "MODELED (economic model with dynamic energy, water and CO2 models and a vehicle routing problem)",
+      "scope": {"location": "Qatar", "crop_or_system": "centralized greenhouse scenario versus decentralized vertical farms; greenhouse size and technology not stated", "time": "not stated"},
+      "applicability": "Screening comparator only. Not a quote, a CAPEX figure or a farm-level margin for the case.",
+      "limitations": "Currency and base year not stated. Cost assumptions are in the full paper, which was not accessible. A modelled central-greenhouse value is not the cost of one small greenhouse.",
+      "human_verified": false,
+      "subsystems": ["economic_screening"]
+    },
+    {
+      "claim_id": "L06",
+      "source_id": "S7_TSAFARAS_2021",
+      "claim": "In a measured tomato trial in a pad-and-fan cooled glass Venlo greenhouse in Riyadh (cultivation 24 Feb to 23 Dec 2019), pad-wall cooling water was 3190 L/m2 for the season, about 42 % less than in the tunnel greenhouse compared (5463 L/m2). Total water was 4435 L/m2, of which about 72 % was for cooling.",
+      "values": [
+        {"quantity": "pad-wall cooling water, Venlo greenhouse, season", "value": 3190, "unit": "L/m2 (area basis, growing vs ground, not confirmed)"},
+        {"quantity": "pad-wall cooling water, tunnel greenhouse, season", "value": 5463, "unit": "L/m2"},
+        {"quantity": "total water use, Venlo greenhouse, season", "value": 4435, "unit": "L/m2"},
+        {"quantity": "share of total water used for cooling, Venlo", "value": 72, "unit": "%"}
+      ],
+      "locator": {"section": "3.3 Water use", "table_figure": "Fig. 4A (value read graphically per the extract)", "page": "6", "page_confidence": "inferred, +/-1"},
+      "excerpt_relayed": "was 42% lower in the M greenhouse",
+      "status": "SOURCE_TEXT_READ",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "OBSERVED (measured trial as reported by the source)",
+      "scope": {"location": "Estidamah research centre, Riyadh, Saudi Arabia (24.7 N, 46.7 E)", "crop_or_system": "round tomato, hydroponic on stone wool, 5 stems/m2, high wire, drain collection", "time": "24 Feb 2019 to 23 Dec 2019"},
+      "applicability": "GCC transfer check only. Same climate class as Qatar but a different site, humidity regime and operating strategy. Not Qatar field measurement.",
+      "limitations": "Single site, single season. The values 5463, 4435 and 72 % come from one extraction and only the 42 % statement was re-confirmed with an excerpt. Internal arithmetic is consistent (see test_pilot.py).",
+      "human_verified": false,
+      "subsystems": ["thermal_cooling_design", "water_irrigation_fertigation", "crop_cultivation_system"]
+    },
+    {
+      "claim_id": "L07",
+      "source_id": "S7_TSAFARAS_2021",
+      "claim": "The Riyadh glass Venlo greenhouse was 40 m x 12 m (432 m2 growing area) with a pad wall 12 m x 3 m x 15 cm and 6 frequency-controlled cooling fans of 15,000 m3/h each. The paper reports 187.5 m3/m2/h total fan capacity, which equals 90,000 m3/h divided by 480 m2 of ground area, not by the 432 m2 growing area.",
+      "values": [
+        {"quantity": "fan capacity per fan", "value": 15000, "unit": "m3/h"},
+        {"quantity": "number of fans", "value": 6, "unit": "count"},
+        {"quantity": "pad wall dimensions", "value": "12 x 3 x 0.15", "unit": "m"},
+        {"quantity": "reported total fan capacity per area", "value": 187.5, "unit": "m3/(m2 h)"},
+        {"quantity": "growing area", "value": 432, "unit": "m2"}
+      ],
+      "locator": {"section": "2.1.1 Greenhouses and climate control equipment", "table_figure": null, "page": "2", "page_confidence": "inferred, +/-1"},
+      "excerpt_relayed": "6 frequency-controlled fans with capacity of 15,000 m3 h-1 each",
+      "status": "SOURCE_TEXT_READ",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "OBSERVED (equipment as built, as reported by the source)",
+      "scope": {"location": "Riyadh, Saudi Arabia", "crop_or_system": "Venlo-type glass greenhouse, pad-and-fan cooling", "time": "2019 trial"},
+      "applicability": "Reference equipment configuration for a GCC Venlo greenhouse. It is not a sizing rule for Qatar. The ground-area basis (480 m2) is a derived check by this ledger, not stated in the excerpt.",
+      "limitations": "Only the fan sentence was re-confirmed with a verbatim excerpt. Pad and geometry dimensions come from one extraction. Glass thickness is not recorded in this claim.",
+      "human_verified": false,
+      "subsystems": ["thermal_cooling_design", "structure_cover", "bom_procurement"]
+    },
+    {
+      "claim_id": "L08",
+      "source_id": "S5_FAO_2013",
+      "claim": "FAO's Mediterranean-climate guide gives design rules for fan-and-pad cooling: pad area about 1 m2 per 20-30 m2 of greenhouse area, average pad face velocity 0.75-1.5 m/s, basic airflow 120-150 m3 per m2 of greenhouse area per hour, and a maximum fan-to-pad distance of 40 m.",
+      "values": [
+        {"quantity": "pad area per greenhouse area", "value": "1 per 20-30", "unit": "m2 pad per m2 floor"},
+        {"quantity": "average pad face velocity", "value": "0.75-1.5", "unit": "m/s"},
+        {"quantity": "basic airflow rate", "value": "120-150", "unit": "m3/(m2 h)"},
+        {"quantity": "maximum fan-to-pad distance", "value": 40, "unit": "m"}
+      ],
+      "locator": {"section": "Chapter 4, 'Evaporative cooling: Fan and pad cooling'", "table_figure": null, "page": "72-73", "page_confidence": "inferred, +/-1"},
+      "excerpt_relayed": "should be about 1 m2 per 20-30 m2 greenhouse area",
+      "status": "SOURCE_TEXT_READ",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "GUIDANCE (general rule of thumb)",
+      "scope": {"location": "Mediterranean-climate areas, not Qatar", "crop_or_system": "greenhouse vegetables, general", "time": "2013 publication"},
+      "applicability": "Starting-point ranges for expert review only. Not a Qatar design condition and not a fan or pad specification for the case.",
+      "limitations": "Mediterranean climate. Qatar summer humidity and wet-bulb conditions are not addressed. A numeric temperature drop for pad cooling was not found. Page numbers inferred. The same chapter's ventilation figure (0.06 m3/s/m2 described as about 60 ACH at 3 m mean height) was deliberately NOT used: 0.06 x 3600 / 3 = 72 ACH, so the relayed statement is internally inconsistent and needs human reading of the page.",
+      "human_verified": false,
+      "subsystems": ["thermal_cooling_design", "bom_procurement"]
+    },
+    {
+      "claim_id": "L09",
+      "source_id": "S5_FAO_2013",
+      "claim": "FAO's table of net crop water requirements lists substrate-grown tomato at 177 mm for a September-March cycle and 276 mm for a March-July cycle, citing Gallardo et al. (2009), and reports leaching fractions of 20-40 % for substrate irrigation scheduling.",
+      "values": [
+        {"quantity": "net crop water requirement, substrate tomato, Sept-Mar", "value": 177, "unit": "mm per cycle (1 mm = 1 L/m2)"},
+        {"quantity": "net crop water requirement, substrate tomato, Mar-July", "value": 276, "unit": "mm per cycle (1 mm = 1 L/m2)"},
+        {"quantity": "leaching fraction used", "value": "20-40", "unit": "%"}
+      ],
+      "locator": {"section": "Chapter 6, Table 2 and 'Irrigation scheduling of greenhouse crops grown in substrate'", "table_figure": "Table 2", "page": "111 and 128", "page_confidence": "inferred, +/-1"},
+      "excerpt_relayed": "Tomato Sept.-Mar. (162) 177 Gallardo et al., 2009",
+      "status": "SOURCE_TEXT_READ",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "GUIDANCE (tabulated literature values for Mediterranean greenhouses)",
+      "scope": {"location": "Mediterranean-climate greenhouses, not Qatar", "crop_or_system": "tomato in substrate", "time": "two stated cycles"},
+      "applicability": "Shows the form of a net crop water requirement. Not a Qatar irrigation volume and not usable for pump or emitter sizing.",
+      "limitations": "Net not gross requirement. The '(162)' value beside 177 is unexplained in the relayed text. Tsafaras irrigation water in Riyadh (about 1246 L/m2 per season, from the first extraction, not in this ledger as a claim) is about 4.5-7 times these net figures, so Mediterranean values must not be carried to Qatar.",
+      "human_verified": false,
+      "subsystems": ["crop_cultivation_system", "water_irrigation_fertigation"]
+    },
+    {
+      "claim_id": "L10",
+      "source_id": "S6_KAHRAMAA_LVWC",
+      "claim": "In the KAHRAMAA Low Voltage Electricity Wiring Code (2016 Issue 0), the design of an electrical installation must be approved by KAHRAMAA, and work on electrical installations may only be carried out by KAHRAMAA-licensed contractors, with licence classes tied to permitted load.",
+      "values": [
+        {"quantity": "requirement type", "value": "design approval and licensed contractor", "unit": "n/a (administrative, no numeric rating)"}
+      ],
+      "locator": {"section": "Clause 1.5 Approval of electrical installations; Clause 1.7 Licensed contractors; Clause 3.1", "table_figure": "licence class table in clause 1.7.4", "page": "6, 7, 15 of 91", "page_confidence": "from 'Page X of 91' footers"},
+      "excerpt_relayed": "The design of an Electrical Installation must be approved by KM",
+      "status": "SOURCE_TEXT_READ",
+      "evidence_class": "SOURCE-REPORTED",
+      "underlying_basis": "REGULATION",
+      "scope": {"location": "Qatar", "crop_or_system": "low-voltage installations generally; 'farms' appear only in the list of covered premises (clause 1.1.1, p. 4); no greenhouse-specific clause found in the read portion", "time": "Issue 0 dated 16-10-2016"},
+      "applicability": "Establishes that electrical design needs authority approval and licensed contractors. It does not provide any rating, cable size, breaker or protection setting for a greenhouse.",
+      "limitations": "Only characters 0-100,000 of 212,430 were read. An RCD trip rating was not found in that range. The file is named 2018 but identifies as 2016 Issue 0, and whether it is the current edition is unverified. The protocol's regulations index page was not retrieved.",
+      "human_verified": false,
+      "subsystems": ["electricity_power_safety", "installation_dependencies"]
+    }
+  ]
+}

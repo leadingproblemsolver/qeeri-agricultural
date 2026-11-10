@@ -1,0 +1,63 @@
+{
+  "case_id": "QEERI-COOLING-LOGIC-001",
+  "research_question": "Does a calculated pad-exit temperature establish that crop-zone tomato temperatures will be safe?",
+  "case_type": "synthetic_engineering_reasoning_test",
+  "scientific_model": {
+    "id": "PAD_EFFECTIVENESS",
+    "equation": "T_pad_out_C = T_db_in_C - effectiveness_fraction * (T_db_in_C - T_wb_in_C)",
+    "source_url": "https://edis.ifas.ufl.edu/AE069",
+    "source_section": "Systems Efficiency",
+    "evidence_state": "PUBLISHED_GENERAL_PRINCIPLE_NOT_SITE_VALIDATED",
+    "meaning": "Estimates air temperature immediately after a direct evaporative cooling pad; does not predict crop-zone temperature."
+  },
+  "scenarios": [
+    {
+      "id": "GOOGLE_EXAMPLE_40_20",
+      "input_kind": "HYPOTHETICAL_NOT_SITE_MEASURED",
+      "dry_bulb_C": 40,
+      "wet_bulb_C": 20,
+      "effectiveness_fraction": 0.85,
+      "target_pad_exit_C": 25,
+      "source": "User-provided Google-generated scenario",
+      "notes": "No validated Qatar summer timestamp; manufacturer 85% rating and crop safety claim unverified."
+    },
+    {
+      "id": "SUMMER_STRESS_SYNTHETIC",
+      "input_kind": "HYPOTHETICAL_NOT_SITE_MEASURED",
+      "dry_bulb_C": 45,
+      "wet_bulb_C": 31,
+      "effectiveness_fraction": 0.85,
+      "target_pad_exit_C": 28,
+      "source": "Synthetic physical-boundary example; 31 C is NOT a verified Al-Shahaniya observation",
+      "notes": "No design-weather validation."
+    }
+  ],
+  "reported_weather_record": {
+    "id": "QMD_OTBD_2026_11_09_1250_REPORTED",
+    "status": "UNVERIFIED_USER_SUPPLIED_REPORT",
+    "claimed_provider": "Qatar Meteorology Department",
+    "claimed_url": "https://qweather.gov.qa/CAA/EWSData.aspx",
+    "claimed_station": "Hamad International Airport, Doha",
+    "claimed_local_timestamp": "2026-11-09T12:50:00+03:00",
+    "claimed_dry_bulb_C": 29,
+    "claimed_relative_humidity_percent": 59,
+    "wet_bulb_C": null,
+    "note": "Not used for calculation. Timestamp and observations have not been independently fetched from QMD; no direct wet-bulb reading established. A November record cannot represent summer design weather."
+  },
+  "missing_for_crop_zone_decision": [
+    "verified_site_and_representative_hourly_summer_weather",
+    "measured_or_validated_pad_effectiveness_at_operating_face_velocity",
+    "greenhouse_geometry_and_cover_radiation_properties",
+    "airflow_and_leakage_distribution",
+    "solar_radiation_and_shading",
+    "crop_transpiration_and_humidity_balance",
+    "measured_or_validated_crop_zone_air_and_leaf_temperature",
+    "cultivar_growth_stage_and_verified_heat_stress_limits",
+    "qualified_engineering_review"
+  ],
+  "review": {
+    "state": "PENDING_INDEPENDENT_REVIEW",
+    "reviewer": null,
+    "reviewed_at": null
+  }
+}

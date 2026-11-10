@@ -1,0 +1,21 @@
+{
+  "set_id": "QEERI-RAG-V0-GOLD-SMALL",
+  "label": "ENGINEER_AUTHORED_SMALL_GOLD_SET. Written by the implementing engineer from the ingested chunks. NOT independently reviewed, NOT a benchmark, no claim of generalisation. Human claim-level correctness is PENDING_REVIEW for every item.",
+  "expected_outcomes": {"ANSWER": "loop returns CITATION_CHECK_PASSED_REVIEW_PENDING citing at least one gold chunk", "ABSTAIN": "loop returns INSUFFICIENT_EVIDENCE (or refusal) and cites nothing"},
+  "questions": [
+    {"id": "P01", "type": "POSITIVE", "question": "What is the pad outlet temperature equation for fan and pad cooling?", "expected": "ANSWER", "gold_chunks": ["IFAS_AE069#S01"]},
+    {"id": "P02", "type": "POSITIVE", "question": "Does a single temperature sensor show spatial uniformity in the greenhouse?", "expected": "ANSWER", "gold_chunks": ["IFAS_AE069#S03"]},
+    {"id": "P03", "type": "POSITIVE", "question": "What pad area per greenhouse floor area does FAO suggest?", "expected": "ANSWER", "gold_chunks": ["S5_FAO_2013#L08"]},
+    {"id": "P04", "type": "POSITIVE", "question": "How much cooling water did the Riyadh Venlo tomato greenhouse use per m2?", "expected": "ANSWER", "gold_chunks": ["S7_TSAFARAS_2021#L06"]},
+    {"id": "P05", "type": "POSITIVE", "question": "Does KAHRAMAA require approval of electrical installation design?", "expected": "ANSWER", "gold_chunks": ["S6_KAHRAMAA_LVWC#L10"]},
+    {"id": "P06", "type": "POSITIVE", "question": "What net crop water requirement does FAO list for substrate tomato?", "expected": "ANSWER", "gold_chunks": ["S5_FAO_2013#L09"]},
+    {"id": "N01", "type": "NEG_IRRELEVANT_LEXICAL_OVERLAP", "question": "What nitrogen fertilizer rate should I apply to greenhouse tomato?", "expected": "ABSTAIN", "gold_chunks": []},
+    {"id": "N02", "type": "NEG_MISSING_SITE_VALUE", "question": "What is the measured wet-bulb temperature at the Al-Shahaniya greenhouse in July?", "expected": "ABSTAIN", "gold_chunks": []},
+    {"id": "N03", "type": "NEG_WRONG_JURISDICTION", "question": "What cooling water does a Qatar greenhouse use per m2?", "expected": "ABSTAIN", "gold_chunks": []},
+    {"id": "N04", "type": "NEG_SIZING_WITHOUT_INPUTS", "question": "How many exhaust fans and what kW do I need for my 1000 m2 greenhouse in Qatar?", "expected": "ABSTAIN", "gold_chunks": []},
+    {"id": "N05", "type": "NEG_CONTRADICTORY_SOURCES", "question": "What fan airflow per floor area do fan and pad greenhouses use?", "expected": "ABSTAIN", "gold_chunks": []},
+    {"id": "N06", "type": "NEG_OUT_OF_DOMAIN", "question": "What is the current market price of tomato seed per kilogram?", "expected": "ABSTAIN", "gold_chunks": []},
+    {"id": "N07", "type": "NEG_QUARANTINED_ABSTRACT_ONLY_SOURCE", "question": "What is the levelized cost of production for greenhouse tomatoes in Qatar?", "expected": "ABSTAIN", "gold_chunks": []},
+    {"id": "N08", "type": "NEG_FABRICATED_PREMISE", "question": "What does the Hamad 2019 Al-Shahaniya audit report about cooling load in kW?", "expected": "ABSTAIN", "gold_chunks": []}
+  ]
+}
