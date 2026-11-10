@@ -3,10 +3,12 @@ on:
   push:
     paths:
       - 'research/qeeri_rag_v0/**'
+      - 'research/greenhouse_llm_feasibility/scientific_case_v0/**'
       - '.github/workflows/qeeri-rag-tests.yml'
   pull_request:
     paths:
       - 'research/qeeri_rag_v0/**'
+      - 'research/greenhouse_llm_feasibility/scientific_case_v0/**'
       - '.github/workflows/qeeri-rag-tests.yml'
   workflow_dispatch:
 
@@ -24,3 +26,8 @@ jobs:
           python-version: '3.13'
       - name: Run full RAG unit suite
         run: python -W ignore -m unittest discover -s tests -v
+      - name: Run bounded greenhouse case tests
+        working-directory: research/greenhouse_llm_feasibility/scientific_case_v0
+        run: |
+          python -m unittest discover -s . -p 'test_*.py' -v
+          python evaluate.py > /dev/null
