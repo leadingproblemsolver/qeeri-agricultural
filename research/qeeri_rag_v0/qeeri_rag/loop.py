@@ -168,8 +168,8 @@ def run_question(con, question, inputs=None, filters=None, provider=None, config
     result["inputs"]["missing"] = gen.get("missing", [])
     step("7_record", claims=[c["claim_id"] for c in checked])
     step("8_check", statuses={c["claim_id"]: c["status"] for c in checked})
-    supported = [c for c in checked if c["status"] == "SUPPORTED_CANDIDATE"]
-    status = "SUPPORTED_CANDIDATE" if supported else "UNSUPPORTED"
+    supported = [c for c in checked if c["status"] == "CITATION_CHECK_PASSED_REVIEW_PENDING"]
+    status = "CITATION_CHECK_PASSED_REVIEW_PENDING" if supported else "UNSUPPORTED"
     return _finish(con, result, t0, cfg, status, None if supported else "ALL_CLAIMS_FAILED_DETERMINISTIC_CHECKS")
 
 
