@@ -37,7 +37,7 @@ Exit codes: `0` supported/ok, `2` insufficient / NOT_EXECUTED (a valid, honest o
 |---|---|---|
 | `ingest` | `store.ingest(con, allowlist)` | per-source INGESTED / UNCHANGED / REJECTED+reason, chunk ids, content hashes, quarantined chunks |
 | `retrieve` | `retrieve.retrieve(con, question, filters, top_k)` | `passages` (+provenance, scores), `transfer_context`, `conflicts`, `excluded` counts, `status` ∈ OK / INSUFFICIENT_EVIDENCE / CONFLICT_UNRESOLVED |
-| `answer` | `loop.run_question(...)` | claims (`SUPPORTED_CANDIDATE` / `UNSUPPORTED`) or `INSUFFICIENT_EVIDENCE` / `NOT_EXECUTED` / `PROVIDER_ERROR`, missing inputs, receipt hash |
+| `answer` | `loop.run_question(...)` | claims (`CITATION_CHECK_PASSED_REVIEW_PENDING` / `UNSUPPORTED`) or `INSUFFICIENT_EVIDENCE` / `NOT_EXECUTED` / `PROVIDER_ERROR`, missing inputs, receipt hash |
 | `evaluate` | `evaluate.run_eval(...)` | arm C metrics + per-arm A/B/C records; `eval/questions.json` |
 | `health`, `verify`, `resolve`, `export-public` | integrity, citation resolution, fail-closed export | |
 
@@ -79,7 +79,7 @@ No source text was downloaded; no quotation, page or value was added. **There ar
 | Missing key ≠ success | `ClaudeProvider` without a key returns `NOT_EXECUTED` and no text; HTTP/parse failures are `PROVIDER_ERROR` |
 | Bounded loop | `max_retrieval_attempts` (default 1), `max_tool_calls` (default 3), no browsing, no tool use in requests |
 
-`SUPPORTED_CANDIDATE` means *the system assembled a citation that passed deterministic checks*. It is **not** a claim that the passage entails the answer or that the source is correct.
+`CITATION_CHECK_PASSED_REVIEW_PENDING` means *the software checked citation resolution, the retrieved-set membership and limited numerical/format guards; it has NOT checked semantic entailment or scientific correctness*. It is **not** a claim that the passage entails the answer or that the source is correct.
 Extractive mode's claim is the chunk's own text, so entailment there is trivially identity, which is why it is labelled `EXTRACTIVE_NO_MODEL`.
 
 Runtime receipts (`runs/receipts.jsonl`, `runs/review_queue.jsonl`) are SHA-256 chained: tamper-evident against ordinary edits only, **not** a trusted immutable ledger. `runs/` and `*.db` are gitignored. `evidence/` holds the committed demo/eval/test outputs.
@@ -95,7 +95,7 @@ Runtime receipts (`runs/receipts.jsonl`, `runs/review_queue.jsonl`) are SHA-256 
 
 ## Known limitations (observed)
 
-* **A real citation does not prove entailment.** Deterministic checks verify that cited chunks exist, hash-resolve, were retrieved, and that every number appears in them. They cannot tell whether the claim *agrees* with the passage: a claim that contradicts its cited chunk but contains no digits (e.g. "a single sensor is sufficient to verify uniformity" against a passage saying the opposite) is `SUPPORTED_CANDIDATE`. This is pinned by `KnownLimitationPinned` in `tests/test_probe_battery.py`. Only the `PENDING_REVIEW` human gate closes it. In extractive mode the claim *is* the passage text, so this does not arise there.
+* **A real citation does not prove entailment.** Deterministic checks verify that cited chunks exist, hash-resolve, were retrieved, and that every number appears in them. They cannot tell whether the claim *agrees* with the passage: a claim that contradicts its cited chunk but contains no digits (e.g. "a single sensor is sufficient to verify uniformity" against a passage saying the opposite) is `CITATION_CHECK_PASSED_REVIEW_PENDING`. This is pinned by `KnownLimitationPinned` in `tests/test_probe_battery.py`. Only the `PENDING_REVIEW` human gate closes it. In extractive mode the claim *is* the passage text, so this does not arise there.
 * **Intent and place detection are keyword/regex heuristics** (sizing categories, quantity-seeking phrases, a jurisdiction gazetteer in `retrieve.py`). They fail closed on every case tried (30 paraphrases across two probe batteries) but: places not in the gazetteer are undetected (a question about a country not listed is answered from whatever the corpus holds, labelled with its real jurisdiction and "NOT Qatar-site evidence"); non-English questions are unsupported; spelled-out numbers are only checked against a fixed word list. The first probe batteries found 4 misses (fixed); the second (14 negatives, 8 positives) found 0 false supports and 1 over-refusal (fixed). Both batteries are now regression fixtures, so they are no longer held-out evidence.
 * **Over-refusal is the price of fail-closed.** A question that names a Qatar site and asks anything the corpus only answers with US-FL/SA/Mediterranean text returns `INSUFFICIENT_EVIDENCE` plus `transfer_context`, even for a conceptual question the IFAS principle would answer.
 * The lexical gate is a term-coverage heuristic, not semantic matching. The shared-words negative (nitrogen fertilizer for greenhouse tomato) is rejected with best coverage 0.33 (2 of 6 terms; it is also rejected by the 0.5 "relaxed" strategy), but loosening the threshold is not safe in general: the relaxed strategy returned 5 passages and a spurious conflict for the pad-equation question, so it is opt-in (`--max-retrieval-attempts 2`) and locked in a test. No embeddings were added: no defined retrieval test failed in a way embeddings would fix, and the corpus is 8 chunks.
