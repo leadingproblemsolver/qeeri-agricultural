@@ -91,7 +91,7 @@ def main(argv=None):
                          top_k=a.top_k, receipts_dir=a.receipts_dir)
         prov = get_provider(a.provider, **({"model": a.model} if a.provider == "claude" else {}))
         r = run_question(con, a.question, inputs, _filters(a), prov, cfg); _out(r)
-        return 0 if r["status"] == "SUPPORTED_CANDIDATE" else 2
+        return 0 if r["status"] == "CITATION_CHECK_PASSED_REVIEW_PENDING" else 2
     if a.cmd == "evaluate":
         r = run_eval(con, a.questions, a.out, model=a.model, run_models=not a.no_models,
                      cfg=LoopConfig(receipts_dir=str(Path(a.receipts_dir) / "eval_receipts")))

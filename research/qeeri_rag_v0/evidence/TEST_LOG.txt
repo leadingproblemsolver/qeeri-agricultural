@@ -1,3 +1,4 @@
+test_exit_codes_distinguish_answer_abstention_and_integrity (test_cli_exit_codes.CliExitCodes.test_exit_codes_distinguish_answer_abstention_and_integrity) ... ok
 test_no_page_number_invented_for_packet_chunks (test_hostile.T01_ExactRelevantRetrieval.test_no_page_number_invented_for_packet_chunks) ... ok
 test_top_hit_is_gold_chunk_with_full_provenance (test_hostile.T01_ExactRelevantRetrieval.test_top_hit_is_gold_chunk_with_full_provenance) ... ok
 test_loop_returns_no_claims (test_hostile.T02_SemanticallySimilarButIrrelevant.test_loop_returns_no_claims) ... ok
@@ -60,8 +61,10 @@ test_retrieval_is_deterministic_and_read_only (test_probe_battery.CodeLevelInvar
 test_source_paths_cannot_escape_the_permitted_root (test_probe_battery.CodeLevelInvariants.test_source_paths_cannot_escape_the_permitted_root) ... ok
 test_spelled_out_numbers_not_in_the_passage_are_unsupported (test_probe_battery.CodeLevelInvariants.test_spelled_out_numbers_not_in_the_passage_are_unsupported) ... ok
 test_zero_tool_budget_means_zero_tool_calls_even_when_refusing (test_probe_battery.CodeLevelInvariants.test_zero_tool_budget_means_zero_tool_calls_even_when_refusing) ... ok
-test_a_real_citation_does_not_prove_entailment (test_probe_battery.KnownLimitationPinned.test_a_real_citation_does_not_prove_entailment)
-DOCUMENTED LIMIT, not a fix: a claim that CONTRADICTS its cited chunk but contains no numbers passes the ... ok
+test_explicit_single_sensor_contradiction_is_rejected (test_probe_battery.KnownLimitationPinned.test_explicit_single_sensor_contradiction_is_rejected)
+Narrow observed contradiction is rejected; general entailment remains untested and human review mandatory. ... ok
+test_negative_single_sensor_claim_is_not_false_flagged (test_probe_battery.KnownLimitationPinned.test_negative_single_sensor_claim_is_not_false_flagged) ... ok
+test_unrelated_sensor_claim_is_not_false_flagged (test_probe_battery.KnownLimitationPinned.test_unrelated_sensor_claim_is_not_false_flagged) ... ok
 test_general_principle_never_supports_a_question_naming_a_site (test_probe_battery.NegativesNeverSupported.test_general_principle_never_supports_a_question_naming_a_site) ... ok
 test_none_is_supported_candidate (test_probe_battery.NegativesNeverSupported.test_none_is_supported_candidate) ... ok
 test_no_over_refusal_on_legitimate_source_questions (test_probe_battery.PositivesStillAnswered.test_no_over_refusal_on_legitimate_source_questions) ... ok
@@ -73,6 +76,6 @@ test_relaxed_strategy_is_less_precise_which_is_why_it_is_not_the_default (test_r
 test_site_value_question_names_the_missing_measurement (test_regressions.Regressions.test_site_value_question_names_the_missing_measurement) ... ok
 
 ----------------------------------------------------------------------
-Ran 72 tests in 3.606s
+Ran 75 tests in 3.567s
 
 OK

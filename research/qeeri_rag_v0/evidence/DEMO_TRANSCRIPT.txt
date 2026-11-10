@@ -11,23 +11,23 @@
 == 2. ASK (extractive provider, no model)
 
 [ANSWERABLE] What is the pad outlet temperature equation for fan and pad cooling?
-  -> SUPPORTED_CANDIDATE
-     ANS-5114a5bf64-C01 SUPPORTED_CANDIDATE: Verbatim source excerpt (12 words): **"Wet bulb temperature is the lowest temperature that can be reached"** [...
+  -> CITATION_CHECK_PASSED_REVIEW_PENDING
+     ANS-90580985bb-C01 CITATION_CHECK_PASSED_REVIEW_PENDING: Verbatim source excerpt (12 words): **"Wet bulb temperature is the lowest temperature that can be reached"** [...
         cite IFAS_AE069#S01@f506726e5fd4  hash=f506726e5fd4  section='Evaporative Cooling / Systems Efficiency' page=None
         source https://ask.ifas.ufl.edu/publication/AE069  scope: source jurisdiction(s): US-FL; NOT Qatar-site evidence
 
 [ANSWERABLE] How much cooling water did the Riyadh Venlo tomato greenhouse use per m2?
-  -> SUPPORTED_CANDIDATE
-     ANS-a3d9ff28eb-C01 SUPPORTED_CANDIDATE: In a measured tomato trial in a pad-and-fan cooled glass Venlo greenhouse in Riyadh (cultivation 24 Feb to 23 ...
+  -> CITATION_CHECK_PASSED_REVIEW_PENDING
+     ANS-c67bbed46d-C01 CITATION_CHECK_PASSED_REVIEW_PENDING: In a measured tomato trial in a pad-and-fan cooled glass Venlo greenhouse in Riyadh (cultivation 24 Feb to 23 ...
         cite S7_TSAFARAS_2021#L06@44e145120b1f  hash=44e145120b1f  section='3.3 Water use' page=6
         source https://edepot.wur.nl/543860  scope: source jurisdiction(s): SA; NOT Qatar-site evidence
-     ANS-a3d9ff28eb-C02 SUPPORTED_CANDIDATE: The Riyadh glass Venlo greenhouse was 40 m x 12 m (432 m2 growing area) with a pad wall 12 m x 3 m x 15 cm and...
+     ANS-c67bbed46d-C02 CITATION_CHECK_PASSED_REVIEW_PENDING: The Riyadh glass Venlo greenhouse was 40 m x 12 m (432 m2 growing area) with a pad wall 12 m x 3 m x 15 cm and...
         cite S7_TSAFARAS_2021#L07@b539a3c77664  hash=b539a3c77664  section='2.1.1 Greenhouses and climate control equipment' page=2
         source https://edepot.wur.nl/543860  scope: source jurisdiction(s): SA; NOT Qatar-site evidence
 
 [ANSWERABLE] Does KAHRAMAA require approval of electrical installation design?
-  -> SUPPORTED_CANDIDATE
-     ANS-dca9756353-C01 SUPPORTED_CANDIDATE: In the KAHRAMAA Low Voltage Electricity Wiring Code (2016 Issue 0), the design of an electrical installation m...
+  -> CITATION_CHECK_PASSED_REVIEW_PENDING
+     ANS-fffc42f622-C01 CITATION_CHECK_PASSED_REVIEW_PENDING: In the KAHRAMAA Low Voltage Electricity Wiring Code (2016 Issue 0), the design of an electrical installation m...
         cite S6_KAHRAMAA_LVWC#L10@8b2d6c051ec2  hash=8b2d6c051ec2  section='Clause 1.5 Approval of electrical installations; Clause 1.7 Licensed contractors; Clause 3.1' page=6, 7, 15 of 91
         source https://km.qa/CustomerService/ServiceRegulations/ELECTRICTY%20WIRING%20CODE%202018.pdf  scope: source jurisdiction(s): QA
 

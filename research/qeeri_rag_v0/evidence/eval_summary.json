@@ -12,8 +12,8 @@
     "correct_abstention_rate": 1.0,
     "citation_resolution_rate": 1.0,
     "answered_with_citation_coverage": 1.0,
-    "latency_ms_median": 0.99,
-    "latency_ms_max": 3.83
+    "latency_ms_median": 0.87,
+    "latency_ms_max": 3.34
   },
   "model_arms": {
     "A": "NOT_EXECUTED",

@@ -1,7 +1,7 @@
 {
   "set_id": "QEERI-RAG-V0-GOLD-SMALL",
   "label": "ENGINEER_AUTHORED_SMALL_GOLD_SET. Written by the implementing engineer from the ingested chunks. NOT independently reviewed, NOT a benchmark, no claim of generalisation. Human claim-level correctness is PENDING_REVIEW for every item.",
-  "expected_outcomes": {"ANSWER": "loop returns SUPPORTED_CANDIDATE citing at least one gold chunk", "ABSTAIN": "loop returns INSUFFICIENT_EVIDENCE (or refusal) and cites nothing"},
+  "expected_outcomes": {"ANSWER": "loop returns CITATION_CHECK_PASSED_REVIEW_PENDING citing at least one gold chunk", "ABSTAIN": "loop returns INSUFFICIENT_EVIDENCE (or refusal) and cites nothing"},
   "questions": [
     {"id": "P01", "type": "POSITIVE", "question": "What is the pad outlet temperature equation for fan and pad cooling?", "expected": "ANSWER", "gold_chunks": ["IFAS_AE069#S01"]},
     {"id": "P02", "type": "POSITIVE", "question": "Does a single temperature sensor show spatial uniformity in the greenhouse?", "expected": "ANSWER", "gold_chunks": ["IFAS_AE069#S03"]},
