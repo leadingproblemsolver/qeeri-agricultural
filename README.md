@@ -1,37 +1,69 @@
-# QEERI Agricultural LLM Evaluation — private research workspace
+# QEERI agricultural research — what works, what is missing
 
-**Status (2026-10-28):** research setup prepared; 50 questions × 4 models / 200 proposed runs; **0 accepted controlled results**. Existing model answers are **exploratory** and must never be relabeled controlled. This repository is private and must remain private.
+**Purpose:** Evaluate whether existing AI can make defensible agricultural statements relevant to Qatar, using sources, physical checks, independently scored answers and explicit uncertainty. Soil remote sensing and farm feasibility are related research aims, **not finished products**.
 
-## Start here
+**Current scientific result: NONE independently established for the new greenhouse/RAG comparison.**
 
-The verified local source package is **QEERI_runtime_repaired_2026-10-28.zip**, supplied in the ChatGPT conversation. It contains 75 entries including code, tests, run logs, protocols, source-derived question data, and restricted response evidence. Keep it locally; the ZIP has not been uploaded to this GitHub repository.
+### Start here
 
-Extract the ZIP, enter its `QEERI/` directory, then run:
+| Need | Open |
+|---|---|
+| First reproducible example | [Cooling case: one equation, two synthetic inputs, tests and limitations](research/greenhouse_llm_feasibility/scientific_case_v0/README.md) |
+| Source truth and dataset blockers | [Source and data reality](research/greenhouse_llm_feasibility/SOURCE_AND_DATA_REALITY.md) |
+| Existing greenhouse research protocol | [Research protocol](research/greenhouse_llm_feasibility/PROTOCOL_V0_response.md) |
+| Detailed source-coverage audit | [RAG branch audit](research/qeeri_rag_v0/RESEARCH_SOURCE_COVERAGE_AUDIT_2026-11-10.md) |
+| Existing RAG software | [Prototype README](research/qeeri_rag_v0/README.md) |
+| Original QEERI work-to-proof inventory | [Work mapping](02_QEERI_WORK_TO_PROOF_MAPPING.md) |
+
+### The four research goals — current reality
+
+| Goal | Reality | What has to happen |
+|---|---|---|
+| **Soil salinity and moisture** from UAV and Sentinel-2 | No verified paired Qatari lab ground-truth samples in this repository; real training/validation is blocked | Obtain authorized samples with dates/depths/location and matched imagery; spatial holdout before model comparison |
+| **Agricultural LLM reliability** — 50 questions, 4 models | Existing materials describe 200 planned runs, but accepted comparable controlled results have not been established | Freeze actual question bank/reference answers, run isolated sessions, retain raw outputs and independent scoring |
+| **Qatar greenhouse feasibility** | One Al-Shahaniya reference case and a small **synthetic** pad-exit calculator; no site measurements or approved design | Verify original papers, Qatar weather, physical assumptions, crop-zone variables, and an independent answer key |
+| **Evidence-grounded assistance/RAG** | Local SQLite/FTS5 prototype and 74 passing software tests from Nov 10; model A/B/C generation arms unexecuted | Show that the verified fixed-source packet actually improves an answer, then compare retrieval only if necessary |
+
+### Exactly what the cooling example proves
+
+Given **assumed** air temperature, wet-bulb temperature and pad effectiveness, a transparent equation yields pad-exit air temperature:
+
+- 40°C / 20°C / 85% → **23.0°C**.
+- 45°C / 31°C / 85% → **33.1°C**.
+
+This **does not** establish crop-zone temperature, local Qatar summer weather, safe tomato pollination, equipment sizing or harvest outcomes. The uploaded November 9 QMD weather claim was *not* independently verified and was *not* used in calculations.
+
+Run the example (Python stdlib only):
 
 ```bash
-python3 -m unittest discover -s tests -v
-python3 tools/qeeri.py status
-python3 tools/qeeri.py next
-python3 tools/qeeri.py audit-exploratory
+cd research/greenhouse_llm_feasibility/scientific_case_v0
+python evaluate.py
+python -m unittest discover -s . -p 'test_*.py' -v
 ```
 
-Main local paths:
-- `tools/qeeri.py` — CLI evidence recorder and audit
-- `tools/score_agreement.py` — scoring utilities
-- `03_runs/EXPLORATORY_MANUAL_WORKFLOW.md` — how to import earlier incomplete answers without inventing timestamps
-- `03_runs/RUN_INSTRUCTIONS.md` — controlled-session protocol
-- `03_runs/run_log_200.csv` — 200 pending controlled observations
-- `03_runs/exploratory_RESTRICTED/` — **local-only** raw exploratory responses
-- `tests/test_integrity.py` — integrity tests
+The supplied example passed **5/5 local unit tests** on November 10, 2026. The existing RAG software passed **74/74 unit tests** in [GitHub Actions](https://github.com/leadingproblemsolver/qeeri-agricultural/actions/runs/42787690162). Neither test count is scientific validation.
 
-## Evidence boundaries
+### Research integrity: claims currently **NOT proven**
 
-Do not infer UI model/version labels, session isolation or original timestamps retrospectively. Local import time is not experiment start time. A correct scientific answer is not proof of a valid controlled run. No comparative rankings until the full batch has been audited and reference answers reviewed.
+A pasted analysis claims baseline AI scored 20%, sourced AI scored 100%, four models consistently made crop-killing recommendations, a universal 28°C crop threshold, and a verified Qatar summer wet-bulb range. **We do not have sufficient auditable raw responses, independent scores or measurements to support these as findings.** Do not cite those percentages as results.
 
-## Files deliberately excluded from GitHub
+A newly uploaded Mahmood source record labels its text verified, but the earlier repo ledger says abstract-only. Resolve that disagreement against the original document and store its exact source locators, not the YAML status label. FAO is listed as excluded in the new candidate corpus package, but the current RAG implementation still indexes FAO: **code-level exclusion is not yet done**.
 
-The original textbook, restricted question-bank extracts, raw model responses, intern/admin records, private correspondence, and unpublished QEERI research documents should remain in the private local archive pending institutional data-handling clearance.
+AI can produce adversarial scientific questions; AI cannot grant itself an independent expert-review signature.
 
-## Current development state
+### What happens next (one actual research milestone)
 
-This is an **initial repository entry-point commit**, not a claim that the full executable project is uploaded. The canonical working copy remains the locally verified ZIP. A subsequent code-only commit is required to make the CLI runnable from GitHub alone.
+**Lock one source-checked, physically falsifiable greenhouse question and its reference answer before re-running models.** Verify the primary article and enough weather/equipment inputs for *that question*. Preserve the A (no documents) and B (fixed verified passages) raw responses under identical model configuration. Independently score claim accuracy, appropriate abstention and source support. Do not build more retrieval infrastructure before comparing B against A.
+
+**Current next external action:** obtain exact primary-paper passages or documented access denial and request technical review of the fixed case. If original data is missing, return **BLOCKED** and the specific acquisition requirement.
+
+### Safety and publication scope
+
+- This GitHub repository is currently **PUBLIC** according to the GitHub API (November 10, 2026). Older README text calling it private was stale. **Do not upload** restricted textbooks, unpublished QEERI information, private research correspondence, raw confidential model logs, lab data without rights, or UDST SCSC participant/IRB materials.
+- Files committed in `scientific_case_v0/` contain only synthetic scenarios, source links, code and explicit unverified input labels.
+- The uploaded `qeeri_rag_corpus_package.zip` was reviewed as **candidate** reference information, not merged into the RAG index. No source was newly marked human-verified or licensed for public redistribution.
+- PR #2 is still a draft and was not merged.
+
+### Historical background
+
+An earlier, incomplete local evidence archive is described in the original README revision and [work mapping](02_QEERI_WORK_TO_PROOF_MAPPING.md). Claims about its contents should be confirmed against the actual archive, not reconstructed from branch summaries.
