@@ -43,7 +43,7 @@ class NegativesNeverSupported(unittest.TestCase):
     def test_none_is_supported_candidate(self):
         for q in self.Q:
             r = ask(q)
-            self.assertNotEqual(r["status"], "SUPPORTED_CANDIDATE", q)
+            self.assertNotEqual(r["status"], "CITATION_CHECK_PASSED_REVIEW_PENDING", q)
             self.assertEqual(r["claims"], [], q)
 
     def test_general_principle_never_supports_a_question_naming_a_site(self):
@@ -66,7 +66,7 @@ class PositivesStillAnswered(unittest.TestCase):
         for q, gold in self.P:
             r = ask(q)
             cited = {x["chunk_id"].split("@")[0] for c in r["claims"] for x in c["citations"]}
-            self.assertEqual(r["status"], "SUPPORTED_CANDIDATE", q)
+            self.assertEqual(r["status"], "CITATION_CHECK_PASSED_REVIEW_PENDING", q)
             self.assertIn(gold, cited, q)
 
 
@@ -160,12 +160,14 @@ class ProvenanceFields(unittest.TestCase):
 class KnownLimitationPinned(unittest.TestCase):
     def test_a_real_citation_does_not_prove_entailment(self):
         """DOCUMENTED LIMIT, not a fix: a claim that CONTRADICTS its cited chunk but contains no numbers passes the
-        deterministic checks as SUPPORTED_CANDIDATE. Only the PENDING_REVIEW human gate can catch it."""
+        deterministic checks as CITATION_CHECK_PASSED_REVIEW_PENDING. Only the PENDING_REVIEW human gate can catch it."""
         con = real_index()
         chunk = retrieve(con, "Does a single temperature sensor show spatial uniformity in the greenhouse?")["passages"][0]
         out = validate_claims(con, [{"text": "A single temperature sensor is sufficient to verify spatial uniformity of the greenhouse.",
                                      "chunk_ids": [chunk["chunk_id"]]}], [chunk])
-        self.assertEqual(out[0]["status"], "SUPPORTED_CANDIDATE")  # if this ever flips, update README 'Known limitations'
+        self.assertEqual(out[0]["status"], "CITATION_CHECK_PASSED_REVIEW_PENDING")
+        self.assertEqual(out[0]["semantic_entailment"], "NOT_EVALUATED")
+        self.assertEqual(out[0]["scientific_validation"], "NOT_EVALUATED")  # if this ever flips, update README 'Known limitations'
         payload = json.dumps({"abstain": False, "claims": [{"text": out[0]["text"], "chunk_ids": [chunk["chunk_id"]]}], "uncertainty": "", "missing": []})
         with FakeAnthropic(payload) as fake, tmpdir_ctx() as t:
             res = run_question(con, "Does a single temperature sensor show spatial uniformity in the greenhouse?",
