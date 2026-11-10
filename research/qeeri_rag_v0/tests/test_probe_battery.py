@@ -158,14 +158,14 @@ class ProvenanceFields(unittest.TestCase):
 
 
 class KnownLimitationPinned(unittest.TestCase):
-    def test_a_real_citation_does_not_prove_entailment(self):
-        """DOCUMENTED LIMIT, not a fix: a claim that CONTRADICTS its cited chunk but contains no numbers passes the
-        deterministic checks as CITATION_CHECK_PASSED_REVIEW_PENDING. Only the PENDING_REVIEW human gate can catch it."""
+    def test_explicit_single_sensor_contradiction_is_rejected(self):
+        """Narrow observed contradiction is rejected; general entailment remains untested and human review mandatory."""
         con = real_index()
         chunk = retrieve(con, "Does a single temperature sensor show spatial uniformity in the greenhouse?")["passages"][0]
         out = validate_claims(con, [{"text": "A single temperature sensor is sufficient to verify spatial uniformity of the greenhouse.",
                                      "chunk_ids": [chunk["chunk_id"]]}], [chunk])
-        self.assertEqual(out[0]["status"], "CITATION_CHECK_PASSED_REVIEW_PENDING")
+        self.assertEqual(out[0]["status"], "UNSUPPORTED")
+        self.assertIn("EXPLICIT_SOURCE_CONTRADICTION:SINGLE_SENSOR_UNIFORMITY", out[0]["failure_reasons"])
         self.assertEqual(out[0]["semantic_entailment"], "NOT_EVALUATED")
         self.assertEqual(out[0]["scientific_validation"], "NOT_EVALUATED")  # if this ever flips, update README 'Known limitations'
         payload = json.dumps({"abstain": False, "claims": [{"text": out[0]["text"], "chunk_ids": [chunk["chunk_id"]]}], "uncertainty": "", "missing": []})
@@ -175,6 +175,21 @@ class KnownLimitationPinned(unittest.TestCase):
             queue = (t / "review_queue.jsonl").read_text()
         self.assertEqual(res["claims"][0]["human_review"], "PENDING_REVIEW")
         self.assertIn("PENDING_REVIEW", queue)
+
+    def test_negative_single_sensor_claim_is_not_false_flagged(self):
+        con = real_index()
+        chunk = retrieve(con, "Does a single temperature sensor show spatial uniformity in the greenhouse?")["passages"][0]
+        out = validate_claims(con, [{"text": "A single temperature sensor is not sufficient to verify spatial uniformity.",
+                                     "chunk_ids": [chunk["chunk_id"]]}], [chunk])
+        self.assertNotIn("EXPLICIT_SOURCE_CONTRADICTION:SINGLE_SENSOR_UNIFORMITY", out[0]["failure_reasons"])
+        self.assertEqual(out[0]["semantic_entailment"], "NOT_EVALUATED")
+
+    def test_unrelated_sensor_claim_is_not_false_flagged(self):
+        con = real_index()
+        chunk = retrieve(con, "Does a single temperature sensor show spatial uniformity in the greenhouse?")["passages"][0]
+        out = validate_claims(con, [{"text": "Greenhouse controls and temperature sensors are relevant to monitoring.",
+                                     "chunk_ids": [chunk["chunk_id"]]}], [chunk])
+        self.assertNotIn("EXPLICIT_SOURCE_CONTRADICTION:SINGLE_SENSOR_UNIFORMITY", out[0]["failure_reasons"])
 
 
 if __name__ == "__main__":
