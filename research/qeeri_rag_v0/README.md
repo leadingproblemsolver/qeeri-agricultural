@@ -95,7 +95,7 @@ Runtime receipts (`runs/receipts.jsonl`, `runs/review_queue.jsonl`) are SHA-256 
 
 ## Known limitations (observed)
 
-* **A real citation does not prove entailment.** Deterministic checks verify that cited chunks exist, hash-resolve, were retrieved, and that every number appears in them. They cannot tell whether the claim *agrees* with the passage: a claim that contradicts its cited chunk but contains no digits (e.g. "a single sensor is sufficient to verify uniformity" against a passage saying the opposite) is `CITATION_CHECK_PASSED_REVIEW_PENDING`. This is pinned by `KnownLimitationPinned` in `tests/test_probe_battery.py`. Only the `PENDING_REVIEW` human gate closes it. In extractive mode the claim *is* the passage text, so this does not arise there.
+* **A real citation does not prove entailment.** Citation and number checks cannot establish that a claim agrees with its source. The observed *single sensor is sufficient to verify uniformity* contradiction is now specifically rejected with `EXPLICIT_SOURCE_CONTRADICTION:SINGLE_SENSOR_UNIFORMITY` when the cited passage explicitly denies that inference. This is a **narrow domain-specific guard, not general entailment verification**. Other contradictory claims can still reach `CITATION_CHECK_PASSED_REVIEW_PENDING` and require independent human adjudication. `tests/test_probe_battery.py` pins both the rejection and two non-contradiction controls. In extractive mode a claim is the chunk's own text, but whether that text answers the question or is scientifically valid remains unverified.
 * **Intent and place detection are keyword/regex heuristics** (sizing categories, quantity-seeking phrases, a jurisdiction gazetteer in `retrieve.py`). They fail closed on every case tried (30 paraphrases across two probe batteries) but: places not in the gazetteer are undetected (a question about a country not listed is answered from whatever the corpus holds, labelled with its real jurisdiction and "NOT Qatar-site evidence"); non-English questions are unsupported; spelled-out numbers are only checked against a fixed word list. The first probe batteries found 4 misses (fixed); the second (14 negatives, 8 positives) found 0 false supports and 1 over-refusal (fixed). Both batteries are now regression fixtures, so they are no longer held-out evidence.
 * **Over-refusal is the price of fail-closed.** A question that names a Qatar site and asks anything the corpus only answers with US-FL/SA/Mediterranean text returns `INSUFFICIENT_EVIDENCE` plus `transfer_context`, even for a conceptual question the IFAS principle would answer.
 * The lexical gate is a term-coverage heuristic, not semantic matching. The shared-words negative (nitrogen fertilizer for greenhouse tomato) is rejected with best coverage 0.33 (2 of 6 terms; it is also rejected by the 0.5 "relaxed" strategy), but loosening the threshold is not safe in general: the relaxed strategy returned 5 passages and a spurious conflict for the pad-equation question, so it is opt-in (`--max-retrieval-attempts 2`) and locked in a test. No embeddings were added: no defined retrieval test failed in a way embeddings would fix, and the corpus is 8 chunks.
@@ -103,6 +103,17 @@ Runtime receipts (`runs/receipts.jsonl`, `runs/review_queue.jsonl`) are SHA-256 
 * Curator-assigned fields (`reuse_status`, `applicability_class`, `topics`, quantity ranges, aliases) were set by the implementer in `corpus/allowlist.json`. `LOCAL_ONLY` is a conservative label, **not** a legal permission determination.
 * Receipts are tamper-evident against ordinary edits only; deleting or replacing the whole log is undetectable. Single writer, no locking.
 * Generation via the real Claude API has never been run in this environment; `tests/` exercise the request/response plumbing against a local fake server whose canned text is not a model result.
+
+## Four-layer implementation mapping (no new architecture)
+
+| Layer | Existing implementation | Current boundary / next proof |
+|---|---|---|
+| 1. Reliable evidence ingestion | `corpus/allowlist.json` → `store.ingest` → hashed source/chunk records in SQLite | Only 8 eligible chunks; independent verification and permission to reuse remain unconfirmed. |
+| 2. Deterministic correctness | `guards.py` for source/citation/numeric/sizing checks; retrieval rejects irrelevant, cross-jurisdiction and conflicting records | Known single-sensor contradiction now rejected by a narrow explicit rule; no general unit-aware physical model or semantic entailment engine. |
+| 3. Evidence-grounded AI | `retrieve.py` + `loop.py`; extractive no-model answer and optional Claude adapter | Model A/B/C API arms not executed; no measured improvement from retrieval versus a fixed source packet. |
+| 4. Auditable decisions | `receipts.jsonl`, `review_queue.jsonl`, `verify`, human-review state | No independent expert claim review. No approval to use outputs for greenhouse installation. |
+
+**Next evidence event:** execute the complete local test suite on this PR branch, inspect the contradiction regression and the negative controls, then obtain an independent reviewer decision on one real claim/source pair. Do **not** add embeddings, GraphQL, another agent or a scientific-validity label until a real failure demonstrates need.
 
 ## Layout
 
