@@ -101,10 +101,10 @@ def _numbers(text):
 # Narrow, source-conditioned safety rule. This is NOT general semantic entailment.
 # It catches the observed failure: an affirmative single-sensor uniformity claim
 # against a passage explicitly saying one reading cannot establish uniformity.
-_SINGLE_READING = re.compile(r"\\b(?:single|one|only one)\\b.{0,45}\\b(?:sensor|reading|measurement)\\b", re.I | re.S)
-_AFFIRM_UNIFORMITY = re.compile(r"\\b(?:sufficient|enough|can|able|establish(?:es)?|verif(?:y|ies)|prov(?:e|es)|demonstrat(?:e|es))\\b.{0,90}\\b(?:spatial\\s+)?uniformity\\b", re.I | re.S)
-_NEGATED_CLAIM = re.compile(r"\\b(?:no|not|cannot|can't|never|insufficient)\\b", re.I)
-_SOURCE_DENIES_SINGLE_READING = re.compile(r"\\b(?:does\\s+not\\s+establish|cannot\\s+(?:establish|verify|prove)|not\\s+sufficient|requires?\\s+(?:representative\\s+)?multi[- ]location)\\b", re.I)
+_SINGLE_READING = re.compile(r"\b(?:single|one|only one)\b.{0,45}\b(?:sensor|reading|measurement)\b", re.I | re.S)
+_AFFIRM_UNIFORMITY = re.compile(r"\b(?:sufficient|enough|can|able|establish(?:es)?|verif(?:y|ies)|prov(?:e|es)|demonstrat(?:e|es))\b.{0,90}\b(?:spatial\s+)?uniformity\b", re.I | re.S)
+_NEGATED_CLAIM = re.compile(r"\b(?:no|not|cannot|can't|never|insufficient)\b", re.I)
+_SOURCE_DENIES_SINGLE_READING = re.compile(r"\b(?:does\s+not\s+establish|cannot\s+(?:establish|verify|prove)|not\s+sufficient|requires?\s+(?:representative\s+)?multi[- ]location)\b", re.I)
 
 
 def _explicit_single_sensor_contradiction(claim, cited_passages):
