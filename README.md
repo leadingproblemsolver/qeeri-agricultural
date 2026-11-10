@@ -1,3 +1,22 @@
+# QEERI Agricultural Research — evidence-first status (2026-11-10)
+
+**Research objective:** Assess Qatar-grounded agricultural AI reliability, soil remote sensing, preliminary greenhouse feasibility and evidence-linked decision support. These are connected research workstreams, not four finished products.
+
+**Read first:**
+- [Complete dated research journey and evidence audit](research/greenhouse_llm_feasibility/JOURNEY_AND_STATUS_2026-11-10.md)
+- [Next executable experiment: RC04 crop-zone abstention](research/greenhouse_llm_feasibility/RC04_CROP_ZONE_ABSTENTION.md)
+- [Exact QMD / ERA5 / synthetic weather input decisions](research/greenhouse_llm_feasibility/WEATHER_INPUT_ACQUISITION.md)
+- [Original 11-subsystem greenhouse protocol](research/greenhouse_llm_feasibility/PROTOCOL_V0_response.md)
+- [Original Test A initial claim checks](research/greenhouse_llm_feasibility/TEST_A_001_INITIAL_CLAIM_REVIEW.md)
+
+**Reality:** RC01 synthetic pad-outlet arithmetic **26.1 C** is correct, but it does **not** prove a safe canopy temperature or that RAG helps. RC01's Gemini A/B/C descriptions conflict and do not establish a matched controlled retrieval comparison. RC04 has a draft pre-registered answer key; its controlled comparison is **NOT EXECUTED**. QMD/ERA5 records are **not yet acquired**. Soil model training remains **DATA_BLOCKED** pending matched laboratory measurements. Software tests are not scientific validation. Supervisor review remains pending.
+
+**Next action:** Verify and freeze one passage-located, permission-cleared source packet for RC04, then run the **identical question and settings** in isolated A (no packet) and B (packet) sessions, preserving unedited outputs. Do not build additional RAG infrastructure.
+
+---
+
+## Earlier repository README (historical, dated 2026-10-28)
+
 # QEERI Agricultural LLM Evaluation — private research workspace
 
 **Status (2026-10-28):** research setup prepared; 50 questions × 4 models / 200 proposed runs; **0 accepted controlled results**. Existing model answers are **exploratory** and must never be relabeled controlled. This repository is private and must remain private.
