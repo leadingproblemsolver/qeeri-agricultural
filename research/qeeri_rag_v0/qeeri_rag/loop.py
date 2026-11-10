@@ -219,14 +219,18 @@ def _finish(con, result, t0, cfg, status, reason):
            "reason": reason, "provider": result["loop"]["provider"], "provider_status": result["provider_status"],
            "index_snapshot_sha256": result["loop"]["index_snapshot_sha256"],
            "claims": [{"claim_id": c["claim_id"], "status": c["status"], "chunk_ids": c["chunk_ids"],
-                       "failure_reasons": c["failure_reasons"]} for c in result["claims"]],
+                       "failure_reasons": c["failure_reasons"],
+                       "semantic_entailment": c["semantic_entailment"],
+                       "scientific_validation": c["scientific_validation"],
+                       "human_review": c["human_review"]} for c in result["claims"]],
            "retrieval_attempts": result["loop"]["retrieval_attempts"], "tool_calls": result["loop"]["tool_calls"],
            "conflicts": [c["chunk_ids"] for c in result["conflicts"]], "latency_ms": result["loop"]["latency_ms"]}
     result["receipt_sha256"] = _append_chained(rdir / "receipts.jsonl", rec)
     for c in result["claims"]:  # every claim, supported or not, is queued; none is human-verified
         _append_chained(rdir / "review_queue.jsonl", {
             "ts": now_utc(), "claim_id": c["claim_id"], "answer_id": result["answer_id"], "claim_status": c["status"],
-            "chunk_ids": c["chunk_ids"], "review_state": "PENDING_REVIEW",
+            "chunk_ids": c["chunk_ids"], "semantic_entailment": c["semantic_entailment"],
+            "scientific_validation": c["scientific_validation"], "review_state": "PENDING_REVIEW",
             "priority": "HIGH" if c["status"] == "UNSUPPORTED" or result["conflicts"] else "NORMAL",
             "reviewer": None, "independent_review_record": None})
     return result
