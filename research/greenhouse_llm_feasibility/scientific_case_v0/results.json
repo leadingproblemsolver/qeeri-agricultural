@@ -1,0 +1,42 @@
+{
+  "case_id": "QEERI-COOLING-LOGIC-001",
+  "results": [
+    {
+      "scenario_id": "GOOGLE_EXAMPLE_40_20",
+      "input_evidence_state": "HYPOTHETICAL_NOT_SITE_MEASURED",
+      "pad_outlet_temperature_C": 23,
+      "pad_outlet_at_or_below_example_target": true,
+      "wet_bulb_lower_bound_C": 20,
+      "crop_zone_temperature_C": null,
+      "crop_safety_status": "NOT_ASSESSABLE",
+      "construction_ready": false,
+      "scientific_evidence_status": "MODEL_BASED_CALCULATION_ON_SYNTHETIC_INPUTS",
+      "reason": "Pad exit is not crop-zone temperature; environmental and equipment validation inputs missing."
+    },
+    {
+      "scenario_id": "SUMMER_STRESS_SYNTHETIC",
+      "input_evidence_state": "HYPOTHETICAL_NOT_SITE_MEASURED",
+      "pad_outlet_temperature_C": 33.1,
+      "pad_outlet_at_or_below_example_target": false,
+      "wet_bulb_lower_bound_C": 31,
+      "crop_zone_temperature_C": null,
+      "crop_safety_status": "NOT_ASSESSABLE",
+      "construction_ready": false,
+      "scientific_evidence_status": "MODEL_BASED_CALCULATION_ON_SYNTHETIC_INPUTS",
+      "reason": "Pad exit is not crop-zone temperature; environmental and equipment validation inputs missing."
+    }
+  ],
+  "weather_record_used": false,
+  "review_state": "PENDING_INDEPENDENT_REVIEW",
+  "missing_for_crop_zone_decision": [
+    "verified_site_and_representative_hourly_summer_weather",
+    "measured_or_validated_pad_effectiveness_at_operating_face_velocity",
+    "greenhouse_geometry_and_cover_radiation_properties",
+    "airflow_and_leakage_distribution",
+    "solar_radiation_and_shading",
+    "crop_transpiration_and_humidity_balance",
+    "measured_or_validated_crop_zone_air_and_leaf_temperature",
+    "cultivar_growth_stage_and_verified_heat_stress_limits",
+    "qualified_engineering_review"
+  ]
+}
