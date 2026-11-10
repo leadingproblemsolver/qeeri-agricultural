@@ -98,6 +98,28 @@ def _numbers(text):
     return {_norm_num(n) for n in _NUM.findall(text or "")}
 
 
+# Narrow, source-conditioned safety rule. This is NOT general semantic entailment.
+# It catches the observed failure: an affirmative single-sensor uniformity claim
+# against a passage explicitly saying one reading cannot establish uniformity.
+_SINGLE_READING = re.compile(r"\\b(?:single|one|only one)\\b.{0,45}\\b(?:sensor|reading|measurement)\\b", re.I | re.S)
+_AFFIRM_UNIFORMITY = re.compile(r"\\b(?:sufficient|enough|can|able|establish(?:es)?|verif(?:y|ies)|prov(?:e|es)|demonstrat(?:e|es))\\b.{0,90}\\b(?:spatial\\s+)?uniformity\\b", re.I | re.S)
+_NEGATED_CLAIM = re.compile(r"\\b(?:no|not|cannot|can't|never|insufficient)\\b", re.I)
+_SOURCE_DENIES_SINGLE_READING = re.compile(r"\\b(?:does\\s+not\\s+establish|cannot\\s+(?:establish|verify|prove)|not\\s+sufficient|requires?\\s+(?:representative\\s+)?multi[- ]location)\\b", re.I)
+
+
+def _explicit_single_sensor_contradiction(claim, cited_passages):
+    if not (_SINGLE_READING.search(claim) and _AFFIRM_UNIFORMITY.search(claim)):
+        return False
+    if _NEGATED_CLAIM.search(claim):
+        return False  # an explicitly negative claim is not the unsafe affirmative assertion
+    for passage in cited_passages:
+        source = passage["text"]
+        if ("uniformity" in source.lower() and _SINGLE_READING.search(source)
+                and _SOURCE_DENIES_SINGLE_READING.search(source)):
+            return True
+    return False
+
+
 def validate_claims(con, claims, retrieved_passages, inputs=None):
     """claims: [{text, chunk_ids}] from a provider. Returns claims with status + reasons (never trust a model status)."""
     allowed = {p["chunk_id"]: p for p in retrieved_passages}
@@ -137,6 +159,8 @@ def validate_claims(con, claims, retrieved_passages, inputs=None):
             # a sizing figure is admissible only as a restatement: its number AND its unit/equipment word occur in a cited chunk
             if num not in chunk_nums or unit.rstrip("s") not in chunk_text:
                 reasons.append(f"UNSUPPORTED_SIZING_SPECIFICATION:{m.group(0)}")
+        if _explicit_single_sensor_contradiction(text, cited):
+            reasons.append("EXPLICIT_SOURCE_CONTRADICTION:SINGLE_SENSOR_UNIFORMITY")
         inj = scan_injection(text)
         if inj:
             reasons.append(f"INSTRUCTION_INJECTION_RESIDUE:{inj}")
