@@ -1,3 +1,5 @@
+> **Review warning (2026-11-11):** This overview and the accompanying source register are supplied working research materials, not independent confirmation that every original paper, figure, source passage or model run has been verified. Some register claims conflict with the existing repository's evidence status. Preserve those differences and resolve them from original documents before scientific use. The ten example checks are deterministic demonstrations, not ten real greenhouse performance trials.
+
 # QEERI Agricultural AI Reliability Research — Overview
 
 **Status:** Presentation-ready evidence-first demo contract; 10 register-backed checks specified and executable locally; scientific validation incomplete  
