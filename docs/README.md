@@ -10,6 +10,8 @@
 | 4 | What have we actually demonstrated? | [Results and software](04_RESULTS_AND_SOFTWARE/README.md) | [Code and test receipts](04_RESULTS_AND_SOFTWARE/technical/README.md) |
 | 5 | Who needs to decide, and how do we resume? | [Review and continuity](05_REVIEW_AND_CONTINUITY/README.md) | [Audit / handoff rules](05_REVIEW_AND_CONTINUITY/technical/README.md) |
 
+**After the scientific gates:** [Technical implementation tracks](../research/technical_tracks/README.md) and [research/industry portfolio evidence mapping](04_RESULTS_AND_SOFTWARE/technical/PORTFOLIO_PROOF_MAP.md). These are honest staged possibilities; only track 01 is the immediate scientific priority.
+
 **The current scientific state:** W1 soil remote sensing is data-blocked; W2 agricultural LLM assessment has exploratory answers but no accepted comparable 200-run result; W3 a Qatar greenhouse pilot has general physics checks and synthetic calculations, not a validated installation; W4 RAG prototype has passing **software** tests but no demonstrated experimental advantage over a verified fixed source packet.
 
 **One next research action:** confirm the specific greenhouse QA goal/crop and acceptance criteria with the QEERI mentor (the Al-Shahaniya tomato case remains a researcher-proposed candidate, not recorded mentor approval); then lock the source-checked answer key and execute a valid comparison. Other paperwork is routed separately.
