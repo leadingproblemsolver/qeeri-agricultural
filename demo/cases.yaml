@@ -1,0 +1,151 @@
+{
+  "schema": "qeeri-demo-v1",
+  "warning": "JSON is a valid YAML subset. Values are transcribed from a supplied working register, not independently re-verified originals. No live greenhouse or AI A/B data.",
+  "source_register": "research/greenhouse_llm_feasibility/master_source_register.yaml",
+  "cases": [
+    {
+      "id": "01",
+      "title": "Pad outlet temperature",
+      "kind": "pad",
+      "source": "uf_ifas_ae069",
+      "inputs": {
+        "dry_bulb_c": 38,
+        "wet_bulb_c": 24,
+        "effectiveness": 0.85
+      },
+      "expected": {
+        "outlet_c": 26.1
+      },
+      "input_type": "ILLUSTRATIVE"
+    },
+    {
+      "id": "02",
+      "title": "Do not confuse pad outlet with crop temperature",
+      "kind": "abstain_canopy",
+      "source": "uf_ifas_ae069",
+      "inputs": {
+        "pad_outlet_c": 26.1,
+        "canopy_sensor_c": null
+      },
+      "expected": {
+        "decision": "INSUFFICIENT_INFORMATION"
+      },
+      "input_type": "ILLUSTRATIVE"
+    },
+    {
+      "id": "03",
+      "title": "Reject impossible wet-bulb inputs",
+      "kind": "bad_weather",
+      "source": "uf_ifas_ae069",
+      "inputs": {
+        "dry_bulb_c": 24,
+        "wet_bulb_c": 38
+      },
+      "expected": {
+        "decision": "INVALID_INPUT"
+      },
+      "input_type": "ILLUSTRATIVE"
+    },
+    {
+      "id": "04",
+      "title": "Keep Al Khor study tied to Al Khor",
+      "kind": "scope",
+      "source": "ghani_2019_evaporative_cooled_greenhouse",
+      "inputs": {
+        "study_site": "Al Khor",
+        "requested_site": "Al Shahaniya"
+      },
+      "expected": {
+        "decision": "NOT_SITE_MEASUREMENT"
+      },
+      "input_type": "PUBLISHED_STUDY_REPORTED"
+    },
+    {
+      "id": "05",
+      "title": "20 air changes per hour scenario",
+      "kind": "reported_delta",
+      "source": "ghani_2019_evaporative_cooled_greenhouse",
+      "inputs": {
+        "air_changes_per_hour": 20
+      },
+      "expected": {
+        "temperature_difference_c": 10
+      },
+      "input_type": "PUBLISHED_CFD_REPORTED"
+    },
+    {
+      "id": "06",
+      "title": "40 air changes per hour scenario",
+      "kind": "reported_delta",
+      "source": "ghani_2019_evaporative_cooled_greenhouse",
+      "inputs": {
+        "air_changes_per_hour": 40
+      },
+      "expected": {
+        "temperature_difference_c": 5.5
+      },
+      "input_type": "PUBLISHED_CFD_REPORTED"
+    },
+    {
+      "id": "07",
+      "title": "Open-field tomato reference row",
+      "kind": "crop_row",
+      "source": "shannak_2026_qatari_crop_performance_index",
+      "inputs": {
+        "system": "OF Tomato"
+      },
+      "expected": {
+        "yield_t_dunum": 5.3,
+        "cost_qar": 7942,
+        "electricity_kwh": 1702,
+        "water_m3": 1000
+      },
+      "input_type": "PUBLISHED_STUDY_REPORTED"
+    },
+    {
+      "id": "08",
+      "title": "Cooled soil greenhouse tomato reference row",
+      "kind": "crop_row",
+      "source": "shannak_2026_qatari_crop_performance_index",
+      "inputs": {
+        "system": "GH-S Cooled Tomato"
+      },
+      "expected": {
+        "yield_t_dunum": 10.4,
+        "cost_qar": 18232,
+        "electricity_kwh": 15000,
+        "water_m3": 2000
+      },
+      "input_type": "PUBLISHED_STUDY_REPORTED"
+    },
+    {
+      "id": "09",
+      "title": "Cooled soilless greenhouse tomato reference row",
+      "kind": "crop_row",
+      "source": "shannak_2026_qatari_crop_performance_index",
+      "inputs": {
+        "system": "GH-SL Cooled Tomato"
+      },
+      "expected": {
+        "yield_t_dunum": 16,
+        "cost_qar": 27911,
+        "electricity_kwh": 27160,
+        "water_m3": 1500
+      },
+      "input_type": "PUBLISHED_STUDY_REPORTED"
+    },
+    {
+      "id": "10",
+      "title": "Abstain when precise original passage is missing",
+      "kind": "missing_source",
+      "source": "mahmood_2022_al_shahaniya",
+      "inputs": {
+        "required_passage": "design_conditions"
+      },
+      "expected": {
+        "decision": "REFERENCE_NOT_VERIFIED"
+      },
+      "input_type": "LITERATURE_LEAD"
+    }
+  ]
+}
