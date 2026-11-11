@@ -1,0 +1,215 @@
+{
+  "schema_version": "qeeri-greenhouse-demo-v1",
+  "status": "DEMONSTRATION_ONLY_PENDING_ORIGINAL_SOURCE_REVIEW",
+  "note": "Reported figures copied from user-supplied source register dated 2026-11-10; not newly verified against publishers; not Qatar site design inputs.",
+  "required_fields": [
+    "id",
+    "source_id",
+    "locator",
+    "data_class",
+    "scope",
+    "inputs",
+    "expected",
+    "check",
+    "review"
+  ],
+  "sources": {
+    "uf_ifas_ae069": {
+      "url": "https://edis.ifas.ufl.edu/publication/AE069",
+      "scope": "General pad-cooling equation; not Qatar meteorology"
+    },
+    "ghani_2019": {
+      "doi": "10.1080/23744731.2019.1634421",
+      "scope": "Al Khor study; boundary assumptions and measured pad inputs must be distinguished"
+    },
+    "shannak_2026": {
+      "doi": "10.1016/j.nexus.2026.100787",
+      "scope": "Reported Qatar crop-system comparison; independent paper/row verification pending"
+    },
+    "kahramaa_2016": {
+      "url": "https://www.km.com.qa/",
+      "scope": "Historical electrical-code excerpt; check current revision"
+    },
+    "mahmood_2022": {
+      "doi": "10.1080/01430750.2022.2088617",
+      "scope": "Al Shahaniya candidate; exact design claim passage unavailable"
+    }
+  },
+  "cases": [
+    {
+      "id": "D01",
+      "title": "Illustrative pad outlet",
+      "source_id": "uf_ifas_ae069",
+      "locator": "System Efficiency",
+      "data_class": "ILLUSTRATIVE_CALCULATION",
+      "scope": "GENERAL_PHYSICS",
+      "inputs": {
+        "dry_bulb_c": 38,
+        "wet_bulb_c": 24,
+        "pad_effectiveness": 0.85
+      },
+      "expected": {
+        "pad_outlet_c": 26.1,
+        "canopy_temperature_c": null
+      },
+      "check": "pad_equation",
+      "review": "PENDING"
+    },
+    {
+      "id": "D02",
+      "title": "Al Khor CFD outdoor boundary",
+      "source_id": "ghani_2019",
+      "locator": "p.9, numerical boundary",
+      "data_class": "MODELED_BOUNDARY_REPORTED",
+      "scope": "AL_KHOR_ONLY",
+      "inputs": {
+        "outdoor_dry_bulb_c": 47,
+        "outdoor_relative_humidity_pct": 27
+      },
+      "expected": {
+        "allow_al_shahaniya_transfer": false
+      },
+      "check": "scope",
+      "review": "PENDING"
+    },
+    {
+      "id": "D03",
+      "title": "Al Khor pad boundary",
+      "source_id": "ghani_2019",
+      "locator": "p.9, pad boundary",
+      "data_class": "MEASURED_PAD_INPUT_REPORTED",
+      "scope": "AL_KHOR_ONLY",
+      "inputs": {
+        "pad_dry_bulb_c": 34,
+        "pad_relative_humidity_pct": 70
+      },
+      "expected": {
+        "allow_al_shahaniya_transfer": false
+      },
+      "check": "scope",
+      "review": "PENDING"
+    },
+    {
+      "id": "D04",
+      "title": "20 ACH CFD temperature difference",
+      "source_id": "ghani_2019",
+      "locator": "p.15, ventilation",
+      "data_class": "MODELED_CFD_REPORTED",
+      "scope": "AL_KHOR_ONLY",
+      "inputs": {
+        "ach": 20
+      },
+      "expected": {
+        "reported_difference_c": 10
+      },
+      "check": "ventilation_quote",
+      "review": "PENDING"
+    },
+    {
+      "id": "D05",
+      "title": "40 ACH CFD temperature difference",
+      "source_id": "ghani_2019",
+      "locator": "p.15, ventilation",
+      "data_class": "MODELED_CFD_REPORTED",
+      "scope": "AL_KHOR_ONLY",
+      "inputs": {
+        "ach": 40
+      },
+      "expected": {
+        "reported_difference_c": 5.5
+      },
+      "check": "ventilation_quote",
+      "review": "PENDING"
+    },
+    {
+      "id": "D06",
+      "title": "Open-field tomato row",
+      "source_id": "shannak_2026",
+      "locator": "Tables 14–15",
+      "data_class": "REPORTED_TABLE_ROW",
+      "scope": "QATAR_STUDY_ONLY",
+      "inputs": {
+        "system": "OF Tomato"
+      },
+      "expected": {
+        "yield_t_per_dunum": 5.3,
+        "total_cost_qar": 7942,
+        "electricity_kwh": 1702,
+        "water_m3": 1000
+      },
+      "check": "reported_row",
+      "review": "PENDING"
+    },
+    {
+      "id": "D07",
+      "title": "Cooled soil greenhouse tomato row",
+      "source_id": "shannak_2026",
+      "locator": "Tables 14–15",
+      "data_class": "REPORTED_TABLE_ROW",
+      "scope": "QATAR_STUDY_ONLY",
+      "inputs": {
+        "system": "GH-S Cooled Tomato"
+      },
+      "expected": {
+        "yield_t_per_dunum": 10.4,
+        "total_cost_qar": 18232,
+        "electricity_kwh": 15000,
+        "water_m3": 2000
+      },
+      "check": "reported_row",
+      "review": "PENDING"
+    },
+    {
+      "id": "D08",
+      "title": "Cooled soilless greenhouse tomato row",
+      "source_id": "shannak_2026",
+      "locator": "Tables 14–15",
+      "data_class": "REPORTED_TABLE_ROW",
+      "scope": "QATAR_STUDY_ONLY",
+      "inputs": {
+        "system": "GH-SL Cooled Tomato"
+      },
+      "expected": {
+        "yield_t_per_dunum": 16,
+        "total_cost_qar": 27911,
+        "electricity_kwh": 27160,
+        "water_m3": 1500
+      },
+      "check": "reported_row",
+      "review": "PENDING"
+    },
+    {
+      "id": "D09",
+      "title": "Agricultural power factor excerpt",
+      "source_id": "kahramaa_2016",
+      "locator": "Section 9, p.67",
+      "data_class": "HISTORICAL_REGULATORY_TEXT_REPORTED",
+      "scope": "QATAR_HISTORICAL_CODE",
+      "inputs": {
+        "facility": "agricultural farm"
+      },
+      "expected": {
+        "minimum_power_factor_lagging": 0.9,
+        "current_revision_checked": false
+      },
+      "check": "historical_code",
+      "review": "PENDING"
+    },
+    {
+      "id": "D10",
+      "title": "Absent Al Shahaniya wet-bulb quote",
+      "source_id": "mahmood_2022",
+      "locator": null,
+      "data_class": "MISSING_PASSAGE",
+      "scope": "AL_SHAHANIYA_CANDIDATE",
+      "inputs": {
+        "requested": "summer design wet-bulb Celsius"
+      },
+      "expected": {
+        "decision": "ABSTAIN_MISSING_SOURCE"
+      },
+      "check": "abstain",
+      "review": "PENDING"
+    }
+  ]
+}
