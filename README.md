@@ -2,7 +2,7 @@
 
 **One-sentence goal:** Test whether giving an AI checked agricultural information makes its answers more accurate and cautious.
 
-**You can run the greenhouse demo without an AI account or API key.** The updated single-file runner requires `pip install pyyaml` and lives in [draft PR #4](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/4), not yet in `main`. The demo lives in [draft PR #4](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/4), so checkout the demo branch first; it is not yet part of `main`.
+**You can run the greenhouse demo without an AI account or API key.** The updated single-file runner requires `pip install pyyaml` and lives in [draft PR #4](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/4), not yet in `main`.
 
 ## 1. Run your first demo
 
@@ -17,8 +17,7 @@ python -m pip install pyyaml
 python demo/greenhouse/run_demo.py
 ```
 
-**No Git?** Visit [the demo branch](https://github.com/leadingproblemsolver/qeeri-agricultural/tree/docs/simple-greenhouse-demo-2026-11-11), click **Code → Download ZIP**, unzip, open a terminal inside that folder, and run `python -m pip install pyyaml
-python demo/greenhouse/run_demo.py`. On Windows, `py` may work instead of `python`.
+**No Git?** Visit [the demo branch](https://github.com/leadingproblemsolver/qeeri-agricultural/tree/docs/simple-greenhouse-demo-2026-11-11), click **Code → Download ZIP**, unzip, open a terminal inside that folder, and run `python -m pip install pyyaml`, then `python demo/greenhouse/run_demo.py`. On Windows, `py` may work instead of `python`.
 
 **Expected result:** 10 actual check results (values, study limits, or abstentions). These check example math, source labels and safe refusals. They do **not** prove that the papers or a greenhouse are scientifically validated.
 
@@ -41,22 +40,15 @@ Show a result + evidence origin + limitations
 | If you want to… | Start here |
 |---|---|
 | Understand the demo and its data | [Plain-language overview](https://github.com/leadingproblemsolver/qeeri-agricultural/blob/docs/simple-greenhouse-demo-2026-11-11/demo/greenhouse/overview.md) |
-| See/edit ten examples | [cases.yaml](https://github.com/leadingproblemsolver/qeeri-agricultural/blob/docs/simple-greenhouse-demo-2026-11-11/demo/greenhouse/qeeri_evidence.yaml) |
-| Run the demo checks | `python -m pip install pyyaml
-python demo/greenhouse/run_demo.py` |
+| See examples and sources | [qeeri_evidence.yaml](https://github.com/leadingproblemsolver/qeeri-agricultural/blob/docs/simple-greenhouse-demo-2026-11-11/demo/greenhouse/qeeri_evidence.yaml) |
+| Run the combined demo | `python demo/greenhouse/run_demo.py` |
 | Explore the scientific questions | [Research in five steps](docs/README.md) |
 | Use the older local evidence-search program | [research_mvp/README.md](research_mvp/README.md) |
 | Explore the newer RAG code | [Draft PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/2) |
 | See what the research has actually shown | [Evidence and limits](docs/04_RESULTS_AND_SOFTWARE/README.md) |
 
-**Optional source-register check:** If you have `master_source_register.yaml` locally, run `pip install pyyaml`, then:
+**The source register and ten cases are consolidated** in `demo/greenhouse/qeeri_evidence.yaml`. The older separate files remain as historical fixtures; use the single-file `run_demo.py` for presentations.
 
-```bash
-python -m pip install pyyaml
-python demo/greenhouse/run_demo.py --register /path/to/master_source_register.yaml
-```
-
-This checks consistency with your register, **not** the accuracy of the original publications.
 
 ## 4. Is RAG built?
 
