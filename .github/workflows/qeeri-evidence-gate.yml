@@ -1,0 +1,26 @@
+name: QEERI field evidence gate
+on:
+  push:
+    paths:
+      - 'research/greenhouse_llm_feasibility/validate_field_packet.py'
+      - 'research/greenhouse_llm_feasibility/test_validate_field_packet.py'
+      - '.github/workflows/qeeri-evidence-gate.yml'
+  pull_request:
+    paths:
+      - 'research/greenhouse_llm_feasibility/validate_field_packet.py'
+      - 'research/greenhouse_llm_feasibility/test_validate_field_packet.py'
+      - '.github/workflows/qeeri-evidence-gate.yml'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Test rejection of false field telemetry
+        working-directory: research/greenhouse_llm_feasibility
+        run: python -m unittest -v test_validate_field_packet
