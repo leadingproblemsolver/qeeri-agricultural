@@ -102,13 +102,13 @@ def run(path, register_path=None):
                         for key in ("yield_t_per_dunum", "total_cost_qar", "electricity_kwh", "water_m3"):
                             value = e[key]
                             number = str(int(value)) if float(value).is_integer() else str(value)
-                            assert re.search(r"(?<![\\d.])" + re.escape(number) + r"(?![\\d.])", row), (
+                            assert re.search(r"(?<![\d.])" + re.escape(number) + r"(?![\d.])", row), (
                                 "reported row conflicts with source register: " + key
                             )
                     if kind == "ventilation_quote":
                         for value in (x["ach"], e["reported_difference_c"]):
                             number = str(int(value)) if float(value).is_integer() else str(value)
-                            assert re.search(r"(?<![\\d.])" + re.escape(number) + r"(?![\\d.])", quote), (
+                            assert re.search(r"(?<![\d.])" + re.escape(number) + r"(?![\d.])", quote), (
                                 "CFD value missing from source register"
                             )
                     if kind == "historical_code":
