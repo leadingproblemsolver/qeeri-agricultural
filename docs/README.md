@@ -16,7 +16,7 @@
 
 **Do not confuse:** file exists ≠ read, citation exists ≠ claim supported, calculation works ≠ field measurement, unit test passes ≠ research validated, draft form ≠ submitted/approved.
 
-**Live file register:** [Asset index](ASSET_INDEX.csv) records paths **without moving or duplicating existing code**. [Chronology](05_REVIEW_AND_CONTINUITY/CHRONOLOGY.csv) records dated evidence. [Branch and archive status](05_REVIEW_AND_CONTINUITY/technical/README.md) distinguishes `main`, unmerged PR #2, and local-only source files.
+**Exact file actions:** [Keep / reuse / archive / exclude / delete decisions](FILE_DECISIONS.md). **Live file register:** [Asset index](ASSET_INDEX.csv) records paths **without moving or duplicating existing code**. [Chronology](05_REVIEW_AND_CONTINUITY/CHRONOLOGY.csv) records dated evidence. [Branch and archive status](05_REVIEW_AND_CONTINUITY/technical/README.md) distinguishes `main`, unmerged PR #2, and local-only source files.
 
 **Privacy:** The GitHub repository is PUBLIC. Do not commit timesheets, private supervisor correspondence, restricted textbooks/question banks, raw participant data, unpublished datasets, or third-party PDFs without redistribution rights. The uploaded ZIP is a **local historical snapshot**, not a license or proof that its contents are current. UDST SCSC participant/IRB work is a separate study.
 
