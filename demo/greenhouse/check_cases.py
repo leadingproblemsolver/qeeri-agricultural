@@ -8,6 +8,7 @@ The optional source-register comparison requires: pip install pyyaml
 import argparse
 import json
 import math
+import re
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -75,11 +76,44 @@ def run(path, register_path=None):
                 groups = ("verified_sources", "conditional_sources", "regulatory_sources")
                 found = [register[group][sid] for group in groups if sid in register.get(group, {})]
                 assert len(found) == 1, "source missing from local register"
+                passages = found[0].get("verified_passages") or []
                 if kind == "abstain":
-                    assert not found[0].get("verified_passages"), "reassess abstention; source changed"
+                    assert not passages, "reassess abstention; source changed"
                 else:
-                    assert found[0].get("verified_passages"), "register has no cited passages"
-                # Register matches are NOT independent verification of the paper.
+                    passage_ids = {
+                        "D01": "ae069_p2_system_efficiency",
+                        "D02": "ghani_boundary_conditions_p9",
+                        "D03": "ghani_boundary_conditions_p9",
+                        "D04": "ghani_ventilation_ach_p15",
+                        "D05": "ghani_ventilation_ach_p15",
+                        "D06": "shannak_table_14_15_operational_data",
+                        "D07": "shannak_table_14_15_operational_data",
+                        "D08": "shannak_table_14_15_operational_data",
+                        "D09": "kahramaa_power_factor_p67"
+                    }
+                    matched = [p for p in passages if p.get("passage_id") == passage_ids.get(cid)]
+                    assert len(matched) == 1, "case has no matching source passage ID"
+                    quote = " ".join(matched[0].get("quote", "").split())
+                    assert quote, "matching source excerpt is empty"
+                    if kind == "reported_row":
+                        marker = x["system"] + ":"
+                        assert marker in quote, "study row missing from passage"
+                        row = quote.split(marker, 1)[1].split(". ", 1)[0]
+                        for key in ("yield_t_per_dunum", "total_cost_qar", "electricity_kwh", "water_m3"):
+                            value = e[key]
+                            number = str(int(value)) if float(value).is_integer() else str(value)
+                            assert re.search(r"(?<![\\d.])" + re.escape(number) + r"(?![\\d.])", row), (
+                                "reported row conflicts with source register: " + key
+                            )
+                    if kind == "ventilation_quote":
+                        for value in (x["ach"], e["reported_difference_c"]):
+                            number = str(int(value)) if float(value).is_integer() else str(value)
+                            assert re.search(r"(?<![\\d.])" + re.escape(number) + r"(?![\\d.])", quote), (
+                                "CFD value missing from source register"
+                            )
+                    if kind == "historical_code":
+                        assert "power factor" in quote.lower() and "0.9" in quote
+                # A register match does NOT independently authenticate the publication.
             print(f"PASS {cid}: {case['title']}")
             passed += 1
         except (AssertionError, KeyError, ValueError, TypeError) as error:
