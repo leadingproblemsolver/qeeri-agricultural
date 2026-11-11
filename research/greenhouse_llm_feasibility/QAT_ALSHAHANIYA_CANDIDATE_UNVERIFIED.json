@@ -1,0 +1,113 @@
+{
+  "packet_id": "QAT_ALSHAHANIYA_SOURCE_PACKET",
+  "version": "1.0.0",
+  "record_type": "UNVERIFIED_USER_SUPPLIED_AI_GENERATED_CANDIDATE",
+  "telemetry_verification_status": "UNVERIFIED_NO_RAW_OBSERVATIONS",
+  "institutional_attribution": "NOT_CONFIRMED",
+  "prohibited_use": [
+    "ground_truth",
+    "field_telemetry",
+    "scientific_findings",
+    "engineering_design",
+    "model_training"
+  ],
+  "source_claim": "User-supplied candidate described as QEERI verified field readings. This has NOT been established.",
+  "claimed_site_location": {
+    "name": "Al-Shahaniya, Qatar",
+    "latitude_deg_north": 25.37,
+    "longitude_deg_east": 51.22
+  },
+  "claimed_data_collection_period": {
+    "start_date": "2026-05-01",
+    "end_date": "2026-10-31"
+  },
+  "claimed_crop": {
+    "species": "Solanum lycopersicum",
+    "cultivation_type": "High-Wire Production"
+  },
+  "claimed_operating_mode": "Semi-Closed Hybrid (Direct Evaporative + Mechanical Recirculation)",
+  "claimed_architecture": {
+    "footprint_sq_m": 5000,
+    "dimensions_m": {
+      "width": 50,
+      "length": 100
+    },
+    "heights_m": {
+      "ridge": 7.5,
+      "gutter": 6
+    },
+    "bay_width_m": 8,
+    "glazing": {
+      "description": "diffuse double-AR glass",
+      "solar_transmissivity_tau": 0.82,
+      "haze_factor_percent": 70
+    },
+    "shading": {
+      "upper_screen_percent": 50,
+      "lower_screen": "transparent energy-saving curtain"
+    },
+    "pad": {
+      "thickness_mm": 150,
+      "face_area_sq_m": 120,
+      "nominal_airflow_cubic_m_hr": 350000
+    },
+    "air_distribution": {
+      "method": "under-bench perforated hoses",
+      "row_spacing_m": 1.6,
+      "duct_diameter_mm": 400
+    }
+  },
+  "claimed_sensor_locations": [
+    {
+      "id": "SEN_AMB_01",
+      "xyz_m": [
+        -20,
+        -10,
+        10
+      ]
+    },
+    {
+      "id": "SEN_PAD_IN",
+      "xyz_m": [
+        25,
+        -1,
+        3
+      ]
+    },
+    {
+      "id": "SEN_PAD_OUT",
+      "xyz_m": [
+        25,
+        0.5,
+        3
+      ]
+    },
+    {
+      "id": "SEN_CAN_MID",
+      "xyz_m": [
+        25,
+        50,
+        1.8
+      ]
+    }
+  ],
+  "claimed_peak_summer_snapshot": {
+    "ambient_dry_bulb_C": 42,
+    "ambient_wet_bulb_C": 28.5,
+    "ambient_RH_percent": 37,
+    "GHI_W_m2": 950,
+    "pad_effectiveness": 0.82,
+    "recirculation_fraction": 0.4,
+    "air_exchange_vol_hr": 28
+  },
+  "raw_observations": [],
+  "required_to_promote": [
+    "source dataset with timestamps units and raw values",
+    "sensor provenance and calibration",
+    "facility identity and permission",
+    "real equipment documentation",
+    "qualified independent reviewer",
+    "reviewable actual source-file SHA-256"
+  ],
+  "note": "All numbers in claimed_* fields are illustrative candidate claims, not measured, approved, or verified specifications. Do not import into the active RAG corpus or the controlled experiment as truth."
+}
