@@ -1,0 +1,540 @@
+# INTEGRITY NOTICE (2026-11-11)
+# User-supplied research register, preserved for review; NOT independently audited.
+# Labels such as verified_full_text_extracted reflect supplied assertions only.
+# Existing repository evidence reviews disagree with some claims (including
+# Ghani and Shannak verification); original passages and permissions must be
+# checked before treating these entries as verified evidence.
+# Do not promote any item to HUMAN_VERIFIED based on this file alone.
+
+# ============================================================
+# QEERI MASTER EVIDENCE REGISTER v2.0
+# Consolidated single source of truth
+# Date: 2026-11-10
+# Maintained by: QEERI Research Lead
+# ============================================================
+
+metadata:
+  register_version: "2.0"
+  supersedes: "master_source_register.yaml v1.0"
+  last_updated: "2026-11-10"
+  purpose: >
+    Single consolidated register of all sources, verified passages,
+    resolved claims, and active experiments. This is the authoritative
+    reference for the evidence contract. Any claim not in this file
+    is out of scope.
+
+# ============================================================
+# SECTION 1: VERIFIED SOURCES (supports a numerical claim within scope)
+# ============================================================
+
+verified_sources:
+
+  uf_ifas_ae069:
+    apa6_citation: >
+      Webb, E. G. (2019). Fan and Pad Greenhouse Evaporative Cooling Systems
+      (EDIS Publication No. AE069). University of Florida / IFAS Extension.
+      Retrieved from https://edis.ifas.ufl.edu/publication/AE069
+    access_status: "open_access_full_text"
+    verification_status: "verified_passage_extracted"
+    evidence_class: "extension_guidance"
+    jurisdiction: "General (Florida / US context)"
+    qatar_transferability: "methodological_only"
+    verified_passages:
+      - passage_id: "ae069_p2_system_efficiency"
+        locator: "Section: System Efficiency (p. 2)"
+        quote: >
+          If the efficiency of your system is 85 percent, then the air
+          entering the greenhouse is the outside dry bulb temperature minus
+          85% of the wet bulb depression.
+        supports: "pad_effectiveness_equation_statement"
+        measurement_basis: "general_principle"
+    allowed_use:
+      - "wet_bulb_constraint"
+      - "pad_effectiveness_equation"
+      - "sensor_and_measurement_guidance"
+    excluded_use:
+      - "qatar_weather_input"
+      - "qatar_design_value"
+      - "site_specific_performance_claim"
+    notes: >
+      Provides the physics. Does not provide Qatar-specific design values.
+      Do not cite for the 38/24 °C or 45/27 °C design cases.
+
+  ghani_2019_evaporative_cooled_greenhouse:
+    apa6_citation: >
+      Ghani, S., El-Bialy, E. M. A. A., Bakochristou, F., Rashwan, M. M.,
+      Abdelhalim, A. M., Ismail, S. M., & Ben, P. (2019). Experimental and
+      numerical investigation of the thermal performance of evaporative
+      cooled greenhouses in hot and arid climates. Science and Technology
+      for the Built Environment, 25(8), 973–992.
+      https://doi.org/10.1080/23744731.2019.1634421
+    access_status: "full_text_extracted"
+    verification_status: "verified_full_text_extracted"
+    evidence_class: "primary_research_cfd_and_measured"
+    jurisdiction: "Qatar (Al Khor)"
+    qatar_transferability: "direct_within_scope"
+    verified_passages:
+      - passage_id: "ghani_boundary_conditions_p9"
+        locator: "Section: Numerical simulations boundary conditions, Page 9"
+        quote: >
+          To represent the hot and arid environment, a maximum dry bulb temperature of 47°C and a Relative Humidity RH% of 27% (0.01822kg_w/kg_a) were considered for the ambient conditions outside the greenhouse... Measured air temperature of 34°C and relative humidity of 70% (0.02386kg_w/kg_a) were assigned to the pad boundary condition.
+        supports: "qatar_summer_design_boundary_and_pad_inlet"
+        measurement_basis: "measured_plus_cfd"
+      - passage_id: "ghani_fan_elevation_p16"
+        locator: "Section: Summary and discussion, Page 16"
+        quote: >
+          Lowest average temperature could be achieved when the induction fans were located at a position not higher than crop height.
+        supports: "fan_elevation_effect"
+        measurement_basis: "cfd_simulation"
+      - passage_id: "ghani_ventilation_ach_p15"
+        locator: "Section: Effect of greenhouse ventilation rate, Page 15"
+        quote: >
+          For 20 ACH case, the air temperature upstream the extraction fan was about 10°C higher than the air temperature downstream the cooling pad. When the ventilation rate was doubled to 40 ACH, the air temperature difference was reduced to 5.5°C indicating a better thermal performance.
+        supports: "ventilation_rate_effect"
+        measurement_basis: "cfd_simulation"
+    allowed_use:
+      - "qatar_reference_case (Al Khor, not Al-Shahaniya)"
+      - "greenhouse_geometry_parameters"
+      - "fan_location_effect"
+      - "roof_shape_effect"
+      - "ventilation_rate_effect"
+      - "cfd_methodology"
+    excluded_use:
+      - "al_shahaniya_specific_claim"
+    notes: >
+      Site is Al Khor, not Al-Shahaniya. Can be cited for Qatar-relevant
+      design conditions (47°C DB / 27% RH ambient; 34°C / 70% RH pad inlet).
+      Cannot be cited as Al-Shahaniya site data.
+
+  shannak_2026_qatari_crop_performance_index:
+    apa6_citation: >
+      Shannak, S., Kafi, A. I., Al Jaidah, N., & Al-Ansari, T. (2026).
+      The Qatari Crop Performance Index: A tool for selecting high-efficiency agriculture.
+      Energy Nexus, 23, 100787. https://doi.org/10.1016/j.nexus.2026.100787
+    access_status: "full_text_extracted"
+    verification_status: "verified_full_text_extracted"
+    evidence_class: "primary_research_model_and_empirical_data"
+    jurisdiction: "Qatar"
+    qatar_transferability: "direct"
+    verified_passages:
+      - passage_id: "shannak_methodology_fuzzy"
+        locator: "Section 3 (Methodology)"
+        quote: >
+          The crop performance index is calculated from three normalized core indices (FSI, SI, RI), each measured on a 0-100 scale... We employ a Mamdani-type fuzzy inference system to compile the three core indices into a single CPI.
+        supports: "cpi_methodology_and_structure"
+        measurement_basis: "model"
+      - passage_id: "shannak_table_14_15_operational_data"
+        locator: "Table 14 and 15 (Values per dunum)"
+        quote: >
+          OF Tomato: Yield 5.3 t/dunum, Total Cost 7942 QAR, Electricity 1702 kWh, Water 1000 m³. GH-S Cooled Tomato: Yield 10.4 t/dunum, Total Cost 18232 QAR, Electricity 15000 kWh, Water 2000 m³. GH-SL Cooled Tomato: Yield 16 t/dunum, Total Cost 27911 QAR, Electricity 27160 kWh, Water 1500 m³.
+        supports: "qatar_operational_baseline_data"
+        measurement_basis: "empirical_data"
+      - passage_id: "shannak_conclusion_soilless"
+        locator: "Section: Results and discussion"
+        quote: >
+          The optimal system identified is GH Soilless - Uncooled Tomato, achieving a CPI of 0.685 under balanced policy... Open field cultivation of water-intensive vegetables (Sweet Pepper, Zucchini, Leafy Vegetables) and cooled soil-based greenhouses consistently fail to meet minimum performance thresholds...
+        supports: "crop_system_performance_ranking"
+        measurement_basis: "model"
+    allowed_use:
+      - "qatar_crop_selection"
+      - "operational_baseline_benchmarks"
+      - "wef_nexus_evaluation_methodology"
+    excluded_use:
+      - "microclimate_transient_gradients"
+    notes: >
+      Provides Qatar-specific operational baselines for energy/water use
+      across different greenhouse technologies.
+
+# ============================================================
+# SECTION 2: CONDITIONAL SOURCES (methodological only, or partial)
+# ============================================================
+
+conditional_sources:
+
+  mahmood_2022_al_shahaniya:
+    apa6_citation: >
+      Mahmood, F., Govindan, R., Yang, D., Bermak, A., & Al-Ansari, T. (2022).
+      Forecasting cooling load and water demand of a semi-closed greenhouse
+      using a hybrid modelling approach. International Journal of Ambient
+      Energy. https://doi.org/10.1080/01430750.2022.2088617
+    access_status: "full_text_available_via_institution"
+    verification_status: "metadata_verified_passages_pending"
+    evidence_class: "primary_research_hybrid_model"
+    jurisdiction: "Qatar (Al-Shahaniya)"
+    qatar_transferability: "conditional"
+    verified_passages: []  # EMPTY — exact quoted passage with page/table pending
+    pending_extraction:
+      - "design_conditions (45°C DB / 27°C WB OR equivalent)"
+      - "exact page/figure/table locator"
+      - "measured_vs_modeled_status"
+      - "system_specific_cooling_load_per_m2"
+    allowed_use:
+      - "qatar_reference_case_metadata"
+      - "sensor_and_data_requirements"
+      - "thermal_and_water_model_structure"
+    excluded_use:
+      - "open_fan_and_pad_design_value"
+      - "direct_crop_zone_temperature_prediction"
+      - "qatar_economic_feasibility_claim"
+    known_facts_from_abstract_and_metadata:
+      site: "Al-Shahaniya, Qatar"
+      greenhouse_type: "semi-closed Venlo-type"
+      cover: "4mm tempered glass"
+      crop: "tomato"
+      study_period: "2020-01-01 to 2020-07-31"
+      sampling_interval_minutes: 5
+      samples: 61056
+      reported_summer_conditions:
+        solar_irradiance_w_m2: 1000
+        ambient_temperature_c: 45
+      reported_seasonal_mean_outdoor_temperature_c:
+        winter: 19.7
+        summer: 36.18
+      reported_two_day_forecast:
+        winter_cooling_mwh: 6.03
+        winter_water_m3: 5.85
+        summer_cooling_mwh: 15.33
+        summer_water_m3: 12.48
+      plantation_area_fraction: 0.90
+      irrigation_to_evapotranspiration_ratio: 1.10
+      external_crop_resistance_s_m: 185
+    limitations:
+      - "closed_air_cycle_semi_closed_greenhouse"
+      - "chiller_based_climate_control"
+      - "results_are_forecasts_not_annual_measurements"
+    action_required: >
+      Open full text and extract the exact passage that states the design
+      conditions (45/27 or equivalent). Until then, this source cannot
+      support a Qatar-specific numerical claim.
+
+  mokati_2026_lesotho_study:
+    apa6_citation: >
+      Mokati, M., Kao, M., & Jonathan, E. (2026). Greenhouse renewable energy
+      heating, cooling and dehumidification: A case study for Lesotho.
+      4th International Sustainable Energy Conference, 2(1).
+      https://doi.org/10.52825/iscc.v2i.3416
+    access_status: "full_text_open_access"
+    verification_status: "verified_full_text_extracted"
+    evidence_class: "primary_research_case_study"
+    jurisdiction: "Lesotho (Leribe and Mokhotlong)"
+    qatar_transferability: "methodological_only"
+    verified_passages:
+      - passage_id: "lesotho_p4_thermal_model"
+        locator: "Section: Thermal (Heating and Cooling) Model (p. 4)"
+        quote: >
+          Q_c,j = max[U_L(T_j - T_sp,max) + τ1 τ2 α S_j, 0]
+        supports: "greenhouse_cooling_load_equation_structure"
+        measurement_basis: "model"
+      - passage_id: "lesotho_p3_table1"
+        locator: "Table 1 (p. 3)"
+        quote: >
+          Maximum Required Temperature T_sp,max (°C): 24
+        supports: "tomato_setpoint_reference_range"
+        measurement_basis: "assumed_lesotho_specific"
+    allowed_use:
+      - "greenhouse_thermal_model_structure"
+      - "cooling_load_equation_structure"
+    excluded_use:
+      - "qatar_climate_input"
+      - "qatar_energy_load_claim"
+      - "qatar_economic_claim"
+      - "qatar_setpoint_claim"
+    notes: >
+      Use equations, not coefficients. U_L=6.2, τ1=0.81, τ2=0.43/0.19, α=0.67
+      are Lesotho-specific and must NOT be applied to Al-Shahaniya. The 24°C
+      setpoint is flagged ASSUMED_LESOTHO_NOT_QATAR as a methodological anchor.
+
+  lahlou_qatar_greenhouse_economics:
+    apa6_citation: "[UNVERIFIED — APA6 cannot be produced without full text]"
+    access_status: "abstract_only"
+    verification_status: "abstract_only"
+    evidence_class: "economic_comparison"
+    jurisdiction: "Qatar (unclear site)"
+    qatar_transferability: "conditional"
+    verified_passages: []
+    allowed_use:
+      - "economic_methodology_after_extraction"
+    excluded_use:
+      - "al_shahaniya_cost_model"
+      - "qatar_price_or_yield_claim"
+    required_extraction:
+      - "exact citation"
+      - "system_boundary"
+      - "capex_categories"
+      - "operating_costs"
+      - "yield_and_revenue_assumptions"
+    notes: >
+      Cannot be used at all until the full text is obtained and cited.
+
+  tsafaras_2021_riyadh:
+    apa6_citation: >
+      Tsafaras, I., Campen, J. B., Stanghellini, C., de Zwart, H. F., Voogt, W., Scheffers, K., Al Harbi, A., & Al Assaf, K. (2021).
+      Intelligent greenhouse design decreases water use for evaporative cooling in arid regions.
+      Agricultural Water Management, 106807. https://doi.org/10.1016/j.agwat.2021.106807
+    access_status: "abstract_and_bibliographic_metadata"
+    verification_status: "partially_verified"
+    evidence_class: "experimental_trial_and_validated_simulation"
+    jurisdiction: "Riyadh, Saudi Arabia"
+    qatar_transferability: "limited"
+    verified_passages: []
+    allowed_use:
+      - "identify_design_levers"
+      - "comparative_water_use_hypotheses"
+      - "sensitivity_range_motivation"
+    excluded_use:
+      - "qatar_site_specific_weather_input"
+      - "al_shahaniya_design_value"
+      - "qatar_crop_yield_or_economic_assumption"
+    notes: >
+      Saudi evidence, not directly transferable as Qatar design data.
+
+# ============================================================
+# SECTION 3: REGULATORY SOURCES
+# ============================================================
+
+regulatory_sources:
+
+  kahramaa_lv_electrical_code:
+    apa6_citation: >
+      Qatar General Electricity & Water Corporation (KAHRAMAA). (2016).
+      Low Voltage Electricity Wiring Code (CS-CSI-P1/C1).
+    access_status: "full_text_extracted"
+    verification_status: "verified_full_text_extracted"
+    evidence_class: "regulatory"
+    jurisdiction: "Qatar"
+    qatar_transferability: "direct"
+    verified_passages:
+      - passage_id: "kahramaa_power_factor_p67"
+        locator: "Section 09: Power Factor Correction, Clauses 9.1.1 and 9.1.3, Page 67"
+        quote: >
+          9.1.1 Every installation shall have a power factor within the range of 0.9 lagging to unity... 9.1.3 The target power factor for all Electrical design purpose shall be Minimum 0.90 lag. Design calculations for power factor correction equipment shall be submitted for the following categories of installations: ... All Agricultural farms irrespective of load.
+        supports: "mandatory_power_factor_agricultural_farms"
+        measurement_basis: "regulatory"
+      - passage_id: "kahramaa_ambient_derating_p84"
+        locator: "Appendix No. 1: Tables, Current Ratings For Single And Multi-core Cables, Clauses 4 and 5, Page 84"
+        quote: >
+          4. Where cables are installed above ground level and not exposed to the outside ambient conditions, air temperature taken as 45°C. 5. Where cables are installed above ground level and exposed to the outside ambient conditions, air temperature taken as 50°C.
+        supports: "cable_derating_ambient_temperature"
+        measurement_basis: "regulatory"
+      - passage_id: "kahramaa_rcd_wet_zone_p62"
+        locator: "Section 7.8: Bathroom or Toilet, Clause 7.8.2, Page 62"
+        quote: >
+          7.8.2 All Final Circuits (including lighting, water heater, extract fan, etc) must be protected by a RCD of residual current rating 30 mA and complying with BS EN 61008.
+        supports: "rcd_protection_wet_zones"
+        measurement_basis: "regulatory"
+    allowed_use:
+      - "qatar_electrical_requirements"
+      - "load_schedule_requirements"
+      - "earthing_and_protection_requirements"
+    excluded_use:
+      - "general_engineering_principle"
+    notes: >
+      Fully verified KAHRAMAA compliance requirements for Qatar.
+
+# ============================================================
+# SECTION 4: DATA SOURCES (not documents)
+# ============================================================
+
+data_sources:
+
+  era5_land_reanalysis:
+    apa6_citation: >
+      Muñoz-Sabater, J., et al. (2021). ERA5-Land: A state-of-the-art global
+      reanalysis for land applications. Earth System Science Data, 13,
+      4349–4383. https://doi.org/10.5194/essd-13-4349-2021
+    access_status: "open_access_via_cds_api"
+    verification_status: "verified"
+    evidence_class: "reanalysis_model_output"
+    jurisdiction: "Global (0.1° x 0.1° ~ 9 km grid)"
+    qatar_transferability: "proxy_only"
+    allowed_use:
+      - "hourly_2m_temperature"
+      - "hourly_2m_dewpoint_temperature"
+      - "hourly_surface_solar_radiation_downwards"
+      - "hourly_surface_pressure"
+    excluded_use:
+      - "site_specific_measured_weather"
+      - "engineering_design_value"
+    key_notes:
+      - "Nearest grid point to Al-Shahaniya (25.37°N, 51.23°E) must be used."
+      - "Data is a reanalysis product, not a direct measurement."
+      - "Must label as modeled_reanalysis in evidence contract."
+      - "Uncertainty must be taken from parent ERA5 ensemble (not standalone)."
+
+  qmd_automatic_weather_stations:
+    apa6_citation: >
+      Qatar Meteorology Department. (n.d.). Qatar Weather Observations.
+      Retrieved from https://www.met.gov.qa
+    access_status: "public_portal_live_data_only"
+    verification_status: "metadata_only"
+    evidence_class: "measured_weather"
+    jurisdiction: "Qatar"
+    qatar_transferability: "direct"
+    known_stations:
+      - "Al Shahaniyah (regional weather station)"
+      - "Hamad International Airport"
+      - "Al Khor / Al Bayt Stadium"
+    allowed_use:
+      - "measured_weather_calibration"
+    excluded_use:
+      - "historical_archive_without_request"
+      - "site_specific_design_value_without_access"
+    notes: >
+      Raw historical archives require formal request to QMD or QCAA.
+      Live portal only. Cannot be cited for a specific historical design
+      condition until the archive is formally obtained.
+
+# ============================================================
+# SECTION 5: QUARANTINED SOURCES
+# ============================================================
+
+quarantined_sources:
+
+  fao_2013_greenhouse_guide:
+    apa6_citation: >
+      Baudoin, W., Nono-Womdim, R., Lutaladio, N., Hodder, A., Castilla, N.,
+      Leonardi, C., De Pascale, S., Qaryouti, M., & Duffy, R. (Eds.). (2013).
+      Good agricultural practices for greenhouse vegetable crops: Principles
+      for Mediterranean climate areas (FAO Plant Production and Protection
+      Paper 217). Food and Agriculture Organization of the United Nations.
+    access_status: "full_text_indexed_previously"
+    verification_status: "quarantined"
+    quarantine_reason: "scope_exclusion_non_fao_priority"
+    allowed_use: []
+    excluded_use:
+      - "active_retrieval"
+      - "generation"
+      - "claim_support"
+    dependent_fixtures_require_update: true
+
+# ============================================================
+# SECTION 6: ACTIVE EXPERIMENTS
+# ============================================================
+
+experiments:
+
+  RC01_pad_outlet:
+    question_id: "RC01_PAD_OUTLET"
+    status: "EXECUTED_AND_VERIFIED_INTERNALLY"
+    measurand: "pad_outlet_dry_bulb_temperature_c"
+    input_provenance: "synthetic_design_case_not_qatar_verified"
+    inputs:
+      inlet_dry_bulb_c: 38.0
+      inlet_wet_bulb_c: 24.0
+      pad_effectiveness: 0.85
+    ground_truth_value: 26.1
+    scoring_tolerance_c: 0.5
+    scientific_uncertainty: "not applicable — deterministic given inputs"
+    required_citation:
+      source_id: "uf_ifas_ae069"
+      passage_id: "ae069_p2_system_efficiency"
+    required_reasoning:
+      - "must_show_wet_bulb_limit_and_pad_effectiveness"
+      - "apply_adiabatic_saturation_effectiveness_formula"
+    forbidden_claims:
+      - "crop_zone_temperature_without_solar_load_adjustment"
+      - "100_percent_pad_effectiveness"
+    runs:
+      - condition: "A_zero_shot"
+        model: "claude-3-5-sonnet-20241022"
+        raw_output_path: "research/qeeri_rag_v0/experiments/RC01_A_raw.txt"
+        score: "PASS"
+      - condition: "B_retrieval"
+        status: "SKIPPED — baseline solved from zero-shot, no marginal information"
+      - condition: "C_adversarial_framing_noise"
+        model: "claude-3-5-sonnet-20241022"
+        raw_output_path: "research/qeeri_rag_v0/experiments/RC01_C_raw.txt"
+        score: "PASS"
+    verdict: "NO_MEASURED_IMPROVEMENT"
+    reviewer_sign_off: "pending_human_review"
+    limitations:
+      - "single_question_single_model_single_run"
+      - "near_trivial_for_current_llms"
+      - "prompt_c_distractor_was_framing_noise_not_contamination"
+      - "input_conditions_synthetic_not_qatar_verified"
+    next_action: >
+      Move to RC04_CROP_ZONE_ABSTENTION. RC01 cannot discriminate between
+      prompt conditions because the baseline model already solves it.
+
+# ============================================================
+# SECTION 7: CLAIM LEDGER (what the project can currently assert)
+# ============================================================
+
+claim_ledger:
+
+  - claim_id: "C001"
+    claim: "Direct evaporative cooling pad outlet dry-bulb is computable from the effectiveness equation."
+    evidence_class: "reported"
+    source_id: "uf_ifas_ae069"
+    passage_id: "ae069_p2_system_efficiency"
+    jurisdiction: "general"
+    qatar_applicability: "physics_only"
+    verification_state: "verified_for_general_principles"
+
+  - claim_id: "C002"
+    claim: >
+      For synthetic inputs 38°C DB / 24°C WB / ε=0.85, pad outlet DB = 26.1°C,
+      which is ≤ 28°C.
+    evidence_class: "calculated"
+    source_id: "uf_ifas_ae069"
+    passage_id: "ae069_p2_system_efficiency"
+    calculation: "T_out = 38.0 - 0.85*(38.0 - 24.0) = 26.1"
+    jurisdiction: "general"
+    qatar_applicability: "conditional — inputs are synthetic, not Qatar-sourced"
+    verification_state: "internally_verified_pending_review"
+
+  - claim_id: "C003"
+    claim: >
+      In Al Khor, Qatar, ambient 47°C / 27% RH and pad inlet 34°C / 70% RH
+      were the measured boundary conditions in a validated CFD study.
+    evidence_class: "observed"
+    source_id: "ghani_2019_evaporative_cooled_greenhouse"
+    passage_id: "ghani_boundary_conditions_p9"
+    jurisdiction: "Qatar (Al Khor)"
+    qatar_applicability: "direct within Al Khor scope"
+    verification_state: "verified"
+
+  - claim_id: "C004"
+    claim: >
+      Al-Shahaniya design conditions are 45°C DB / 27°C WB (or equivalent)
+      per Mahmood et al. 2022.
+    evidence_class: "reported"
+    source_id: "mahmood_2022_al_shahaniya"
+    passage_id: "PENDING — exact passage not yet extracted"
+    jurisdiction: "Qatar (Al-Shahaniya)"
+    qatar_applicability: "conditional"
+    verification_state: "UNVERIFIED — cannot be asserted until passage extracted"
+
+  - claim_id: "C005"
+    claim: >
+      All agricultural farms must maintain a minimum power factor of 0.90 lagging, irrespective of their connected load size.
+    evidence_class: "regulatory"
+    source_id: "kahramaa_lv_electrical_code"
+    passage_id: "kahramaa_power_factor_p67"
+    jurisdiction: "Qatar"
+    qatar_applicability: "direct"
+    verification_state: "verified"
+
+  - claim_id: "C006"
+    claim: >
+      Uncooled soilless greenhouse systems (specifically for tomatoes) achieved the optimal Crop Performance Index (CPI) of 0.685 across policy scenarios, while open-field cultivation of water-intensive vegetables (e.g., leafy vegetables) failed to meet minimum sustainability thresholds.
+    evidence_class: "modeled"
+    source_id: "shannak_2026_qatari_crop_performance_index"
+    passage_id: "shannak_conclusion_soilless"
+    jurisdiction: "Qatar"
+    qatar_applicability: "direct"
+    verification_state: "verified"
+
+# ============================================================
+# SECTION 8: OUT-OF-SCOPE (explicitly deferred)
+# ============================================================
+
+out_of_scope:
+  - "RAG incremental value claim beyond RC01 single-question test"
+  - "Al-Shahaniya greenhouse thermal model"
+  - "Crop-zone temperature prediction"
+  - "Economic feasibility of Al-Shahaniya greenhouse"
+  - "Soil remote sensing (W1)"
+  - "Any claim requiring Mahmood 2022 passage not yet extracted"
+  - "Any claim requiring Ghani 2019 data applied to Al-Shahaniya"
+  - "Any claim requiring QMD historical archive not yet obtained"

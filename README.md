@@ -1,31 +1,41 @@
-# QEERI agricultural AI research
+# QEERI Agricultural AI Research
 
-**What we are studying:** whether existing AI can give correct, appropriately cautious agricultural answers relevant to Qatar, and whether verified research evidence meaningfully improves them. The original related research covers soil sensing, a 50-question LLM benchmark, greenhouse feasibility and optional evidence-grounded software.
+**Question:** Does giving an AI verified agricultural evidence make its answers more accurate and safer?
 
-**Start here:** [Research documentation, in five plain-language stages](docs/README.md).
+We are testing this, not assuming the answer. Our first example is greenhouse cooling.
 
-| Read in order | Question it answers |
-|---|---|
-| [1. Purpose and scope](docs/01_PURPOSE_AND_SCOPE/README.md) | What did the mentor ask, and what is actually confirmed? |
-| [2. Evidence and data](docs/02_EVIDENCE_AND_DATA/README.md) | What papers, observations and permissions do we have? |
-| [3. Methods and experiments](docs/03_METHOD_AND_EXPERIMENTS/README.md) | How are model responses checked fairly? |
-| [4. Results and software](docs/04_RESULTS_AND_SOFTWARE/README.md) | What passed, what failed, and what is still unproven? |
-| [5. Review, obligations and chronology](docs/05_REVIEW_AND_CONTINUITY/README.md) | What needs human review, and where do we resume? |
+## Start here
 
-**Technical portfolio:** [Implementation tracks, ordered by scientific readiness](research/technical_tracks/README.md) · [AI research capability-to-proof map](docs/04_RESULTS_AND_SOFTWARE/technical/PORTFOLIO_PROOF_MAP.md).
+1. **[Research overview](overview.md)** — objective, what data to collect, what the demo shows, and what remains unknown.
+2. **[Run the 10 demo checks](demo/README.md)** — input → calculation / evidence check → output.
+3. **[Evidence and limitations](docs/02_EVIDENCE_AND_DATA/README.md)** — which papers and data can be used, and what still needs review.
+4. **[Study methods](docs/03_METHOD_AND_EXPERIMENTS/README.md)** — how to compare AI answers fairly.
+5. **[Results and software](docs/04_RESULTS_AND_SOFTWARE/README.md)** — what passed technically, and what has *not* been shown scientifically.
 
-**All five stages have a separate `technical/README.md`.** Researchers can follow the plain-language path without navigating code. Developers can open technical continuations, which link to **existing canonical files rather than duplicating them**.
+For full records, see the [existing research documentation](docs/README.md). Existing code, historical files, audit notes and other research workstreams have **not** been moved or deleted.
 
-## Actual state — 2026-11-11
+## What the demo does
 
-- **W1 soil remote sensing:** no eligible matched lab labels and imagery verified; model training blocked.
-- **W2 agricultural LLM reliability:** original 50 questions × four models are planned; exploratory replies exist, but a complete accepted comparable run/answer-key set is not established.
-- **W3 greenhouse feasibility:** a narrow synthetic pad-outlet calculation (26.1°C) and general source checks exist; **no measured canopy temperature or approved greenhouse design**.
-- **W4 grounded AI / RAG:** software prototypes and passing unit tests exist, but no valid evidence shows retrieval outperforms a fixed verified source packet.
-- **Newly supplied Al-Shahaniya field JSON:** expressly **NOT VERIFIED FIELD TELEMETRY**. See [integrity decision](research/greenhouse_llm_feasibility/RC04_FIELD_PACKET_INTEGRITY_2026-11-11.md).
+**Inputs → checks → output → source → limitations.**
 
-**Immediate next research gate:** get explicit mentor confirmation of the precise QA/crop/site scope, verify and lock an original source-to-claim reference key, and then preserve genuinely matched A/B raw runs before judging improvement. No further platform construction is needed for this gate.
+You can provide greenhouse weather, cooling and study values. The demo checks a small set of known calculations and source-record rules, including when there is **not enough information to decide**. It does **not** design a greenhouse or certify that any crop will survive.
 
-**Location and safety:** The GitHub repository is currently **PUBLIC**. The uploaded local archive contains restricted/admin files and third-party PDFs that must stay in appropriately controlled storage. [Original file register](docs/ASSET_INDEX.csv) · [Dated chronology](docs/05_REVIEW_AND_CONTINUITY/CHRONOLOGY.csv) · [Draft RAG PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/2).
+Try:
+```bash
+python demo/check_cases.py
+```
 
-**Research integrity:** software tests ≠ scientific validation; a citation ≠ proof of claim support; synthetic values ≠ field observations; an unsent draft or unconfirmed supervisor message ≠ authorization. Prior README is retained in [historical records](docs/05_REVIEW_AND_CONTINUITY/technical/LEGACY_ROOT_README_BEFORE_2026-11-11_REORG.md).
+## Current state
+
+| Area | What exists | What is missing |
+| --- | --- | --- |
+| Greenhouse checks | General cooling equation; synthetic examples; published-study leads | Measured local performance and independent review |
+| Agricultural AI test | Candidate questions, rubric and exploratory responses | Locked expert-reviewed answer keys and comparable model runs |
+| Soil sensing | Research design and required data fields | Matched lab soil samples and imagery |
+| Retrieval software | Existing local prototypes and tests | Evidence that retrieval actually improves AI answers |
+
+**10 green demo checks do not mean 10 scientific trials.** A working calculation is not a field measurement; a citation is not necessarily scientific support; a passing software test is not a validated agricultural recommendation.
+
+**Next research result to obtain:** freeze one independently checked greenhouse answer key, run the same AI model with and without a verified source packet, and record both original answers and the human assessment.
+
+**Privacy:** This is a public GitHub repo. Do not commit private correspondence, restricted papers, field coordinates, raw participant data, passwords or institution-only archives.
