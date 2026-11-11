@@ -1,55 +1,97 @@
 #!/usr/bin/env python3
-"""Run ten demo input/logic checks. This does NOT verify original scientific papers."""
+"""Run ten demo checks. A PASS is NOT proof that a scientific source is correct.
+
+Usage: python demo/greenhouse/check_cases.py
+Optional: python demo/greenhouse/check_cases.py --register /path/to/master_source_register.yaml
+The optional source-register comparison requires: pip install pyyaml
+"""
+import argparse
 import json
 import math
 from pathlib import Path
 
-# JSON is valid YAML 1.2; cases.yaml uses that subset to avoid a YAML dependency.
-cases = json.loads((Path(__file__).parent / "cases.yaml").read_text())
-assert cases["status"] == "DEMONSTRATION_ONLY_PENDING_ORIGINAL_SOURCE_REVIEW"
-assert len(cases["cases"]) == 10
-ids = set()
-for item in cases["cases"]:
-    assert set(cases["required_fields"]) <= set(item), item.get("id")
-    assert item["id"] not in ids
-    ids.add(item["id"])
-    assert item["review"] == "PENDING"
-    assert item["source_id"] in cases["sources"]
-    x, expected = item["inputs"], item["expected"]
-    method = item["check"]
-    if method == "pad_equation":
-        assert x["wet_bulb_c"] <= x["dry_bulb_c"]
-        assert 0 <= x["pad_effectiveness"] <= 1
-        actual = x["dry_bulb_c"] - x["pad_effectiveness"] * (x["dry_bulb_c"] - x["wet_bulb_c"])
-        assert math.isclose(actual, expected["pad_outlet_c"], abs_tol=1e-9)
-        assert expected["canopy_temperature_c"] is None
-    elif method == "scope":
-        assert item["scope"] == "AL_KHOR_ONLY"
-        assert expected["allow_al_shahaniya_transfer"] is False
-        if "relative_humidity_pct" in " ".join(x):
-            for k, v in x.items():
-                if "humidity_pct" in k:
-                    assert 0 <= v <= 100
-    elif method == "ventilation_quote":
-        # Expected values transcribed from a named study, not independently confirmed.
-        assert item["data_class"] == "MODELED_CFD_REPORTED"
-        assert (x["ach"], expected["reported_difference_c"]) in ((20, 10), (40, 5.5))
-    elif method == "reported_row":
-        assert item["scope"] == "QATAR_STUDY_ONLY"
-        assert item["locator"] == "Tables 14–15"
-        assert all(expected[k] > 0 for k in (
-            "yield_t_per_dunum", "total_cost_qar", "electricity_kwh", "water_m3"
-        ))
-        assert "CROP_ZONE_MEASUREMENT" not in item["data_class"]
-    elif method == "historical_code":
-        assert expected["minimum_power_factor_lagging"] == 0.9
-        assert expected["current_revision_checked"] is False
-    elif method == "abstain":
-        assert item["locator"] is None
-        assert expected["decision"] == "ABSTAIN_MISSING_SOURCE"
-    else:
-        raise AssertionError(f"Unrecognized check: {method}")
-    print(f"PASS {item['id']}: {item['title']}")
+HERE = Path(__file__).resolve().parent
 
-print("RESULT: 10/10 demo contract checks passed; original-source verification,")
-print("expert review, site measurements and controlled AI comparisons NOT EXECUTED.")
+
+def run(path, register_path=None):
+    doc = json.loads(path.read_text(encoding="utf-8"))  # JSON is valid YAML 1.2
+    assert doc["status"] == "DEMONSTRATION_ONLY_PENDING_ORIGINAL_SOURCE_REVIEW"
+    cases = doc["cases"]
+    assert len(cases) == 10, "expected ten cases"
+    ids, sources = set(), doc["sources"]
+    register = None
+    if register_path is not None:
+        try:
+            import yaml
+        except ImportError as exc:
+            raise RuntimeError("Install PyYAML for --register: pip install pyyaml") from exc
+        register = yaml.safe_load(register_path.read_text(encoding="utf-8"))
+    passed = failed = 0
+    for case in cases:
+        cid = case.get("id", "UNKNOWN")
+        try:
+            assert set(doc["required_fields"]) <= set(case), "missing required fields"
+            assert cid not in ids, "duplicate ID"
+            ids.add(cid)
+            assert case["review"] == "PENDING", "unapproved evidence cannot be approved"
+            assert case["source_id"] in sources, "unknown source"
+            assert case["data_class"] not in {"HUMAN_VERIFIED", "MEASURED_QATAR_SITE"}
+            x, e, kind = case["inputs"], case["expected"], case["check"]
+            if kind == "pad_equation":
+                db, wb, eff = x["dry_bulb_c"], x["wet_bulb_c"], x["pad_effectiveness"]
+                assert wb <= db and 0 <= eff <= 1
+                assert math.isclose(db - eff * (db - wb), e["pad_outlet_c"], abs_tol=1e-8)
+                assert e["canopy_temperature_c"] is None, "pad outlet is not canopy air"
+            elif kind == "scope":
+                assert case["scope"] == "AL_KHOR_ONLY"
+                assert e["allow_al_shahaniya_transfer"] is False
+                assert all(0 <= v <= 100 for k, v in x.items() if "humidity_pct" in k)
+            elif kind == "ventilation_quote":
+                assert case["data_class"] == "MODELED_CFD_REPORTED"
+                assert (x["ach"], e["reported_difference_c"]) in ((20, 10), (40, 5.5))
+            elif kind == "reported_row":
+                assert case["scope"] == "QATAR_STUDY_ONLY"
+                assert case["locator"] == "Tables 14–15"
+                assert x["system"] in ("OF Tomato", "GH-S Cooled Tomato", "GH-SL Cooled Tomato")
+                assert all(isinstance(e[k], (int, float)) and not isinstance(e[k], bool) and e[k] > 0
+                           for k in ("yield_t_per_dunum", "total_cost_qar", "electricity_kwh", "water_m3"))
+            elif kind == "historical_code":
+                assert case["scope"] == "QATAR_HISTORICAL_CODE"
+                assert e["minimum_power_factor_lagging"] == 0.9
+                assert e["current_revision_checked"] is False
+            elif kind == "abstain":
+                assert case["locator"] is None
+                assert e["decision"] == "ABSTAIN_MISSING_SOURCE"
+            else:
+                raise AssertionError("unknown check type")
+            if register is not None:
+                aliases = {
+                    "ghani_2019": "ghani_2019_evaporative_cooled_greenhouse",
+                    "shannak_2026": "shannak_2026_qatari_crop_performance_index",
+                    "kahramaa_2016": "kahramaa_lv_electrical_code"
+                }
+                sid = aliases.get(case["source_id"], case["source_id"])
+                groups = ("verified_sources", "conditional_sources", "regulatory_sources")
+                found = [register[group][sid] for group in groups if sid in register.get(group, {})]
+                assert len(found) == 1, "source missing from local register"
+                if kind == "abstain":
+                    assert not found[0].get("verified_passages"), "reassess abstention; source changed"
+                else:
+                    assert found[0].get("verified_passages"), "register has no cited passages"
+                # Register matches are NOT independent verification of the paper.
+            print(f"PASS {cid}: {case['title']}")
+            passed += 1
+        except (AssertionError, KeyError, ValueError, TypeError) as error:
+            print(f"FAIL {cid}: {error}")
+            failed += 1
+    print(f"Demo: {passed} PASS, {failed} FAIL")
+    print("NOT TESTED: original paper accuracy, field performance, human review, or AI model improvement.")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--cases", type=Path, default=HERE / "cases.yaml")
+    parser.add_argument("--register", type=Path)
+    options = parser.parse_args()
+    raise SystemExit(run(options.cases, options.register))
