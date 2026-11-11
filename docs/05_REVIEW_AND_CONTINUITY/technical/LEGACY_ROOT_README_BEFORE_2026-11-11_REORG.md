@@ -7,11 +7,11 @@
 **Research objective:** Assess Qatar-grounded agricultural AI reliability, soil remote sensing, preliminary greenhouse feasibility and evidence-linked decision support. These are connected research workstreams, not four finished products.
 
 **Read first:**
-- [Complete dated research journey and evidence audit](research/greenhouse_llm_feasibility/JOURNEY_AND_STATUS_2026-11-10.md)
-- [Next executable experiment: RC04 crop-zone abstention](research/greenhouse_llm_feasibility/RC04_CROP_ZONE_ABSTENTION.md)
-- [Exact QMD / ERA5 / synthetic weather input decisions](research/greenhouse_llm_feasibility/WEATHER_INPUT_ACQUISITION.md)
-- [Original 11-subsystem greenhouse protocol](research/greenhouse_llm_feasibility/PROTOCOL_V0_response.md)
-- [Original Test A initial claim checks](research/greenhouse_llm_feasibility/TEST_A_001_INITIAL_CLAIM_REVIEW.md)
+- [Complete dated research journey and evidence audit](../../../research/greenhouse_llm_feasibility/JOURNEY_AND_STATUS_2026-11-10.md)
+- [Next executable experiment: RC04 crop-zone abstention](../../../research/greenhouse_llm_feasibility/RC04_CROP_ZONE_ABSTENTION.md)
+- [Exact QMD / ERA5 / synthetic weather input decisions](../../../research/greenhouse_llm_feasibility/WEATHER_INPUT_ACQUISITION.md)
+- [Original 11-subsystem greenhouse protocol](../../../research/greenhouse_llm_feasibility/PROTOCOL_V0_response.md)
+- [Original Test A initial claim checks](../../../research/greenhouse_llm_feasibility/TEST_A_001_INITIAL_CLAIM_REVIEW.md)
 
 **Reality:** RC01 synthetic pad-outlet arithmetic **26.1 C** is correct, but it does **not** prove a safe canopy temperature or that RAG helps. RC01's Gemini A/B/C descriptions conflict and do not establish a matched controlled retrieval comparison. RC04 has a draft pre-registered answer key; its controlled comparison is **NOT EXECUTED**. QMD/ERA5 records are **not yet acquired**. Soil model training remains **DATA_BLOCKED** pending matched laboratory measurements. Software tests are not scientific validation. Supervisor review remains pending.
 
@@ -21,9 +21,9 @@
 
 **STOP: DO NOT USE THE USER-SUPPLIED SITE JSON AS VERIFIED FIELD READINGS.** No original observation data, sensor calibration, dataset hash, equipment document, permission or independent review was provided. The claimed source-packet SHA-256 was the zero-byte digest; the reported Gemini 5/5 score is not proof of a valid isolated A/B comparison. **RC04 scientific verdict remains EXPERIMENT_BLOCKED; synthetic pad-outlet arithmetic remains correct.**
 
-- [Full evidence integrity decision and exact false claims](research/greenhouse_llm_feasibility/RC04_FIELD_PACKET_INTEGRITY_2026-11-11.md)
-- [Quarantined, explicitly unverified candidate JSON](research/greenhouse_llm_feasibility/QAT_ALSHAHANIYA_CANDIDATE_UNVERIFIED.json) — no active ingestion or field-data claims
-- [Simple validation gate](research/greenhouse_llm_feasibility/validate_field_packet.py) and [four unit tests](research/greenhouse_llm_feasibility/test_validate_field_packet.py)
+- [Full evidence integrity decision and exact false claims](../../../research/greenhouse_llm_feasibility/RC04_FIELD_PACKET_INTEGRITY_2026-11-11.md)
+- [Quarantined, explicitly unverified candidate JSON](../../../research/greenhouse_llm_feasibility/QAT_ALSHAHANIYA_CANDIDATE_UNVERIFIED.json) — no active ingestion or field-data claims
+- [Simple validation gate](../../../research/greenhouse_llm_feasibility/validate_field_packet.py) and [four unit tests](../../../research/greenhouse_llm_feasibility/test_validate_field_packet.py)
 - [Official UF/IFAS AE069](https://ask.ifas.ufl.edu/publication/AE069) — source confirms the general equation and temperature-gradient caveat, **not** site specifications.
 
 **Next:** keep the synthetic RC04 question separate from any Al-Shahaniya site-validation protocol. A genuine field study starts only after authorized, timestamped raw observations, instrumentation records and facility confirmation are obtained. For the nearer-term LLM study, source-check the fixed IFAS packet and capture truly isolated A/B model outputs. Do not train or deploy.
