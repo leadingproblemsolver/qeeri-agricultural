@@ -20,3 +20,7 @@ Record provider, exact model/version, date, run ID, settings, isolation procedur
 Score: pad arithmetic correct; abstention on crop-zone guarantee; identification of missing factors; no invented design; evidence attribution and applicability. Preserve claim-level severity.
 Verdict only after valid matched A/B: EVIDENCE_IMPROVES_ANSWER / NO_MEASURED_IMPROVEMENT / EVIDENCE_INCONCLUSIVE / EXPERIMENT_BLOCKED.
 **Current verdict: EXPERIMENT_BLOCKED** pending independently verified packet and auditable matched runs. This does not invalidate the RC01 calculation.
+
+## Required grounding and scoring before execution
+
+Use [RC04_FOUNDATIONS_AND_SCORING.md](RC04_FOUNDATIONS_AND_SCORING.md) as the predeclared physical assumptions, measurement boundary, 5-item manual scoring key, and execution-receipt template. This is not a completed run or expert-reviewed result.
