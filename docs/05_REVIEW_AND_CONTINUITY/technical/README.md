@@ -23,7 +23,7 @@ Archive inspected 2026-11-11: **339 ZIP entries** including nested Git repositor
 - **Privacy:** public GitHub remains separate from private institutional files. Approval records and personally identifying metadata belong in approved private systems.
 
 ## Event format
-[CHRONOLOGY.csv](CHRONOLOGY.csv) stores `date,event,workstream,evidence_path,evidence_state,what_changed,next_dependency`. Ambiguous dates remain `UNKNOWN` rather than being fabricated. Do not count intended sessions or proposed contacts as executed.
+[CHRONOLOGY.csv](../CHRONOLOGY.csv) stores `date,event,workstream,evidence_path,evidence_state,what_changed,next_dependency`. Ambiguous dates remain `UNKNOWN` rather than being fabricated. Do not count intended sessions or proposed contacts as executed.
 
 ## Final handoff test
 A researcher must be able to answer: What are we trying to establish? What real evidence exists and is permitted? What was run? What is only proposed? What failed? Who must review? What is the **one** next executable evidence event? If any answer requires reading an AI conversation, update this navigation rather than creating another memo.
