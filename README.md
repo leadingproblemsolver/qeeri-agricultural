@@ -13,6 +13,17 @@
 
 **Next action:** Verify and freeze one passage-located, permission-cleared source packet for RC04, then run the **identical question and settings** in isolated A (no packet) and B (packet) sessions, preserving unedited outputs. Do not build additional RAG infrastructure.
 
+## 2026-11-11 — Integrity gate: proposed Al-Shahaniya field packet
+
+**STOP: DO NOT USE THE USER-SUPPLIED SITE JSON AS VERIFIED FIELD READINGS.** No original observation data, sensor calibration, dataset hash, equipment document, permission or independent review was provided. The claimed source-packet SHA-256 was the zero-byte digest; the reported Gemini 5/5 score is not proof of a valid isolated A/B comparison. **RC04 scientific verdict remains EXPERIMENT_BLOCKED; synthetic pad-outlet arithmetic remains correct.**
+
+- [Full evidence integrity decision and exact false claims](research/greenhouse_llm_feasibility/RC04_FIELD_PACKET_INTEGRITY_2026-11-11.md)
+- [Quarantined, explicitly unverified candidate JSON](research/greenhouse_llm_feasibility/QAT_ALSHAHANIYA_CANDIDATE_UNVERIFIED.json) — no active ingestion or field-data claims
+- [Simple validation gate](research/greenhouse_llm_feasibility/validate_field_packet.py) and [four unit tests](research/greenhouse_llm_feasibility/test_validate_field_packet.py)
+- [Official UF/IFAS AE069](https://ask.ifas.ufl.edu/publication/AE069) — source confirms the general equation and temperature-gradient caveat, **not** site specifications.
+
+**Next:** keep the synthetic RC04 question separate from any Al-Shahaniya site-validation protocol. A genuine field study starts only after authorized, timestamped raw observations, instrumentation records and facility confirmation are obtained. For the nearer-term LLM study, source-check the fixed IFAS packet and capture truly isolated A/B model outputs. Do not train or deploy.
+
 ---
 
 ## Earlier repository README (historical, dated 2026-10-28)
