@@ -68,7 +68,8 @@ def run(path, register_path=None):
                 aliases = {
                     "ghani_2019": "ghani_2019_evaporative_cooled_greenhouse",
                     "shannak_2026": "shannak_2026_qatari_crop_performance_index",
-                    "kahramaa_2016": "kahramaa_lv_electrical_code"
+                    "kahramaa_2016": "kahramaa_lv_electrical_code",
+                    "mahmood_2022": "mahmood_2022_al_shahaniya"
                 }
                 sid = aliases.get(case["source_id"], case["source_id"])
                 groups = ("verified_sources", "conditional_sources", "regulatory_sources")
