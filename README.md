@@ -12,6 +12,8 @@
 | [4. Results and software](docs/04_RESULTS_AND_SOFTWARE/README.md) | What passed, what failed, and what is still unproven? |
 | [5. Review, obligations and chronology](docs/05_REVIEW_AND_CONTINUITY/README.md) | What needs human review, and where do we resume? |
 
+**Technical portfolio:** [Implementation tracks, ordered by scientific readiness](research/technical_tracks/README.md) · [AI research capability-to-proof map](docs/04_RESULTS_AND_SOFTWARE/technical/PORTFOLIO_PROOF_MAP.md).
+
 **All five stages have a separate `technical/README.md`.** Researchers can follow the plain-language path without navigating code. Developers can open technical continuations, which link to **existing canonical files rather than duplicating them**.
 
 ## Actual state — 2026-11-11
