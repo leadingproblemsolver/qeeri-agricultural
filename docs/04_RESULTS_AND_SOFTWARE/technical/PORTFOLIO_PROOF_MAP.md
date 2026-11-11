@@ -1,0 +1,37 @@
+# Research-engineering portfolio — capabilities tied to actual proof
+
+**Positioning:** *Evidence-first evaluation and verification of LLM outputs, with local source provenance, explicit abstention and deterministic execution boundaries.* This is the strongest truthful research/industry story. The other topics below are potential extensions, **not demonstrated expertise**.
+
+## Research capability evidence map
+
+| Requested research area | Current evidence / exact implementation | Evidence state | Smallest next verifiable proof |
+|---|---|---|---|
+| **Understanding, verifying and evaluating LLM outputs** | [QEERI original evaluation tools](../../../research_mvp/README.md), [five-axis agreement utility](../../../tools/score_agreement.py), [RC04](../../../research/greenhouse_llm_feasibility/RC04_FOUNDATIONS_AND_SCORING.md), [PR #2 RAG code and tests](https://github.com/leadingproblemsolver/qeeri-agricultural/tree/claude/qeeri-rag-v0-18awxg/research/qeeri_rag_v0) | **STRONGEST: existing code/test artifacts; agricultural LLM improvement NOT ESTABLISHED** | Independently checked reference answer + valid matched A/B outputs + manual claim scores |
+| **Synthetic data for LLM evaluation / fine-tuning** | [Synthetic worked cooling case on PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/tree/claude/qeeri-rag-v0-18awxg/research/greenhouse_llm_feasibility/scientific_case_v0); [false field-data guard](../../../research/greenhouse_llm_feasibility/validate_field_packet.py) | **LIMITED: synthetic fixtures; not a validated training corpus** | Versioned held-out negative cases derived from checked physical boundaries |
+| **Mid- / post-training of models or agents** | No verified QEERI training run, checkpoint, adaptation dataset or superiority comparison | **NOT DEMONSTRATED** | Only if repeated error survives simpler interventions and authorized training data exists |
+| **Learning from user interaction / feedback** | [Living Context Engine](https://github.com/leadingproblemsolver/living-context-engine) stores source-linked operational context; QEERI human-review records are proposed | **CROSS-REPO CONTEXT CODE; adaptive learning NOT DEMONSTRATED** | Real authorized reviewer feedback, before/after state and controlled outcome |
+| **Memory, goal management and inter-agent conversations** | [Living Context Engine](https://github.com/leadingproblemsolver/living-context-engine) context packs and [Reality Ontology Runtime](https://github.com/leadingproblemsolver/reality-ontology-runtime) source-linked execution-state boundaries | **SEPARATE SYSTEMS; no QEERI integration or inter-agent experiment** | Document one actual broken handoff, compare manual resumption vs source-linked pack |
+| **Collaborative / multi-party AI agents** | No tracked independent QEERI multi-party agents executing a shared task | **NOT DEMONSTRATED** | Authorized 2-role task, explicit responsibility split, matched single-agent baseline and trace |
+| **Multi-agent simulations** | No held-out simulation/agent-policy comparison | **NOT DEMONSTRATED** | Simulate only an observed coordination failure with defined controls, failure metric and logs |
+| **Differential privacy for LLMs/data** | [Private-data exclusion and evidence gate](../../../research/greenhouse_llm_feasibility/validate_field_packet.py) are ordinary data-hygiene controls, NOT DP | **NOT DEMONSTRATED** | Defined threat model and epsilon/delta evaluation only if an authorized sensitive use case exists |
+| **Continual learning / test-time training** | No weight-update regime, drift dataset or time-split adaptation experiment | **NOT DEMONSTRATED** | Baseline drift failure + justified update on chronological holdout with rollback |
+| **Forward deployment for enterprise AI** | [QEERI local MCP/CLI](../../../research_mvp/mcp_server.py), [MVP README](../../../research_mvp/README.md) and separate deterministic runtimes | **LOCAL INTERFACES / TESTS; no enterprise rollout or customer validation** | Authorized human uses one bounded evidence check, returns actual acceptance/correction |
+| **Research collaboration and communication** | Scope and supervisor-facing [review handoff](../../05_REVIEW_AND_CONTINUITY/README.md), dated [chronology](../../05_REVIEW_AND_CONTINUITY/CHRONOLOGY.csv) | **ARTIFACTS PREPARED; independently reviewed outcomes unclear** | Real mentor correction/acceptance receipt, project decision changed, attribution recorded |
+
+**Topic-specific action briefs:** [technical tracks](../../../research/technical_tracks/README.md). They are organized by adjacent competence, not as 10 new projects.
+
+## Three portfolio demonstrations that can be shown today (with limitations)
+1. **LLM source and numerical-evidence gate.** Open [QEERI input validator](../../../research/greenhouse_llm_feasibility/validate_field_packet.py), [four tests](../../../research/greenhouse_llm_feasibility/test_validate_field_packet.py), and [passing CI](https://github.com/leadingproblemsolver/qeeri-agricultural/actions/runs/42962023814). **Correct claim:** detects missing metadata and false 'verified' states in test cases. **Incorrect claim:** guarantees genuine field measurements.
+2. **Local evidence-to-decision interface.** Open [QEERI research_mvp README](../../../research_mvp/README.md), [decision engine](../../../research_mvp/qeeri_brain.py), [MCP interface](../../../research_mvp/mcp_server.py), and [tests](../../../research_mvp/test_qeeri.py). **Correct claim:** local tooling returns sourced/review/blocked states under its fixtures. **Incorrect claim:** field-proven agricultural advisor or enterprise deployment.
+3. **Retrieval behavior under hostile tests.** Open [draft RAG PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/2), [75 RAG+5 cooling CI receipt](https://github.com/leadingproblemsolver/qeeri-agricultural/actions/runs/42802024430), and [evaluation summary](https://github.com/leadingproblemsolver/qeeri-agricultural/blob/claude/qeeri-rag-v0-18awxg/research/qeeri_rag_v0/evidence/eval_summary.json). **Correct claim:** a tested local prototype, including a small hand-constructed retrieval fixture. **Incorrect claim:** validated improvement in LLM agricultural answers (arms A/B/C NOT_EXECUTED).
+
+## Suggested truthful project description — technical applicant
+“Developing reproducible checks for agricultural AI output reliability, including source-linked retrieval, unit/physical-boundary validation, explicit insufficient-evidence states and testable provenance receipts. Implementations include a local Python/MCP evidence-to-decision prototype and adversarial checks; independent agricultural model-quality comparisons and field validation remain in progress.”
+
+**Authorship caveat:** verify the exact commits, PR contributions and your own execution before writing “I designed/implemented” for any subsystem. Repository existence is not personal contribution proof. Claim external supervision or institutional endorsement only when the underlying correspondence and permission support it.
+
+## Next external review event
+One verified source-to-claim answer key and qualified reviewer feedback for a consequential agricultural LLM question; then one controlled baseline-vs-fixed-evidence comparison. This increases portfolio quality more than building six speculative AI agents.
+
+## Document boundaries
+This map is for technical portfolio orientation, **not proof of collaboration with Microsoft**, research employment, independently validated model safety, or any other institution's endorsement.
