@@ -1,5 +1,7 @@
 # 4 — Code, test receipts and known limitations
 
+**Next technical implementations (only after evidence gates):** [five research/industry tracks](../../../research/technical_tracks/README.md) and [portfolio capability-to-proof map](PORTFOLIO_PROOF_MAP.md). These reference existing code instead of creating competing implementations.
+
 ## Existing code: no migration
 - [Research MVP and its documented run commands](../../../research_mvp/README.md). Scientific evidence is not established by a CLI response. WITS imports are trade context, not greenhouse yield or costs.
 - [Main-branch input gate](../../../research/greenhouse_llm_feasibility/validate_field_packet.py) + [negative tests](../../../research/greenhouse_llm_feasibility/test_validate_field_packet.py). **Four tests succeeded** in [GitHub Actions run 42962023814](https://github.com/leadingproblemsolver/qeeri-agricultural/actions/runs/42962023814). A metadata pass yields `CANDIDATE_READY_FOR_INDEPENDENT_SOURCE_CHECK`, not `HUMAN_VERIFIED`.
