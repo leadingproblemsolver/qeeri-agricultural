@@ -13,12 +13,13 @@ git clone https://github.com/leadingproblemsolver/qeeri-agricultural.git
 cd qeeri-agricultural
 git fetch origin pull/4/head:demo-start
 git switch demo-start
-python demo/greenhouse/check_cases.py
+python -m pip install pyyaml
+python demo/greenhouse/run_demo.py
 ```
 
 **No Git?** Visit [the demo branch](https://github.com/leadingproblemsolver/qeeri-agricultural/tree/docs/simple-greenhouse-demo-2026-11-11), click **Code → Download ZIP**, unzip, open a terminal inside that folder, and run `python demo/greenhouse/check_cases.py`. On Windows, `py` may work instead of `python`.
 
-**Expected result:** 10 PASS lines. These check example math, source labels and safe refusals. They do **not** prove that the papers or a greenhouse are scientifically validated.
+**Expected result:** 10 lines with actual values, comparisons or abstentions, followed by a summary. These print calculated temperatures, source-scoped study comparisons, and an explicit refusal when evidence is missing. They do **not** prove that the papers or a greenhouse are scientifically validated.
 
 ## 2. What the demo actually does
 
@@ -39,8 +40,8 @@ Show a result + evidence origin + limitations
 | If you want to… | Start here |
 |---|---|
 | Understand the demo and its data | [Plain-language overview](demo/greenhouse/overview.md) |
-| See/edit ten examples | [cases.yaml](demo/greenhouse/cases.yaml) |
-| Run the demo checks | `python demo/greenhouse/check_cases.py` |
+| See the ten examples **and their cited passages in one file** | [qeeri_evidence.yaml](demo/greenhouse/qeeri_evidence.yaml) |
+| Run the combined demo | `python demo/greenhouse/run_demo.py` |
 | Explore the scientific questions | [Research in five steps](docs/README.md) |
 | Use the older local evidence-search program | [research_mvp/README.md](research_mvp/README.md) |
 | Explore the newer RAG code | [Draft PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/2) |
