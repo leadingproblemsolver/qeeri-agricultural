@@ -1,10 +1,10 @@
 # CLAUDE.md — QEERI research engineering contract
 
 ## Mission and scope
-This repository contains the approved agricultural LLM evaluation tools and a separately labeled, independently developed research MVP at `research_mvp/`. Continue **existing work**, don't redesign the system. The current MVP is a local Python standard-library evidence-to-decision tool, **not** a field-validated agricultural advisor, production RAG, or drone controller.
+This repository contains agricultural LLM evaluation tooling, research proposals, and a separately labeled research MVP at `research_mvp/`. Approval of any research result or proposed case requires an actual independent or mentor receipt; repository existence is not approval. Continue **existing work**, don't redesign the system. The current MVP is a local Python standard-library evidence-to-decision tool, **not** a field-validated agricultural advisor, production RAG, or drone controller.
 
 ## Read before changing anything
-1. `README.md` (root) and `research_mvp/README.md`.
+1. `README.md` (root), `docs/README.md`, and the corresponding plain-language research stage's `technical/README.md`; then `research_mvp/README.md` when working on that code.
 2. `research_mvp/RELEASE_NOTES.md`, `PUBLIC_CASE_2024.md`, `DATA_REQUEST_MINIMUM.md`, `EVAL_LOOP.md`.
 3. `research_mvp/qeeri_brain.py`, `mcp_server.py`, `qatar_public_case.py`, tests, source manifests.
 4. Existing git status, branch, tests and release receipts. The tests reported in prior handoffs are claims until rerun in this environment.
@@ -26,8 +26,11 @@ This repository contains the approved agricultural LLM evaluation tools and a se
 5. Report one of PASS / FAIL / BLOCKED, a concrete artifact path and commit SHA, residual risks, and the next evidence event.
 Limit to **3 repair iterations per hypothesis**. If still failing, classify and stop. Do not keep rewriting prompts or keyword lists when no new evidence is produced.
 
-## First concrete task
-Run `python -m unittest -v test_qeeri test_public_case_compact` and `python smoke_protocol.py` from `research_mvp/`; then inspect the actual exported functions and determine whether `test_public_case_compact` is discoverable. Record a clean-clone acceptance transcript. Build `retrieval_eval.json` only from source-backed tests with fixed expected sources. Report precision@k, recall@k and citation-resolution rate; if labels do not exist, create an explicitly labeled small gold set from actual `data/` records and avoid claiming generalization.
+## First concrete research task (2026-11-11)
+
+The primary blocker is scientific evidence, not another software feature. Use `docs/03_METHOD_AND_EXPERIMENTS/technical/README.md` to identify the exact RC04 claim and source packet, and `docs/05_REVIEW_AND_CONTINUITY/README.md` for outstanding mentor scope decisions. Do **not** run new prompts, expand RAG, change evaluation schemas, or train a model merely because a tool is available. When executing a genuinely authorized controlled run, preserve original prompt/packet hashes and unchanged raw answers; otherwise record `NOT_EXECUTED`.
+
+Treat the uploaded synthetic Al-Shahaniya packet as **UNVERIFIED** per `research/greenhouse_llm_feasibility/RC04_FIELD_PACKET_INTEGRITY_2026-11-11.md`. A metadata completeness check is not verification. Check latest Git branch before citing a code/test path: PR #2 remains unmerged.
 
 ## Tools and security
 - Python stdlib and current code first; no new dependencies, embeddings, vector DB, server hosting, hidden background agents or hardware interfaces until an observed requirement demands them.
