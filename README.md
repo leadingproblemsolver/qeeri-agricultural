@@ -2,7 +2,7 @@
 
 **One-sentence goal:** Test whether giving an AI checked agricultural information makes its answers more accurate and cautious.
 
-**You can run the greenhouse demo without an AI account, API key, or new software packages.**
+**You can run the greenhouse demo without an AI account or API key.** Install Python and the small `pyyaml` package as shown below.
 
 ## 1. Run your first demo
 
@@ -17,7 +17,7 @@ python -m pip install pyyaml
 python demo/greenhouse/run_demo.py
 ```
 
-**No Git?** Visit [the demo branch](https://github.com/leadingproblemsolver/qeeri-agricultural/tree/docs/simple-greenhouse-demo-2026-11-11), click **Code → Download ZIP**, unzip, open a terminal inside that folder, and run `python demo/greenhouse/check_cases.py`. On Windows, `py` may work instead of `python`.
+**No Git?** Visit [the demo branch](https://github.com/leadingproblemsolver/qeeri-agricultural/tree/docs/simple-greenhouse-demo-2026-11-11), click **Code → Download ZIP**, unzip, open a terminal inside that folder, and run `python -m pip install pyyaml`, then `python demo/greenhouse/run_demo.py`. On Windows, `py` may work instead of `python`.
 
 **Expected result:** 10 lines with actual values, comparisons or abstentions, followed by a summary. These print calculated temperatures, source-scoped study comparisons, and an explicit refusal when evidence is missing. They do **not** prove that the papers or a greenhouse are scientifically validated.
 
@@ -47,13 +47,8 @@ Show a result + evidence origin + limitations
 | Explore the newer RAG code | [Draft PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/2) |
 | See what the research has actually shown | [Evidence and limits](docs/04_RESULTS_AND_SOFTWARE/README.md) |
 
-**Optional source-register check:** If you have `master_source_register.yaml` locally, run `pip install pyyaml`, then:
+**The source register and ten cases are consolidated** in `demo/greenhouse/qeeri_evidence.yaml`. The older separate files remain as historical fixtures; use the single-file `run_demo.py` for presentations.
 
-```bash
-python demo/greenhouse/check_cases.py --register /path/to/master_source_register.yaml
-```
-
-This checks consistency with your register, **not** the accuracy of the original publications.
 
 ## 4. Is RAG built?
 
