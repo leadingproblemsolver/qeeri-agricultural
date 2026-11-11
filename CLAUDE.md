@@ -18,6 +18,10 @@ This repository contains agricultural LLM evaluation tooling, research proposals
 - The proposed drone/mission layer must never directly actuate hardware or bypass authorized flight-controller/operator controls.
 - Runtime local JSONL receipts, field coordinates, secrets, private correspondence and unreleased datasets must stay local and untracked; verify `.gitignore` before committing. Receipts are tamper-evident against ordinary edits, not a trusted immutable ledger.
 
+## Evidence-gated implementation areas
+
+Only after the matching scientific prerequisite is met, consult [research technical tracks](research/technical_tracks/README.md) and [portfolio proof map](docs/04_RESULTS_AND_SOFTWARE/technical/PORTFOLIO_PROOF_MAP.md). These are implementation briefs, not proof that all research capabilities exist. Keep code canonical and do not implement optional agent/training/privacy/deployment tracks before a real experimental or user need.
+
 ## Engineering loop — read research_mvp/EVAL_LOOP.md
 1. Establish a **fresh-clone** baseline; record Python version and actual tests rather than copying published counters.
 2. Fix the single highest-consequence reproducible failure with the smallest code diff and a regression fixture.
