@@ -9,3 +9,13 @@ inputs_original/
 01_context/HISTORICAL_*
 **/*HSE*
 **/*AGREEMENT*
+
+# QEERI private source/archive areas — never stage into the public research repository
+/private_archive/
+/local_archive/
+/restricted/
+/institutional_records/
+/data/raw_private/
+/data/processed_private/
+**/original_textbook_RESTRICTED/
+**/*TIMESHEET*RESTRICTED*
