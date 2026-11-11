@@ -1,31 +1,101 @@
-# QEERI agricultural AI research
+# Agricultural AI research — start here
 
-**What we are studying:** whether existing AI can give correct, appropriately cautious agricultural answers relevant to Qatar, and whether verified research evidence meaningfully improves them. The original related research covers soil sensing, a 50-question LLM benchmark, greenhouse feasibility and optional evidence-grounded software.
+**One-sentence goal:** Test whether giving an AI checked agricultural information makes its answers more accurate and cautious.
 
-**Start here:** [Research documentation, in five plain-language stages](docs/README.md).
+**You can run the greenhouse demo without an AI account, API key, or new software packages.** The demo lives in [draft PR #4](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/4), so checkout the demo branch first; it is not yet part of `main`.
 
-| Read in order | Question it answers |
+## 1. Run your first demo
+
+Install **Python 3.10+** and Git. Open Terminal, PowerShell or Command Prompt:
+
+```bash
+git clone https://github.com/leadingproblemsolver/qeeri-agricultural.git
+cd qeeri-agricultural
+git fetch origin pull/4/head:demo-start
+git switch demo-start
+python demo/greenhouse/check_cases.py
+```
+
+**No Git?** Visit [the demo branch](https://github.com/leadingproblemsolver/qeeri-agricultural/tree/docs/simple-greenhouse-demo-2026-11-11), click **Code → Download ZIP**, unzip, open a terminal inside that folder, and run `python demo/greenhouse/check_cases.py`. On Windows, `py` may work instead of `python`.
+
+**Expected result:** 10 PASS lines. These check example math, source labels and safe refusals. They do **not** prove that the papers or a greenhouse are scientifically validated.
+
+## 2. What the demo actually does
+
+```text
+Question + greenhouse inputs
+            ↓
+Check source, location, units and missing values
+            ↓
+Calculate what is possible; refuse what is not
+            ↓
+Show a result + evidence origin + limitations
+```
+
+**Example:** 38°C outside dry-bulb, 24°C wet-bulb, and 85% assumed pad effectiveness give **26.1°C at the cooling-pad outlet**. This does **not** tell us the temperature at plant height. These are illustrative values, not measured Qatar weather.
+
+## 3. What should I open?
+
+| If you want to… | Start here |
 |---|---|
-| [1. Purpose and scope](docs/01_PURPOSE_AND_SCOPE/README.md) | What did the mentor ask, and what is actually confirmed? |
-| [2. Evidence and data](docs/02_EVIDENCE_AND_DATA/README.md) | What papers, observations and permissions do we have? |
-| [3. Methods and experiments](docs/03_METHOD_AND_EXPERIMENTS/README.md) | How are model responses checked fairly? |
-| [4. Results and software](docs/04_RESULTS_AND_SOFTWARE/README.md) | What passed, what failed, and what is still unproven? |
-| [5. Review, obligations and chronology](docs/05_REVIEW_AND_CONTINUITY/README.md) | What needs human review, and where do we resume? |
+| Understand the demo and its data | [Plain-language overview](https://github.com/leadingproblemsolver/qeeri-agricultural/blob/docs/simple-greenhouse-demo-2026-11-11/demo/greenhouse/overview.md) |
+| See/edit ten examples | [cases.yaml](https://github.com/leadingproblemsolver/qeeri-agricultural/blob/docs/simple-greenhouse-demo-2026-11-11/demo/greenhouse/cases.yaml) |
+| Run the demo checks | `python demo/greenhouse/check_cases.py` |
+| Explore the scientific questions | [Research in five steps](docs/README.md) |
+| Use the older local evidence-search program | [research_mvp/README.md](research_mvp/README.md) |
+| Explore the newer RAG code | [Draft PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/2) |
+| See what the research has actually shown | [Evidence and limits](docs/04_RESULTS_AND_SOFTWARE/README.md) |
 
-**Technical portfolio:** [Implementation tracks, ordered by scientific readiness](research/technical_tracks/README.md) · [AI research capability-to-proof map](docs/04_RESULTS_AND_SOFTWARE/technical/PORTFOLIO_PROOF_MAP.md).
+**Optional source-register check:** If you have `master_source_register.yaml` locally, run `pip install pyyaml`, then:
 
-**All five stages have a separate `technical/README.md`.** Researchers can follow the plain-language path without navigating code. Developers can open technical continuations, which link to **existing canonical files rather than duplicating them**.
+```bash
+python demo/greenhouse/check_cases.py --register /path/to/master_source_register.yaml
+```
 
-## Actual state — 2026-11-11
+This checks consistency with your register, **not** the accuracy of the original publications.
 
-- **W1 soil remote sensing:** no eligible matched lab labels and imagery verified; model training blocked.
-- **W2 agricultural LLM reliability:** original 50 questions × four models are planned; exploratory replies exist, but a complete accepted comparable run/answer-key set is not established.
-- **W3 greenhouse feasibility:** a narrow synthetic pad-outlet calculation (26.1°C) and general source checks exist; **no measured canopy temperature or approved greenhouse design**.
-- **W4 grounded AI / RAG:** software prototypes and passing unit tests exist, but no valid evidence shows retrieval outperforms a fixed verified source packet.
-- **Newly supplied Al-Shahaniya field JSON:** expressly **NOT VERIFIED FIELD TELEMETRY**. See [integrity decision](research/greenhouse_llm_feasibility/RC04_FIELD_PACKET_INTEGRITY_2026-11-11.md).
+## 4. Is RAG built?
 
-**Immediate next research gate:** get explicit mentor confirmation of the precise QA/crop/site scope, verify and lock an original source-to-claim reference key, and then preserve genuinely matched A/B raw runs before judging improvement. No further platform construction is needed for this gate.
+**Yes, as a prototype.** RAG means **retrieval-augmented generation**: find relevant source passages first, then use them to produce a draft answer.
 
-**Location and safety:** The GitHub repository is currently **PUBLIC**. The uploaded local archive contains restricted/admin files and third-party PDFs that must stay in appropriately controlled storage. [Original file register](docs/ASSET_INDEX.csv) · [Dated chronology](docs/05_REVIEW_AND_CONTINUITY/CHRONOLOGY.csv) · [Draft RAG PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/2).
+**Built:** local document ingestion, SQLite/FTS5 retrieval, source links, constrained answers, run receipts, automated software tests, and a queue for human review. The main branch also contains an older evidence-retrieval program in `research_mvp/`.
 
-**Research integrity:** software tests ≠ scientific validation; a citation ≠ proof of claim support; synthetic values ≠ field observations; an unsent draft or unconfirmed supervisor message ≠ authorization. Prior README is retained in [historical records](docs/05_REVIEW_AND_CONTINUITY/technical/LEGACY_ROOT_README_BEFORE_2026-11-11_REORG.md).
+**Not yet proven:** RAG improves agricultural answers over a fixed verified source packet; independent agronomic validity; reliable greenhouse construction advice; or production readiness. The newer RAG is **in unmerged draft PR #2**, not `main`; its source exclusion rules also need reconciliation.
+
+Try the prototype separately, without an API key:
+
+```bash
+git fetch origin pull/2/head:rag-prototype
+git switch rag-prototype
+cd research/qeeri_rag_v0
+python -m unittest discover -s tests -v
+python evidence/demo.py
+python -m qeeri_rag health
+```
+
+Read [the RAG README](https://github.com/leadingproblemsolver/qeeri-agricultural/blob/claude/qeeri-rag-v0-18awxg/research/qeeri_rag_v0/README.md) for source restrictions and technical details. To return to the simpler demo from the repository root, use `git switch demo-start`. **Do not build another RAG system.**
+
+## 5. What data are we collecting?
+
+| Category | Main inputs |
+|---|---|
+| Weather | Dry/wet-bulb temperature, humidity, sun, wind, place and time |
+| Greenhouse | Dimensions, cover, insulation, ventilation, pad/fan configuration |
+| Crop | Species, growth stage, canopy conditions, water use |
+| Water and soil | Moisture, salinity, water quality, lab data where available |
+| Energy and money | Power, water, costs, prices, reported production |
+| Evidence | Original source, exact passage, units, place, measured vs modeled, review |
+| AI evaluation | Question, same-model prompts/settings, raw answers, reviewer scores |
+
+Published regional examples can be used for a **demo**, but must retain their original locations and evidence types. An illustrative calculation is not a field observation.
+
+## 6. What is missing?
+
+- **Real soil ML:** matched laboratory soil samples and satellite/drone images.
+- **Real greenhouse design:** site-specific measurements and expert verification.
+- **AI benefit claim:** independently reviewed answer keys and matched, scored baseline-versus-evidence model runs.
+- **Full 50-question benchmark:** verified reference answers and comparable four-model evaluation receipts.
+
+**Next real research step:** verify one original source passage, freeze its answer key, then run a controlled comparison of AI answers with and without that source.
+
+This repository is **public**. Do not commit private correspondence, restricted PDFs, participant data or unapproved field measurements. Keep the original research history intact in `docs/` and `research/`. Software PASS ≠ scientific validation.
