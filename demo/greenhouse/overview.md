@@ -13,7 +13,7 @@
 - **Output:** A calculation or reported finding, plus what it cannot establish.
 - **AI test (next step):** Ask the same model the same frozen question twice, once without sources and once with a fixed, independently reviewed source packet. Compare claim accuracy and appropriate refusals.
 
-**Run the demo:** `python demo/greenhouse/check_cases.py` (Python standard library only). Ten checks test reproducible arithmetic, retained values, source scope and refusal when evidence is missing. They are **not** ten greenhouse trials, expert approvals or AI A/B runs.
+**Run the demo:** `python -m pip install pyyaml` then `python demo/greenhouse/run_demo.py` (Python standard library only). Ten checks test reproducible arithmetic, retained values, source scope and refusal when evidence is missing. They are **not** ten greenhouse trials, expert approvals or AI A/B runs.
 
 ## Data we collect
 
@@ -38,7 +38,7 @@ For **every input**, record its value, unit, source and exact locator, date/plac
 9. A historical KAHRAMAA power-factor provision; current code check still required.
 10. Refuse an Al Shahaniya numerical design claim when the exact supporting passage is missing.
 
-The case file `demo/greenhouse/cases.yaml` contains all ten values, study IDs, locators, origins and expected outcomes. It is intentionally easy to extend with data found in other published GCC studies. **The cases reproduce candidate information transcribed from a supplied source register; the original publications have not all been independently rechecked.**
+The **single input file** `demo/greenhouse/qeeri_evidence.yaml` contains the ten cases and the source metadata, quoted passages, units and review states together. The older `cases.yaml` remains as an earlier fixture. It is intentionally easy to extend with data found in other published GCC studies. **The cases reproduce candidate information transcribed from a supplied source register; the original publications have not all been independently rechecked.**
 
 ## Scientific test — not completed
 
