@@ -1,67 +1,29 @@
-# QEERI Agricultural Research — evidence-first status (2026-11-10)
+# QEERI agricultural AI research
 
-**Research objective:** Assess Qatar-grounded agricultural AI reliability, soil remote sensing, preliminary greenhouse feasibility and evidence-linked decision support. These are connected research workstreams, not four finished products.
+**What we are studying:** whether existing AI can give correct, appropriately cautious agricultural answers relevant to Qatar, and whether verified research evidence meaningfully improves them. The original related research covers soil sensing, a 50-question LLM benchmark, greenhouse feasibility and optional evidence-grounded software.
 
-**Read first:**
-- [Complete dated research journey and evidence audit](research/greenhouse_llm_feasibility/JOURNEY_AND_STATUS_2026-11-10.md)
-- [Next executable experiment: RC04 crop-zone abstention](research/greenhouse_llm_feasibility/RC04_CROP_ZONE_ABSTENTION.md)
-- [Exact QMD / ERA5 / synthetic weather input decisions](research/greenhouse_llm_feasibility/WEATHER_INPUT_ACQUISITION.md)
-- [Original 11-subsystem greenhouse protocol](research/greenhouse_llm_feasibility/PROTOCOL_V0_response.md)
-- [Original Test A initial claim checks](research/greenhouse_llm_feasibility/TEST_A_001_INITIAL_CLAIM_REVIEW.md)
+**Start here:** [Research documentation, in five plain-language stages](docs/README.md).
 
-**Reality:** RC01 synthetic pad-outlet arithmetic **26.1 C** is correct, but it does **not** prove a safe canopy temperature or that RAG helps. RC01's Gemini A/B/C descriptions conflict and do not establish a matched controlled retrieval comparison. RC04 has a draft pre-registered answer key; its controlled comparison is **NOT EXECUTED**. QMD/ERA5 records are **not yet acquired**. Soil model training remains **DATA_BLOCKED** pending matched laboratory measurements. Software tests are not scientific validation. Supervisor review remains pending.
+| Read in order | Question it answers |
+|---|---|
+| [1. Purpose and scope](docs/01_PURPOSE_AND_SCOPE/README.md) | What did the mentor ask, and what is actually confirmed? |
+| [2. Evidence and data](docs/02_EVIDENCE_AND_DATA/README.md) | What papers, observations and permissions do we have? |
+| [3. Methods and experiments](docs/03_METHOD_AND_EXPERIMENTS/README.md) | How are model responses checked fairly? |
+| [4. Results and software](docs/04_RESULTS_AND_SOFTWARE/README.md) | What passed, what failed, and what is still unproven? |
+| [5. Review, obligations and chronology](docs/05_REVIEW_AND_CONTINUITY/README.md) | What needs human review, and where do we resume? |
 
-**Next action:** Verify and freeze one passage-located, permission-cleared source packet for RC04, then run the **identical question and settings** in isolated A (no packet) and B (packet) sessions, preserving unedited outputs. Do not build additional RAG infrastructure.
+**All five stages have a separate `technical/README.md`.** Researchers can follow the plain-language path without navigating code. Developers can open technical continuations, which link to **existing canonical files rather than duplicating them**.
 
-## 2026-11-11 — Integrity gate: proposed Al-Shahaniya field packet
+## Actual state — 2026-11-11
 
-**STOP: DO NOT USE THE USER-SUPPLIED SITE JSON AS VERIFIED FIELD READINGS.** No original observation data, sensor calibration, dataset hash, equipment document, permission or independent review was provided. The claimed source-packet SHA-256 was the zero-byte digest; the reported Gemini 5/5 score is not proof of a valid isolated A/B comparison. **RC04 scientific verdict remains EXPERIMENT_BLOCKED; synthetic pad-outlet arithmetic remains correct.**
+- **W1 soil remote sensing:** no eligible matched lab labels and imagery verified; model training blocked.
+- **W2 agricultural LLM reliability:** original 50 questions × four models are planned; exploratory replies exist, but a complete accepted comparable run/answer-key set is not established.
+- **W3 greenhouse feasibility:** a narrow synthetic pad-outlet calculation (26.1°C) and general source checks exist; **no measured canopy temperature or approved greenhouse design**.
+- **W4 grounded AI / RAG:** software prototypes and passing unit tests exist, but no valid evidence shows retrieval outperforms a fixed verified source packet.
+- **Newly supplied Al-Shahaniya field JSON:** expressly **NOT VERIFIED FIELD TELEMETRY**. See [integrity decision](research/greenhouse_llm_feasibility/RC04_FIELD_PACKET_INTEGRITY_2026-11-11.md).
 
-- [Full evidence integrity decision and exact false claims](research/greenhouse_llm_feasibility/RC04_FIELD_PACKET_INTEGRITY_2026-11-11.md)
-- [Quarantined, explicitly unverified candidate JSON](research/greenhouse_llm_feasibility/QAT_ALSHAHANIYA_CANDIDATE_UNVERIFIED.json) — no active ingestion or field-data claims
-- [Simple validation gate](research/greenhouse_llm_feasibility/validate_field_packet.py) and [four unit tests](research/greenhouse_llm_feasibility/test_validate_field_packet.py)
-- [Official UF/IFAS AE069](https://ask.ifas.ufl.edu/publication/AE069) — source confirms the general equation and temperature-gradient caveat, **not** site specifications.
+**Immediate next research gate:** get explicit mentor confirmation of the precise QA/crop/site scope, verify and lock an original source-to-claim reference key, and then preserve genuinely matched A/B raw runs before judging improvement. No further platform construction is needed for this gate.
 
-**Next:** keep the synthetic RC04 question separate from any Al-Shahaniya site-validation protocol. A genuine field study starts only after authorized, timestamped raw observations, instrumentation records and facility confirmation are obtained. For the nearer-term LLM study, source-check the fixed IFAS packet and capture truly isolated A/B model outputs. Do not train or deploy.
+**Location and safety:** The GitHub repository is currently **PUBLIC**. The uploaded local archive contains restricted/admin files and third-party PDFs that must stay in appropriately controlled storage. [Original file register](docs/ASSET_INDEX.csv) · [Dated chronology](docs/05_REVIEW_AND_CONTINUITY/CHRONOLOGY.csv) · [Draft RAG PR #2](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/2).
 
----
-
-## Earlier repository README (historical, dated 2026-10-28)
-
-# QEERI Agricultural LLM Evaluation — private research workspace
-
-**Status (2026-10-28):** research setup prepared; 50 questions × 4 models / 200 proposed runs; **0 accepted controlled results**. Existing model answers are **exploratory** and must never be relabeled controlled. This repository is private and must remain private.
-
-## Start here
-
-The verified local source package is **QEERI_runtime_repaired_2026-10-28.zip**, supplied in the ChatGPT conversation. It contains 75 entries including code, tests, run logs, protocols, source-derived question data, and restricted response evidence. Keep it locally; the ZIP has not been uploaded to this GitHub repository.
-
-Extract the ZIP, enter its `QEERI/` directory, then run:
-
-```bash
-python3 -m unittest discover -s tests -v
-python3 tools/qeeri.py status
-python3 tools/qeeri.py next
-python3 tools/qeeri.py audit-exploratory
-```
-
-Main local paths:
-- `tools/qeeri.py` — CLI evidence recorder and audit
-- `tools/score_agreement.py` — scoring utilities
-- `03_runs/EXPLORATORY_MANUAL_WORKFLOW.md` — how to import earlier incomplete answers without inventing timestamps
-- `03_runs/RUN_INSTRUCTIONS.md` — controlled-session protocol
-- `03_runs/run_log_200.csv` — 200 pending controlled observations
-- `03_runs/exploratory_RESTRICTED/` — **local-only** raw exploratory responses
-- `tests/test_integrity.py` — integrity tests
-
-## Evidence boundaries
-
-Do not infer UI model/version labels, session isolation or original timestamps retrospectively. Local import time is not experiment start time. A correct scientific answer is not proof of a valid controlled run. No comparative rankings until the full batch has been audited and reference answers reviewed.
-
-## Files deliberately excluded from GitHub
-
-The original textbook, restricted question-bank extracts, raw model responses, intern/admin records, private correspondence, and unpublished QEERI research documents should remain in the private local archive pending institutional data-handling clearance.
-
-## Current development state
-
-This is an **initial repository entry-point commit**, not a claim that the full executable project is uploaded. The canonical working copy remains the locally verified ZIP. A subsequent code-only commit is required to make the CLI runnable from GitHub alone.
+**Research integrity:** software tests ≠ scientific validation; a citation ≠ proof of claim support; synthetic values ≠ field observations; an unsent draft or unconfirmed supervisor message ≠ authorization. Prior README is retained in [historical records](docs/05_REVIEW_AND_CONTINUITY/technical/LEGACY_ROOT_README_BEFORE_2026-11-11_REORG.md).
