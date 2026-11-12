@@ -4,6 +4,8 @@
 
 **You can run the greenhouse demo without an AI account or API key.** The updated single-file runner requires `pip install pyyaml` and lives in [draft PR #4](https://github.com/leadingproblemsolver/qeeri-agricultural/pull/4), not yet in `main`.
 
+**Scientific field guide:** [Climate data, greenhouse cooling, ET₀, source evidence and mentor-review decisions](https://github.com/leadingproblemsolver/qeeri-agricultural/blob/docs/simple-greenhouse-demo-2026-11-11/docs/SCIENTIFIC_RESEARCH_NAVIGATOR.md) (on draft PR #4; not yet merged).
+
 ## 1. Run your first demo
 
 Install **Python 3.10+** and Git. Open Terminal, PowerShell or Command Prompt:
