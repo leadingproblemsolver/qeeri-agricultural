@@ -4,6 +4,8 @@
 
 **You can run the greenhouse demo without an AI account or API key.** Install Python and the small `pyyaml` package as shown below.
 
+**Scientific reference (before a mentor presentation):** [One-page-entry scientific navigator](docs/SCIENTIFIC_RESEARCH_NAVIGATOR.md) — research questions, Qatar papers, Copernicus ERA5-Land selections, pad cooling, FAO-56 ET₀, what remains unmeasured, and mentor decisions.
+
 ## 1. Run your first demo
 
 Install **Python 3.10+** and Git. Open Terminal, PowerShell or Command Prompt:
