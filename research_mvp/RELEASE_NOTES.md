@@ -15,3 +15,10 @@
 
 ## Next evidence event
 First-time researcher runs the commands independently, then the team identifies one matched field/crop-period sample for environmental/financial evaluation. Supervisor acceptance and scientific issue disposition remain separate.
+
+## Retrieval evaluation and known scope limits (added after Gate 1)
+- `python retrieval_eval.py` runs `retrieval_gold.json` (23 cases, author-labeled, **n=23, not independent, no generalization claim**). Last run: recall@5 0.917, precision@5 1.0, structural citation resolution 1.0, irrelevant-citation rate 0.0, abstention 5/5. Citation resolution means the cited ID exists, not that a scientist approved the claim.
+- Scope limit, not a bug: general agronomic questions outside the four indexed passages and 11 QA items (e.g. "2,4-D control of broadleaf weeds", "agricultural drought soil moisture") return BLOCK with no citations (G15, G17).
+- Evidence retrieval requires a named cucumber/WITS subject (keyword allowlist). It is valid only for the current single-crop corpus and must be replaced when the corpus grows.
+- Open: stray numeric tokens (e.g. "2", "4") can still match inside cucumber queries.
+- Root `tests/` needs `03_runs/` data that is not in the repository and errors without it; it is unrelated to `research_mvp/`.

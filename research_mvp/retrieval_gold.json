@@ -1,0 +1,29 @@
+{
+  "label": "SMALL HAND-LABELED GOLD SET (author-labeled from committed data/ records; NOT independent, NOT generalizable). Expected refs are the only records considered relevant.",
+  "k": 5,
+  "cases": [
+    {"id":"G01","query":"Qatar cucumber imports 2023","expect_refs":["WITS-QAT-070700-2023"],"expect_decision":"WARN","type":"trade"},
+    {"id":"G02","query":"Qatar cucumber imports 2024","expect_refs":["WITS-QAT-070700-2024"],"expect_decision":"WARN","type":"trade"},
+    {"id":"G03","query":"HS 070700 CIF import unit value 2024","expect_refs":["WITS-QAT-070700-2024"],"expect_decision":"WARN","type":"trade"},
+    {"id":"G04","query":"How much cucumber did Qatar import in 2024?","expect_refs":["WITS-QAT-070700-2024"],"expect_decision":"WARN","type":"paraphrase"},
+    {"id":"G05","query":"cucumber production greenhouse 2024","expect_refs":["QATAR-CUCUMBER-GREENHOUSE-2024"],"expect_decision":"WARN","type":"production"},
+    {"id":"G06","query":"open field cucumber production 2023","expect_refs":["QATAR-CUCUMBER-OPEN_FIELD-2023"],"expect_decision":"WARN","type":"production"},
+    {"id":"G07","query":"greenhouse cucumber production 2022","expect_refs":["QATAR-CUCUMBER-GREENHOUSE-2022"],"expect_decision":"WARN","type":"production"},
+    {"id":"G08","query":"open field cucumber 2020","expect_refs":["QATAR-CUCUMBER-OPEN_FIELD-2020"],"expect_decision":"WARN","type":"production"},
+    {"id":"G09","query":"greenhouse cucumber area hectares 2025","expect_refs":["QATAR-CUCUMBER-GREENHOUSE-2025"],"expect_decision":"WARN","type":"production"},
+    {"id":"G10","query":"Q-K26 potato aphid","expect_refs":["Q-K26","UCIPM-POTATO-APHID"],"expect_decision":"REVIEW","type":"science"},
+    {"id":"G11","query":"What is the scientific name of potato aphid?","expect_refs":["Q-K26","UCIPM-POTATO-APHID"],"expect_decision":"REVIEW","type":"science_paraphrase"},
+    {"id":"G12","query":"Fusarium wilt of tomato","expect_refs":["Q-K29","APS-TOMATO-FUSARIUM"],"expect_decision":"REVIEW","type":"science"},
+    {"id":"G13","query":"Which pathogen causes tomato fusarium wilt?","expect_refs":["Q-K29","APS-TOMATO-FUSARIUM"],"expect_decision":"REVIEW","type":"science_paraphrase"},
+    {"id":"G14","query":"Q-K06 weed control in barley","expect_refs":["Q-K06","RUTGERS-BROADLEAF-24D"],"expect_decision":"REVIEW","type":"science"},
+    {"id":"G15","query":"2,4-D control of broadleaf weeds","expect_refs":["RUTGERS-BROADLEAF-24D"],"expect_decision":"REVIEW","type":"science_paraphrase"},
+    {"id":"G16","query":"Q-K15 agricultural drought","expect_refs":["Q-K15","USGS-AG-DROUGHT"],"expect_decision":"REVIEW","type":"science"},
+    {"id":"G17","query":"agricultural drought soil moisture","expect_refs":["USGS-AG-DROUGHT"],"expect_decision":"REVIEW","type":"science_paraphrase"},
+    {"id":"A01","query":"how to fix my car engine","expect_refs":[],"expect_decision":"BLOCK","type":"abstain_unrelated"},
+    {"id":"A02","query":"Qatar tomato production 2024","expect_refs":[],"expect_decision":"BLOCK","type":"abstain_no_data"},
+    {"id":"A03","query":"Qatar cucumber imports 2019","expect_refs":[],"expect_decision":"BLOCK","type":"abstain_wrong_year"},
+    {"id":"A04","query":"wheat yield in Qatar 2024","expect_refs":[],"expect_decision":"BLOCK","type":"abstain_no_data"},
+    {"id":"A05","query":"What is the legal limit for nitrate in agricultural runoff in Qatar?","expect_refs":["Q-C3"],"expect_decision":"REVIEW","type":"science_unresolved_no_threshold","label_note":"Initially mislabeled as abstention; Q-C3 is the existing unresolved legal-threshold QA item (approved_answer=false). Correct behavior is REVIEW with no numeric threshold."},
+    {"id":"A06","query":"tell me about cattle feed","expect_refs":[],"expect_decision":"BLOCK","type":"abstain_unrelated"}
+  ]
+}
